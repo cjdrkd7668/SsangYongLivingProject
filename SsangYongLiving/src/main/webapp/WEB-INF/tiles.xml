@@ -4,23 +4,14 @@
 
 <tiles-definitions>
 
-	<!--  
-		board.list
-		board.add
-		board.view
-		
-		member.auth
-	-->
-	<!--  
-	<definition name="recipe.*" template="#WEB-INF/views/layout/main.jsp">
+	<definition name="index" template="/WEB-INF/views/layout/main.jsp">
 		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
 		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"></put-attribute>
-		
-		<put-attribute name="content" value="/WEB-INF/views/recipe/{1}.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/views/index.jsp"></put-attribute>
 	</definition>
-	-->
 	
-	<definition name="recipe.*" template="#WEB-INF/views/layout/recipemain.jsp">
+	<definition name="recipe.*" template="/WEB-INF/views/layout/recipemain.jsp">
 		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
 		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"></put-attribute>
 		<!-- 사이드바가 필요하신 분은..

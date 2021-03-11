@@ -1,38 +1,159 @@
 /* main.css */
+/*
+주황색 : #FF6300
 
+*/
 @font-face {
-    font-family: 'Jal_Onuel';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Jal_Onuel.woff') format('woff');
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 body, p, div, span, a, table, th, td, input, button, textarea, h1, h2, h3 {
-	font-family: 'Jal_Onuel';
+	font-family: 'GmarketSansMedium';;
 }
 
-main {
-	width: 700px;
-	margin: 0px auto;
+body {
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-main > header > div > div {
-	float: left;
+/* main-index */
+#main-index {
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.main-welcome {
+	width: 900px;
+	height: 500px;
+	text-align: center;
+	background-image: url('/living/resources/images/main-night.png');
+	background-repeat: no-repeat;
+}
+
+.main-welcome h1 {
+	padding-top: 50px;
+	padding-bottom: 20px;
+	color: #FF6300
+}
+
+.main-welcome p {
+	width: 60%;
+	display: inline-block;
+	margin-top: 15px;
+	color: #eee;
+}
+
+.main-box {
+	margin-top: 30px;
+}
+
+
+
+#main-thumbnail .image {
+	width: 800px;
+	height: 200px;
+	background-repeat: no-repeat;
+	background-size: 800px;
+	background-position: 0px -630px;
+	float:left;
+}
+
+#main-recipe {
+	background-image: url('/living/resources/images/recipe-gosu.jpg');
+}
+/*
+#main- {
+	background-image: url('/living/resources/images/recipe-gosu.jpg');
+}
+#main- {
+	background-image: url('/living/resources/images/recipe-gosu.jpg');
+}
+#main- {
+	background-image: url('/living/resources/images/recipe-gosu.jpg');
+}
+*/
+
+#main-thumbnail .link a{
+	width: 50px;
+	font-size: 2.5em;
+	float: right;
+	color: #FF6300;
+	border-right: 5px solid #777;
+}
+
+#main-thumbnail .link:hover a{
+	color:  #666;
+	text-decoration: none;
+}
+
+#main-thumbnail::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+/* header-cklee */
+#header .navbar {
+	min-height: 80px;
+}
+
+#header #logo {
+	height: 50px;
+}
+
+#header .navbar-nav>li>a {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	line-height: 40px;
+	padding-right: 20px;
+	padding-left: 20px;
+	font-size: 1.3em;
+}
+
+#header .navbar-nav>li:nth-child(1)>a {
+	margin-left: 90px;
+}
+
+#header .navbar-nav>li:nth-child(n+6)>a {
+	color: #FF6300;
+	font-size: 1em;
+	padding: 0px;
+	margin: 20px 10px;
+}
+
+#header .navbar-nav>li:nth-child(5)>a {
+	margin-right: 30px;
+}
+
+#header .navbar-default .navbar-nav>.open>a, #header .navbar-default .navbar-nav>.open>a:hover,
+	#header .navbar-default .navbar-nav>.open>a:focus {
+	color: #FF6300;
+}
+
+
+/* footer-cklee */
+#footer {
+	text-align: center;
+}
+
+#footer #footer-text {
+	float: none;
+}
+
+#footer>.p-link {
+	margin-top: 50px;
+}
+
+#footer>.p-link>a {
+	color: #FF6300;
+	margin-left: 10px;
 	margin-right: 10px;
 }
-main > header > div > div:last-child {
-	float: right;
-}
-main > header > div::after {
-	content: "";
-	display: block;
-	clear: left;
-}
-
-main > header {
-	margin-bottom: 20px;
-}
-
 
 
 
