@@ -11,8 +11,24 @@
 		
 		member.auth
 	-->
-	<definition name="*.*" template="#">
+	<!--  
+	<definition name="recipe.*" template="#WEB-INF/views/layout/main.jsp">
+		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"></put-attribute>
+		
+		<put-attribute name="content" value="/WEB-INF/views/recipe/{1}.jsp"></put-attribute>
+	</definition>
+	-->
 	
+	<definition name="recipe.*" template="#WEB-INF/views/layout/recipemain.jsp">
+		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"></put-attribute>
+		<!-- 사이드바가 필요하신 분은..
+		<put-attribute name="sidebar" value="/WEB-INF/views/inc/recipesidebar.jsp"></put-attribute>
+		이런 식으로 하면 될까요?
+		-->
+		
+		<put-attribute name="content" value="/WEB-INF/views/recipe/{1}.jsp"></put-attribute>
 	</definition>
 	
 </tiles-definitions>

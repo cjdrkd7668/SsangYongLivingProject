@@ -41,7 +41,7 @@
 	</beans:bean>
 
 	<context:component-scan
-		base-package="com.test.sist" />
+		base-package="com.test.living" />
 
 
 
