@@ -1,0 +1,46 @@
+/* main.css */
+
+@font-face {
+    font-family: 'Jal_Onuel';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Jal_Onuel.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, p, div, span, a, table, th, td, input, button, textarea, h1, h2, h3 {
+	font-family: 'Jal_Onuel';
+}
+
+main {
+	width: 700px;
+	margin: 0px auto;
+}
+
+main > header > div > div {
+	float: left;
+	margin-right: 10px;
+}
+main > header > div > div:last-child {
+	float: right;
+}
+main > header > div::after {
+	content: "";
+	display: block;
+	clear: left;
+}
+
+main > header {
+	margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
