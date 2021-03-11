@@ -52,17 +52,33 @@ body {
 	margin-top: 30px;
 }
 
-#main-recipe {
+
+
+#main-thumbnail .image {
 	width: 800px;
 	height: 200px;
-	background-image: url('/living/resources/images/recipe-gosu.jpg');
 	background-repeat: no-repeat;
 	background-size: 800px;
 	background-position: 0px -630px;
 	float:left;
 }
 
-.thumbnail .link a{
+#main-recipe {
+	background-image: url('/living/resources/images/recipe-gosu.jpg');
+}
+/*
+#main- {
+	background-image: url('/living/resources/images/recipe-gosu.jpg');
+}
+#main- {
+	background-image: url('/living/resources/images/recipe-gosu.jpg');
+}
+#main- {
+	background-image: url('/living/resources/images/recipe-gosu.jpg');
+}
+*/
+
+#main-thumbnail .link a{
 	width: 50px;
 	font-size: 2.5em;
 	float: right;
@@ -70,12 +86,12 @@ body {
 	border-right: 5px solid #777;
 }
 
-.thumbnail .link:hover a{
+#main-thumbnail .link:hover a{
 	color:  #666;
 	text-decoration: none;
 }
 
-.thumbnail::after {
+#main-thumbnail::after {
 	content: '';
 	display: block;
 	clear: both;

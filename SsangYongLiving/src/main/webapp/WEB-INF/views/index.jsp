@@ -20,8 +20,8 @@
 		</div>
 		
 		<div class="main-box">
-			<div class="thumbnail">
-				<div id="main-recipe"></div>
+			<div id="main-thumbnail">
+				<div class="image" id="main-recipe"></div>
 				<div class="link"><a href="#">바로가기</a></div>
 			</div>
 			<div class="main-content">
@@ -33,9 +33,9 @@
 		</div>
 		
 		<div class="main-box">
-			<div class="thumbnail">
+			<div id="main-thumbnail">
 				<!-- 이미지가 background-image라서 /living/resources/css/main.css 가셔서 이미지 수정바랍니다. -->
-				<div id="main-recipe"></div>
+				<div class="image" id="main-recipe"></div>
 				<!-- 바로가기 클릭 시 이동할 링크 -->
 				<div class="link"><a href="#">바로가기</a></div>
 			</div>
@@ -48,9 +48,9 @@
 		</div>
 		
 		<div class="main-box">
-			<div class="thumbnail">
+			<div id="main-thumbnail">
 				<!-- 이미지가 background-image라서 /living/resources/css/main.css 가셔서 이미지 수정바랍니다. -->
-				<div id="main-recipe"></div>
+				<div class="image" id="main-recipe"></div>
 				<!-- 바로가기 클릭 시 이동할 링크 -->
 				<div class="link"><a href="#">바로가기</a></div>
 			</div>
@@ -63,9 +63,9 @@
 		</div>
 		
 		<div class="main-box">
-			<div class="thumbnail">
+			<div id="main-thumbnail">
 				<!-- 이미지가 background-image라서 /living/resources/css/main.css 가셔서 이미지 수정바랍니다. -->
-				<div id="main-recipe"></div>
+				<div class="image" id="main-recipe"></div>
 				<!-- 바로가기 클릭 시 이동할 링크 -->
 				<div class="link"><a href="#">바로가기</a></div>
 			</div>
