@@ -58,7 +58,7 @@ body {
     height: 50px;
     margin: 0px auto;
     position: relative;
-    top: 100px;
+    top: 0px;
 }
 
 .headerBtn #btn1 {
@@ -96,7 +96,7 @@ body {
 
 .container {
     position: relative;
-    top: 120px;
+    top: 10px;
     width: 85%;
     height: auto;
     padding-bottom: 50px;
