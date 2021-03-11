@@ -52,7 +52,7 @@ body {
 	margin-top: 30px;
 }
 
-#main-recipe .thumbnail {
+#main-recipe {
 	width: 800px;
 	height: 200px;
 	background-image: url('/living/resources/images/recipe-gosu.jpg');
@@ -62,7 +62,7 @@ body {
 	float:left;
 }
 
-#main-recipe .link a{
+.thumbnail .link a{
 	width: 50px;
 	font-size: 2.5em;
 	float: right;
@@ -70,12 +70,12 @@ body {
 	border-right: 5px solid #777;
 }
 
-#main-recipe .link:hover a{
+.thumbnail .link:hover a{
 	color:  #666;
 	text-decoration: none;
 }
 
-#main-recipe::after {
+.thumbnail::after {
 	content: '';
 	display: block;
 	clear: both;
