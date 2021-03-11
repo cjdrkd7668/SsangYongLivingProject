@@ -11,6 +11,7 @@ body, p, div, span, a, table, th, td, input, button, textarea, h1, h2, h3 {
 	font-family: 'GmarketSansMedium';
     letter-spacing: -1px;
     line-height: 1.8em; 
+    color: #444;
 }
 
 body {
@@ -42,6 +43,11 @@ body {
 
 .greybg {
     background-color: #a3a1a1;
+    color: #F0E5DE;
+}
+
+.red {
+    color: #EF1804;
 }
 
 .divider {
@@ -51,6 +57,12 @@ body {
     position: relative;
     top: -30px;
     
+}
+
+.btn {
+    width: 120px;
+    height: 40px;
+    outline: none;
 }
 
 .headerBtn {
@@ -71,21 +83,18 @@ body {
 
 .headerBtn #btn1 .btn,
 .container .mypageBtn .btn {
-    width: 120px;
-    height: 40px;
     font-size: 1em;
     margin-right: 5px;
-    outline: none;
 }
 
 .headerBtn #btn2 .btn {
     width: 100px;
-    height: 40px;
     font-size: 1em;
 }
 
 .headerBtn #btn2 .btn:hover {
     opacity: .8;
+    color: #EEE;
 }
 
 .headerBtn div::after {
@@ -100,6 +109,44 @@ body {
     width: 85%;
     height: auto;
     padding-bottom: 50px;
+}
+
+.container .mypageBtn .btn:first-child {
+    background-color: #FF6300;
+    color: #EEE;
+}
+
+.container .mypageBtn .btn:first-child:hover {
+    opacity: .8;
+}
+
+.container .mypageBtn .btn:nth-child(2) {
+    background-color: #a3a1a1;
+    color: #F0E5DE;
+}
+
+.container .mypageBtn .btn:nth-child(2):hover {
+    background-color: #FF6300;
+    color: #EEE;
+}
+
+.container .mypageBtn .search {
+    width: 220px;
+    float: right;
+}
+
+.container .mypageBtn .search input[type="text"] {
+    width: 170px;
+    float: left;
+}
+
+.container .mypageBtn .search i {
+    background-color: #FF6300;
+    color: #EEE;
+    border-radius: 50%;
+    padding: 10px;
+    margin-left: 5px;
+    cursor: pointer;
 }
 
 .container .alarmwell th:nth-child(2) {
@@ -133,4 +180,82 @@ body {
 .container .table td {
     text-align: center;
     font-size: 1.1em;
+}
+
+.container .backPostBtn {
+    float: right;
+    width: 140px;
+    opacity: .7;
+}
+
+.container .backPostBtn:hover {
+    background-color: #F0E5DE;
+    color: #FF6300;
+    opacity: 1;
+}
+
+.container .tables {
+    height: 210px;
+}
+
+.container .readTable, 
+.container .recTable, 
+.container .comTable {
+    width: 280px;
+    float: left;
+    margin-left: 35px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.container .readTable img, 
+.container .recTable img, 
+.container .comTable img {
+    width: 30px;
+}
+
+.container .readTable th,
+.container .recTable th, 
+.container .comTable th {
+    height: 40px;
+}
+
+.container .readTable td,
+.container .recTable td, 
+.container .comTable td {
+    text-align: left;
+    text-indent: 2em;
+    cursor: pointer;
+}
+
+.container .tables::after {
+    content: "";
+    display: block;
+    clear: left;
+}
+
+.container .commuTable {
+    margin-top: 15px;
+}
+
+.container .commuTable tr:hover {
+    cursor: pointer;
+}
+
+.container .commuTable tr:first-child:hover {
+    cursor: inherit;
+    background-color: #F0E5DE;
+}
+
+.container .commuTable tr:last-child {
+    border-bottom: 1px solid #DDD;
+}
+
+.container .writeBtn {
+    float: right;
+}
+
+.container .writeBtn:hover {
+    background-color: #F0E5DE;
+    color: #FF6300;
 }

@@ -61,11 +61,11 @@
     <div class="divider"></div>
     <table class="table table-default">
         <tr class="softbg">
-            <th>번호</th>
-            <th>보낸 업체</th>
-            <th>할인 금액</th>
-            <th>발급일</th>
-            <th>만료일</th>
+            <th class="col-md-1">번호</th>
+            <th class="col-md-3">보낸 업체</th>
+            <th class="col-md-2">할인 금액</th>
+            <th class="col-md-3">발급일</th>
+            <th class="col-md-3">만료일</th>
         </tr>
         <tr>
             <td>3</td>
