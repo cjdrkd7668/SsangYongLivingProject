@@ -11,9 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class GroupController {
 
+	//알림 페이지
 	@RequestMapping(value="/group/notice.action", method={RequestMethod.GET})
 	public String notice(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
 		return "group.notice";
+	}
+	
+	//커뮤니티 페이지
+	@RequestMapping(value="/group/community.action", method={RequestMethod.GET})
+	public String community(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		return "group.community";
 	}
 }
