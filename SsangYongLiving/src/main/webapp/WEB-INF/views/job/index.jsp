@@ -20,10 +20,18 @@
 			<p class="areaFind">충남 충북 부산 울산 경남 경북</p>
 			<p class="areaFind">대구 광주 전남 전북 제주 전국</p>
 		</div>
+		
 		<div class="rightArticle">
-			<h3>시작</h3>
-			<div class="goBtn">구직인</div>
-			<div class="goBtn">고용주</div>
+			<div class="well go">구직인</div>
+			<div class="well go">고용주</div>
+		</div>
+		<div style="clear: both"></div>
+	</div>
+	
+	<div class="bottomWrapper">
+		
+		<div class="box">
+			
 		</div>
 	</div>
 	
