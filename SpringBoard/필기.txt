@@ -1,0 +1,85 @@
+
+스프링 기반 게시판
+- 기본 CRUD
+- 인증(글쓰기 권한 체크용으로만 사용)
+- Spring MVC Project + myBatis + tiles + AOP + lombok + log4j
+
+1. 새프로젝트 생성
+	- Spring Legacy Project > Spring MVC Project > "SpringBoard" > "com.test.board"
+	
+2. DB
+	- script.sql 생성
+
+3. web.xml
+	- 요청 확장자 수정(*.action)
+	- POST 인코딩 필터 추가
+
+4. pom.xml
+	- 버전 변경 : 1.8, 4.3.8
+	- WEB-INF > lib > ojdbc6.jar 복사
+	- Lombok : 1개
+	- myBatis : 4개
+	- log4j : 1개
+	- tiles : 5개
+	- AOP : 3개
+
+5. root-context.xml
+	- myBatis 설정
+		- com.test.board.mapper 패키지 생성 + test.xml(board.xml) 복사
+		- WEB-INF > mybatis.xml 복사
+	- log4j 설정
+		- <bean> x 1개 추가
+		- SpringBoard > src/main/resources > log4j.xml 덮어쓰기 
+		
+6. servlet-context.xml
+	- tiles 설정
+		- 기존 ViewResolver > 타일즈 ViewResolver
+		- <bean> x 2개
+		- WEB-INF > tiles.xml 복사
+	- AOP 설정
+		- Namespace > AOP 체크
+		- <aop:aspectj-autoproxy> 추가
+
+================================================================= 설정 완료		
+
+
+7. 파일 생성
+	a. "com.test.board"
+		1. BoardController.java
+		2. IBoardDAO.java + BoardDAO.java
+		3. BoardDTO.java
+	b. "views"
+		1. layout > main.jsp
+		2. board > list.jsp
+		3. board > add.jsp
+		4. board > view.jsp
+		5. board > edit.jsp
+		6. board > del.jsp
+		7. board > template.jsp
+		8. member > auth.jsp
+		9. inc > asset.jsp
+		10. inc > header.jsp
+	c. webapp > resources
+		1. css 복사
+		2. js 복사
+		3. fonts 복사
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+
+
+	
