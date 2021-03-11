@@ -1,46 +1,26 @@
 /* main.css */
 
 @font-face {
-    font-family: 'Jal_Onuel';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Jal_Onuel.woff') format('woff');
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
+.orange {
+	color: #FF6300;
+}
+
 body, p, div, span, a, table, th, td, input, button, textarea, h1, h2, h3 {
-	font-family: 'Jal_Onuel';
+	font-family: 'GmarketSansMedium';
 }
 
-main {
-	width: 700px;
-	margin: 0px auto;
+body {
+	margin: 0 auto;
+	height: 100%;
+	width: 1200px;
 }
 
-main > header > div > div {
-	float: left;
-	margin-right: 10px;
+textarea {
+	resize: none;
 }
-main > header > div > div:last-child {
-	float: right;
-}
-main > header > div::after {
-	content: "";
-	display: block;
-	clear: left;
-}
-
-main > header {
-	margin-bottom: 20px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
