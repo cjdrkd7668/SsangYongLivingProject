@@ -22,6 +22,14 @@
 		<put-attribute name="content" value="/WEB-INF/views/recipe/{1}.jsp"></put-attribute>
 	</definition>
 	
+	<!-- group 템플릿 시작  -->
+	<definition name="group.*" template="/WEB-INF/views/layout/groupmain.jsp">
+		<put-attribute name="asset" value="/WEB-INF/views/inc/groupasset.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/inc/groupheader.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/views/group/{1}.jsp"></put-attribute>
+	</definition>
+	<!-- group 템플릿 끝 -->
+	
 </tiles-definitions>
 
 
