@@ -6,16 +6,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공동 구매</title>
-
+<title>쌍용리빙 :: 공동 구매</title>
+<tiles:insertAttribute name="globalasset"></tiles:insertAttribute>
 <tiles:insertAttribute name="asset"></tiles:insertAttribute>
 
 </head>
 <body>
 
 	<main>
+		<tiles:insertAttribute name="globalheader"></tiles:insertAttribute>
 		<tiles:insertAttribute name="header"></tiles:insertAttribute>
 		<tiles:insertAttribute name="content"></tiles:insertAttribute>
+		<tiles:insertAttribute name="globalfooter"></tiles:insertAttribute>
 	</main>
 </body>
 </html>
