@@ -22,6 +22,11 @@
 		<put-attribute name="content" value="/WEB-INF/views/recipe/{1}.jsp"></put-attribute>
 	</definition>
 	
+	<definition name="job.*" template="/WEB-INF/views/layout/jobmain.jsp">
+		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"></put-attribute>
+	</definition>
+	
 </tiles-definitions>
 
 
