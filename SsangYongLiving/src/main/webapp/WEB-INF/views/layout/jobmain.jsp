@@ -16,8 +16,13 @@
 
 	<main>
 		<tiles:insertAttribute name="header"></tiles:insertAttribute>
-				
+		<tiles:insertAttribute name="content"></tiles:insertAttribute>
+		
 	</main>
+	
+	<footer>
+		<tiles:insertAttribute name="footer"></tiles:insertAttribute>
+	</footer>
 
 </body>
 </html>
