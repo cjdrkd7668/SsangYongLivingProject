@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <style>
+/* 차트 CSS 시작 */
 @import 'https://code.highcharts.com/css/highcharts.css';
 
 /* Link the series colors to axis colors */
@@ -25,7 +26,9 @@
 .highcharts-axis.highcharts-color-1 text {
 	fill: #218380;
 }
+/* 차트 CSS 끝 */
 </style>
+
 <!-- container 시작 -->
 <div class="container">
 
@@ -48,21 +51,36 @@
                 고당도 오렌지의 달콤함을 만끽해보시길 바랍니다^^</td>
         </tr>
         <tr>
-            <td>
+            <td colspan="2">
                 <div>
                     <input type="number" class="form-control" min="1" max="10" step="1" value="1"> 개
                 </div>
             </td>
-            <td>
-                <button class="form-control orangebg">구매하기</button>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div>
+                    <span class="orange">5</span>일 남음&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </td>
+            <td colspan="2">
+                <div>
+                    총 상품 금액 : <span>9900</span>원
+                </div>
             </td>
         </tr>
         <tr>
             <!-- <td><div class="glyphicon glyphicon-heart-empty grey"></div></td> -->
-            <td><div class="glyphicon glyphicon-heart red"></div></td>
-            <td><div class="glyphicon glyphicon-shopping-cart grey"></div></td>
+            <td>
+                <div class="glyphicon glyphicon-heart red"></div>
+            </td>
             <!-- <td><div class="glyphicon glyphicon-shopping-cart red"></div></td> -->
-            <td colspan="2"><span class="orange">5</span>일 남음&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+                <div class="glyphicon glyphicon-shopping-cart grey"></div>
+            </td>
+            <td colspan="2">
+                <button class="form-control orangebg">구매하기</button>
+            </td>
         </tr>
         <tr>
             <td colspan="4"></td>
@@ -181,8 +199,11 @@
             </tr>
             <tr>
                 <td>
+                    <button class="btn chatBtn">
+                    	<div class="glyphicon glyphicon-envelope"></div>
+                    	&nbsp;1:1 문의하기
+                    </button>
                     
-                    <button class="btn chatBtn"><div class="glyphicon glyphicon-envelope"></div>&nbsp;&nbsp;1:1 문의하기</button>
                 </td>
             </tr>
              <tr>

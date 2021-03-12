@@ -1,7 +1,5 @@
 /.metadata/
-SsangYongLiving/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
-SsangYongLiving/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
-SsangYongLiving/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
-SsangYongLiving/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+pom.properties
+MANIFEST.MF
 *.MF
 
