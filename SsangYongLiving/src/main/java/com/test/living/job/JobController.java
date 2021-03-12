@@ -28,5 +28,10 @@ public class JobController {
 	}
 	
 	
+	@RequestMapping(value="/job/recruitmentView.action", method={RequestMethod.GET})
+	public String recruitmentView(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		return "job.recruitmentView";
+	}
 	
 }
