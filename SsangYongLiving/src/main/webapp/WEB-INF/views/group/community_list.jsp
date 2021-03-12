@@ -109,14 +109,14 @@
     <!-- 커뮤니티 테이블 시작 -->
     <table class="table table-hover commuTable">
         <tr class="softbg">
-            <th>번호</th>
-            <th>제목</th>
-            <th>글쓴이</th>
-            <th>작성일</th>
-            <th>추천</th>
-            <th>조회</th>
+            <th class="col-md-1">번호</th>
+            <th class="col-md-5">제목</th>
+            <th class="col-md-2">글쓴이</th>
+            <th class="col-md-2">작성일</th>
+            <th class="col-md-1">추천</th>
+            <th class="col-md-1">조회</th>
         </tr>
-        <tr>
+        <tr onclick="location.href='/living/group/community/view.action';">
             <td>3</td>
             <td>딸기 맛있을까?</td>
             <td>홍길동</td>
@@ -167,7 +167,7 @@
     </table>
     <!-- 커뮤니티 테이블 끝 -->
 
-    <button class="btn writeBtn">글쓰기</button>
+    <button class="btn writeBtn" onclick="location.href='/living/group/community/write.action';">글쓰기</button>
 
     <div style="clear: both;"></div>
 

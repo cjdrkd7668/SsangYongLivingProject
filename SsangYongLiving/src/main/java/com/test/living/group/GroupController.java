@@ -18,10 +18,25 @@ public class GroupController {
 		return "group.notice";
 	}
 	
-	//커뮤니티 페이지
-	@RequestMapping(value="/group/community.action", method={RequestMethod.GET})
-	public String community(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	//커뮤니티 글 리스트 페이지
+	@RequestMapping(value="/group/community/list.action", method={RequestMethod.GET})
+	public String community_list(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
-		return "group.community";
+		return "group.community_list";
 	}
+	
+	//커뮤니티 글 작성 페이지
+	@RequestMapping(value="/group/community/write.action", method={RequestMethod.GET})
+	public String community_write(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		return "group.community_write";
+	}
+	
+	//커뮤니티 글 상세 보기 페이지
+	@RequestMapping(value="/group/community/view.action", method={RequestMethod.GET})
+	public String community_view(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		return "group.community_view";
+	}
+	
 }
