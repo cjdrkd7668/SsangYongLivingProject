@@ -13,7 +13,7 @@ public class GroupController {
 
 	//알림 페이지
 	@RequestMapping(value="/group/notice.action", method={RequestMethod.GET})
-	public String notice(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public String member_notice(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
 		return "group.notice";
 	}
@@ -34,7 +34,7 @@ public class GroupController {
 	
 	//커뮤니티 글 작성 페이지
 	@RequestMapping(value="/group/community/write.action", method={RequestMethod.GET})
-	public String community_write(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public String member_community_write(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
 		return "group.community_write";
 	}
