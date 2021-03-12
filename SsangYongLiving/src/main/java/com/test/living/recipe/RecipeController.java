@@ -18,10 +18,10 @@ public class RecipeController {
 		return "recipe.main";
 	}
 	
-	@RequestMapping(value="/recipe/addRefri.action", method=RequestMethod.GET)
-	public String member_addRefri(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	@RequestMapping(value="/recipe/renewRefri.action", method=RequestMethod.GET)
+	public String member_renewRefri(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
-		return "recipe.addRefri";
+		return "recipe.renewRefri";
 	}
 	
 }
