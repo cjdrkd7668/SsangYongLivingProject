@@ -17,4 +17,16 @@ public class JobController {
 		return "job.index";
 	}
 	
+	
+	
+	@RequestMapping(value="/job/recruitmentList.action", method={RequestMethod.GET})
+	public String recruitmentList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	
+		
+		return "job.recruitmentList";
+			
+	}
+	
+	
+	
 }
