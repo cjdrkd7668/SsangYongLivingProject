@@ -22,7 +22,7 @@
 		<div class="main-box">
 			<div id="main-thumbnail">
 				<div class="image" id="main-recipe"></div>
-				<div class="link"><a href="#">바로가기</a></div>
+				<div class="link"><a href="/living/recipe/main.action"">바로가기</a></div>
 			</div>
 			<div class="main-content">
 				<h3>냉장고 털기</h3>
