@@ -22,6 +22,7 @@
 		<put-attribute name="content" value="/WEB-INF/views/recipe/{1}.jsp"></put-attribute>
 	</definition>
 	
+
 	
 	<!-- 알바찾기 -->
 	<definition name="job.*" template="/WEB-INF/views/layout/jobmain.jsp">
@@ -30,6 +31,18 @@
 		<put-attribute name="content" value="/WEB-INF/views/job/{1}.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp"></put-attribute>
 	</definition>
+
+	<!-- group 템플릿 시작  -->
+	<definition name="group.*" template="/WEB-INF/views/layout/groupmain.jsp">
+		<put-attribute name="globalasset" value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
+		<put-attribute name="asset" value="/WEB-INF/views/inc/groupasset.jsp"></put-attribute>
+		<put-attribute name="globalheader" value="/WEB-INF/views/inc/header.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/inc/groupheader.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/views/group/{1}.jsp"></put-attribute>
+		<put-attribute name="globalfooter" value="/WEB-INF/views/inc/footer.jsp"></put-attribute>
+	</definition>
+	<!-- group 템플릿 끝 -->
+
 	
 </tiles-definitions>
 
