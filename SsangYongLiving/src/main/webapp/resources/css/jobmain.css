@@ -165,6 +165,33 @@ body {
 	border-radius: 10px;
 }
 
+.middleContent {
+	width: 900px;
+	background-color: #F8F9FA;
+	height: 250px;
+	margin-left: 150px;
+	border-radius: 10px;
+	text-align: center;
+	position: relative;
+}
+
+.middleTitle {
+	color: #777;
+	position: absolute;
+	top: 180px;
+	left: 100px;
+	font-size: 1.7em;
+}
+
+.middleSub {
+	font-size: 0.8em;
+	color: #777;
+	position: absolute;
+	top: 155px;
+	left: 100px;
+	
+}
+
 .short {
 	width: 300px;
 	display: inline-block;
