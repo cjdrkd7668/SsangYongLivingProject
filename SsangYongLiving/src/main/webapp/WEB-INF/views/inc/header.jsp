@@ -4,7 +4,7 @@
 <div id="header">
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="/living/index.do">
+			<a class="navbar-brand" href="/living/index.action">
 				<img alt="Brand" src="/living/resources/images/SsangYoungLivingLogo.png" id="logo">
 			</a>
 			<div class="collapse navbar-collapse">

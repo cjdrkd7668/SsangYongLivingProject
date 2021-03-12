@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<div class="recipe-container">
+<div class="recipe-grid-container" id="recipe-main">
 
 	<div class="recipe-gbox recipe-gbox-one">
 	
 		<div class="gbox-summary">
-			<a href="#">냉장고 최신화</a>
+			<a href="/living/recipe/renewRefri.action">냉장고 최신화</a>
 			<p>
 				가상의 냉장고에 재료를 등록해서<br>
 				새 레시피를 추천 받아보세요!
