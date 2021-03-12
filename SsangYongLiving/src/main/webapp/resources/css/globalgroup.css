@@ -326,7 +326,7 @@ textarea {
 
 .container .viewTable tr:nth-child(3) td:first-child input[type="number"] {
     width: 70px;
-    height: 30px;
+    height: 33px;
     margin: -3px auto;
     text-align: center;
     float: left;
@@ -334,41 +334,52 @@ textarea {
 
 .container .viewTable tr:nth-child(3) td:last-child {
     border: 0;
-    width: 190px;
+    float: right;
+    width: 130px;
 }
 
-.container .viewTable tr:nth-child(3) td:last-child button {
-    width: 150px;
-    height: 30px;
-    margin: -3px auto;
-}
-
-.container .viewTable tr:nth-child(3) td:last-child button:hover {
-    opacity: .8;
+.container .viewTable tr:nth-child(4) {
+    height: 60px;
 }
 
 .container .viewTable tr:nth-child(4) td:first-child {
-    border: 0px;
-    height: 50px;
-}
-
-.container .viewTable tr:nth-child(4) td:first-child {
-    border: 0px;
-    font-size: 1.6em;
-    cursor: pointer;
+    border: 0;
+    font-size: 1.5em;
+    width: 100%;
+    text-align: right;
+    padding-top: 20px;
 }
 
 .container .viewTable tr:nth-child(4) td:nth-child(2) {
-    border: 0px;
+    border: 0;
     font-size: 1.5em;
+    text-align: right;
+}
+
+.container .viewTable tr:nth-child(4) td:nth-child(2) span {
+    font-size: 1.5em;
+}
+
+.container .viewTable tr:nth-child(5) td:nth-child(1),
+.container .viewTable tr:nth-child(5) td:nth-child(2) {
+    border: 0;
+    font-size: 1.8em;
     cursor: pointer;
 }
 
-.container .viewTable tr:nth-child(4) td:nth-child(3) {
-    border: 0px;
+.container .viewTable tr:nth-child(5) td:last-child {
+    border: 0;
+}
+
+.container .viewTable tr:nth-child(5) td:last-child button {
     width: 150px;
-    font-size: 1.2em;
-    text-align: right;
+    height: 35px;
+    float: right;
+    padding-top: 7px;
+}
+
+.container .viewTable tr:nth-child(5) td:last-child button:hover {
+    opacity: .8;
 }
 
 .container .companyTable {
@@ -380,12 +391,23 @@ textarea {
     height: 180px;
 }
 
+.container .companyTable tr:nth-child(3) td {
+    text-align: left;
+    text-indent: 2em;
+}
+
+.container .companyTable tr:nth-child(3) td small {
+    color: #FF6300;
+}
+
 .container .chatBtn {
-    width: 200px;
+    width: 120px;
 }
 
 .container .chatBtn .glyphicon {
     font-size: 1.3em;
+    position: relative;
+    top: 3px;
 }
 
 /* 커뮤니티 글 작성 페이지 */

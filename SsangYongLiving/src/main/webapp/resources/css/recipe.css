@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+
+/* 레시피 그리드 컨테이너 시작*/
+.recipe-grid-container {
+	width: 1200px;
+	height: 700px;
+	margin: 0px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+/* 레시피 메인화면 시작*/
+#recipe-main .recipe-gbox {
+	background: #222;
+}
+
+#recipe-main .recipe-gbox-one {
+	background-image: url('/living/resources/images/refrigerator-renew.jpg');	
+	background-position: -30px 0px;
+	background-size: auto 100%;
+}
+
+#recipe-main .recipe-gbox-three {
+	background-image: url('/living/resources/images/recipe-gosu.jpg');
+	background-position: -100px 0px;
+	background-size: auto 100%;
+}
+
+#recipe-main .recipe-gbox-two {
+	color: #FF6300;
+	text-align: center;
+	box-shadow: 0px 0px 20px 1px inset #111;
+}
+
+#recipe-main .recipe-gbox-two h1 {
+	margin-top: 160px;
+	margin-bottom: 30px;
+}
+
+#recipe-main .recipe-gbox-two p {
+	font-family: 'GmarketSansLight';
+	font-size: 0.95em;
+	line-height: 1.8;
+	margin-bottom: 30px;
+}
+
+#recipe-main .gbox-summary {
+	height: 150px;
+	background-color: rgb(255,255,255,0.7);
+	margin: 275px auto;
+	text-align: center;
+	padding-top: 30px;
+}
+
+#recipe-main .gbox-summary a {
+	font-family: 'GmarketSansBold';
+	font-size: 3em;
+	color: #225;
+}
+
+#recipe-main .recipe-gbox-three .gbox-summary a {
+	color: transparent;
+	background-image: url("https://media1.giphy.com/media/l41lVUCbHnMswK0ec/giphy.gif");
+	background-size: cover;
+	-moz-background-clip: text;
+	-webkit-background-clip: text;
+	background-position: 10px 130px;
+}
+
+#recipe-main .gbox-summary a:hover {
+	color: #FF6300;
+	text-decoration: none;
+}
+/* 레시피 메인화면 끝*/
+
+/* 냉장고 최신화 시작 */
+#renew-refri .recipe-gbox {
+	background: #fff8f2;
+	padding: 0px 10px 10px 10px;
+}
+
+#renew-refri .recipe-gbox-two {
+	background: #ffe7d2;
+}
+
+#renew-refri .recipe-gbox-three {
+	background: #ffdcbf;
+}
+
+#renew-refri {
+	padding: 0px 10px;
+}
+
+#renew-refri .recipe-cart {
+	background: #FFF;
+	height: 600px;
+	border: 11px solid #EEE;
+	border-right: 0px;
+	overflow-y: scroll;
+}
+
+.recipe-cart > .recipe-ingre-item {
+	width: 80px;
+	height: 100px;
+	text-align: center;
+	background-image: url(/living/resources/images/recipe-tray.png);
+	background-size: 80px 50px;
+	background-repeat: no-repeat;
+	float: left;
+	margin: 30px 17.5px;
+}
+
+.recipe-cart > .recipe-ingre-item img {
+	width: 60px;
+	height: 47px;
+	margin-bottom: 10px;
+}
+
+.recipe-cart > .recipe-ingre-item div:nth-child(2) {
+	font-size: 1.2em;
+}	
+
+
+
+
+
+
+
+
+/* 냉장고 최신화 끝 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

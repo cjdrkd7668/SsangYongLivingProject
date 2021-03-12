@@ -13,9 +13,16 @@ public class GroupController {
 
 	//알림 페이지
 	@RequestMapping(value="/group/notice.action", method={RequestMethod.GET})
-	public String notice(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public String member_notice(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
 		return "group.notice";
+	}
+	
+	//공동구매글 상세 보기 페이지 + Qna 글 리스트 페이지
+	@RequestMapping(value="/group/view.action", method={RequestMethod.GET})
+	public String view(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		return "group.view";
 	}
 	
 	//커뮤니티 글 리스트 페이지
@@ -27,7 +34,7 @@ public class GroupController {
 	
 	//커뮤니티 글 작성 페이지
 	@RequestMapping(value="/group/community/write.action", method={RequestMethod.GET})
-	public String community_write(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public String member_community_write(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
 		return "group.community_write";
 	}
