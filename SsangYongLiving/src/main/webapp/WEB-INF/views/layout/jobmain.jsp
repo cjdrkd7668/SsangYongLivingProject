@@ -7,18 +7,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쌍용리빙 :: 자취의 모든 것</title>
+<title>알바찾기</title>
 
-<tiles:insertAttribute name="recipeasset"></tiles:insertAttribute>
+<tiles:insertAttribute name="asset"></tiles:insertAttribute>
 
 </head>
 <body>
-	
+
 	<main>
 		<tiles:insertAttribute name="header"></tiles:insertAttribute>
-		<tiles:insertAttribute name="content"></tiles:insertAttribute>		
-		<tiles:insertAttribute name="footer"></tiles:insertAttribute>		
+		<tiles:insertAttribute name="content"></tiles:insertAttribute>
+		
 	</main>
 	
+	<footer>
+		<tiles:insertAttribute name="footer"></tiles:insertAttribute>
+	</footer>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,25 +3,35 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configureation 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
 <tiles-definitions>
-
+	
+	<!-- 홈 화면 템플릿 시작 -->
 	<definition name="index" template="/WEB-INF/views/layout/main.jsp">
 		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
 		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/views/index.jsp"></put-attribute>
 	</definition>
+	<!-- 홈 화면 템플릿 끝 -->
 	
+	<!-- recipe 템플릿 시작 -->
 	<definition name="recipe.*" template="/WEB-INF/views/layout/recipemain.jsp">
-		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
+		<put-attribute name="recipeasset" value="/WEB-INF/views/inc/recipeasset.jsp"></put-attribute>
 		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"></put-attribute>
-		<!-- 사이드바가 필요하신 분은..
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/recipesidebar.jsp"></put-attribute>
-		이런 식으로 하면 될까요?
-		-->
-		
+		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/views/recipe/{1}.jsp"></put-attribute>
 	</definition>
+	<!-- recipe 템플릿 시작 -->
 	
+
+	
+	<!-- 알바찾기 -->
+	<definition name="job.*" template="/WEB-INF/views/layout/jobmain.jsp">
+		<put-attribute name="asset" value="/WEB-INF/views/inc/jobasset.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/views/job/{1}.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp"></put-attribute>
+	</definition>
+
 	<!-- group 템플릿 시작  -->
 	<definition name="group.*" template="/WEB-INF/views/layout/groupmain.jsp">
 		<put-attribute name="globalasset" value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
@@ -32,6 +42,7 @@
 		<put-attribute name="globalfooter" value="/WEB-INF/views/inc/footer.jsp"></put-attribute>
 	</definition>
 	<!-- group 템플릿 끝 -->
+
 	
 </tiles-definitions>
 
