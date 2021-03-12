@@ -162,6 +162,41 @@ body {
 	padding-top: 30px;
 	height: 250px;
 	margin-left: 50px;
+	border-radius: 10px;
+}
+
+.short {
+	width: 300px;
+	display: inline-block;
+}
+
+.middleSearch {
+	width: 900px;
+	margin-left: 200px;
+	margin-top: 40px;
+}
+
+.menuInfo {
+	
+	width: 1100px;
+	padding-left: 180px;
+	height: 50px;
+	margin-left: 50px;
+	margin-top: 50px;
+	padding-bottom: 3px;
+}
+
+.menuLine {
+	
+	width: 380px;
+	margin-left: 200px;
+	height: 4px;
+	border-top: 2px solid #FF6300;
+}
+
+.menuTitle {
+	display: inline-block;
+	font-size: 1.5em;
 }
 
 .lowerWrapper {
@@ -204,6 +239,12 @@ body {
 	margin-top: 50px;
 	margin-left: 200px;
 	width: 900px;
+}
+
+.rItemWrapper {
+	width: 900px;
+	
+
 }
 
 .infoTitle {
@@ -329,5 +370,44 @@ body {
 .onedayContent {
 	
 	width: 800px;
-	
+}
+
+.rItem {
+	padding-left: 10px;
+	height: 60px;
+
+}
+
+.rTitle {
+	display: inline-block;
+	margin-left: 100px;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+
+.rWage {
+	display: inline-block;
+	margin-left: 175px;
+	color: #FF6300;
+	font-size: 1.1em;
+}
+
+.rRegdate {
+	display: inline-block;
+	margin-left: 190px;
+	font-size: 0.8em;
+	color: #999;
+}
+
+.rAddress {
+	display: inline-block;
+	margin-left: 10px;
+	font-size: 0.8em;
+	color: #999;
+}
+
+.rPoint {
+	color: #777;
+	margin-left: 110px;
 }
