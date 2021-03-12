@@ -7,7 +7,7 @@
     <div class="page-header">
         공구 이모저모
         <b class="orange" style="font-size: 1.2em;">&nbsp;[하우스딸기 500g 특가]</b>
-        <button class="btn backPostBtn">
+        <button class="btn backPostBtn" onclick="location.href='/living/group/view.action';">
             공구 글로 돌아가기
         </button>
         <br>
