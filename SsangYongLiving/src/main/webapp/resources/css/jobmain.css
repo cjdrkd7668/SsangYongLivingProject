@@ -165,6 +165,33 @@ body {
 	border-radius: 10px;
 }
 
+.middleContent {
+	width: 800px;
+	background-color: #F8F9FA;
+	height: 250px;
+	margin-left: 200px;
+	border-radius: 10px;
+	text-align: center;
+	position: relative;
+}
+
+.middleTitle {
+	color: white;
+	position: absolute;
+	top: 290px;
+	left: 300px;
+	font-size: 1.9em;
+}
+
+.middleSub {
+	font-size: 0.8em;
+	color: white;
+	position: absolute;
+	top: 274px;
+	left: 300px;
+	
+}
+
 .short {
 	width: 300px;
 	display: inline-block;
@@ -410,4 +437,91 @@ body {
 .rPoint {
 	color: #777;
 	margin-left: 110px;
+}
+
+
+.announcementUpper {
+	width: 800px;
+	height: 360px;
+	border: 1px solid #eee;
+	border-radius: 3px;
+	padding-top:5px;
+}
+
+.announcementLower {
+
+	width: 800px;
+	height: 340px;
+	/*border: 1px solid #eee;*/
+	border-radius: 3px;
+	margin-top: 15px;
+	
+}
+
+.announcementLine {
+	width: 570px;
+	height: 5px;
+	border-top: 2px solid #FF6300;
+	margin-top: 20px;
+	margin-left: 130px;
+}
+
+.announcementTitle {
+	text-align: center;
+	font-size: 1.5em;
+	width: 800px;
+	color: #777;
+}
+
+
+
+.startInfo {
+	margin-top: 30px;
+	text-align: center;
+}
+
+.aStartDate {
+	display: inline-block;
+	color: #777;
+	font-size: 1.2em;
+}
+
+.aInfoContentWrapper {
+	margin-left: 150px;
+	margin-top: 40px;
+	text-align: cetner;
+}
+
+.aInfoContent {
+	float: left;
+	width: 130px;
+	text-align: center;
+}
+
+.aAddress {
+	margin-top: 30px;
+	text-align: center;
+}
+
+.aAddressImpact {
+	color: #888;
+}
+
+.applyArea {
+	margin-left: 350px;
+	margin-top: 30px;
+}
+
+.chatInfo {
+	width: 250px;
+	float: left;
+	padding-top: 0px;
+	text-align: center;
+	padding-left: 30px;
+}
+
+
+.lowerBtnArea {
+	padding-left: 340px;
+	margin-top: 40px;
 }
