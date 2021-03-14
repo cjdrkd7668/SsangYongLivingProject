@@ -21,11 +21,14 @@
 	<div class="rItemWrapper">
 	<div class="rItem">
 	<img src="/living/resources/images/market02.jpg" style="width:80px; border-radius:3px;">
+	<a href="/living/job/recruitmentView.action">
 	<div class="rTitle">고기굽는날</div>
+	</a>
 	<div class="rAddress">서울시 강북구</div>
 	<div class="rWage">8,720원</div>
 	<div class="rRegdate">2020-01-01</div>
 	<div class="rPoint">저희 매장은 바쁜 저녁, 성실하게 일해주실 수 있는 분을 기다리고 있습니다.</div>
+	
 	</div>
 
 	<hr>	
