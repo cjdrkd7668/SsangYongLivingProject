@@ -24,4 +24,5 @@ public class RecipeController {
 		return "recipe.renewRefri";
 	}
 	
+	
 }
