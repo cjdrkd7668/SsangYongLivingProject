@@ -49,6 +49,17 @@
 		<put-attribute name="globalfooter" value="/WEB-INF/views/inc/footer.jsp"></put-attribute>
 	</definition>
 	<!-- group 템플릿 끝 -->
+	
+	<!-- used 중고거래 시작 -->
+	<definition  name="used.*" template="/WEB-INF/views/layout/usedmain.jsp" >
+		<put-attribute name="usedasset" value="/WEB-INF/views/inc/usedasset.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"></put-attribute>
+		<put-attribute name="sidebar" value="/WEB-INF/views/inc/usedsidebar.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/views/used/{1}.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp"></put-attribute>
+	
+	</definition>	
+	<!-- used 중고거래 끝 -->
 
 	
 </tiles-definitions>
