@@ -21,7 +21,7 @@
 	<div class="rItemWrapper">
 	<div class="rItem">
 	<img src="/living/resources/images/market02.jpg" style="width:80px; border-radius:3px;">
-	<a href="/living/job/recruitmentView.action">
+	<a href="/living/job/recruitmentView.action" style="color: black; text-decoration:none;">
 	<div class="rTitle">고기굽는날</div>
 	</a>
 	<div class="rAddress">서울시 강북구</div>

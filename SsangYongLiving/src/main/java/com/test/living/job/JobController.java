@@ -34,4 +34,12 @@ public class JobController {
 		return "job.recruitmentView";
 	}
 	
+	
+	@RequestMapping(value="/jobboard/storylist.action", method={RequestMethod.GET})
+	public String storylist(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		return "jobboard.storylist";
+	}
+	
+	
 }
