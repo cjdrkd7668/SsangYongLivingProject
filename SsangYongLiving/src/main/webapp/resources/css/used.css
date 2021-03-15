@@ -1,0 +1,276 @@
+@charset "UTF-8";
+
+/* main.css */
+/*
+주황색 : #FF6300
+
+*/
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, p, div, span, a, table, th, td, input, button, textarea, h1, h2, h3 {
+	font-family: 'GmarketSansMedium';;
+}
+
+body {
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* main-index */
+#main-index {
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.main-welcome {
+	width: 900px;
+	height: 500px;
+	text-align: center;
+	background-image: url('/living/resources/images/main-night.png');
+	background-repeat: no-repeat;
+}
+
+.main-welcome h1 {
+	padding-top: 50px;
+	padding-bottom: 20px;
+	color: #FF6300
+}
+
+.main-welcome p {
+	width: 60%;
+	display: inline-block;
+	margin-top: 15px;
+	color: #eee;
+}
+
+.main-box {
+	margin-top: 30px;
+}
+
+
+
+#main-thumbnail .image {
+	width: 800px;
+	height: 200px;
+	background-repeat: no-repeat;
+	background-size: 800px;
+	background-position: 0px -630px;
+	float:left;
+}
+
+#main-recipe {
+	background-image: url('/living/resources/images/recipe-gosu.jpg');
+}
+/*
+#main- {
+	background-image: url('/living/resources/images/recipe-gosu.jpg');
+}
+#main- {
+	background-image: url('/living/resources/images/recipe-gosu.jpg');
+}
+#main- {
+	background-image: url('/living/resources/images/recipe-gosu.jpg');
+}
+*/
+
+#main-thumbnail .link a{
+	width: 50px;
+	font-size: 2.5em;
+	float: right;
+	color: #FF6300;
+	border-right: 5px solid #777;
+}
+
+#main-thumbnail .link:hover a{
+	color:  #666;
+	text-decoration: none;
+}
+
+#main-thumbnail::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+/* header-cklee */
+#header .navbar {
+	min-height: 80px;
+}
+
+#header #logo {
+	height: 50px;
+}
+
+#header .navbar-nav>li>a {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	line-height: 40px;
+	padding-right: 20px;
+	padding-left: 20px;
+	font-size: 1.3em;
+}
+
+#header .navbar-nav>li:nth-child(1)>a {
+	margin-left: 90px;
+}
+
+#header .navbar-nav>li:nth-child(n+6)>a {
+	color: #FF6300;
+	font-size: 1em;
+	padding: 0px;
+	margin: 20px 10px;
+}
+
+#header .navbar-nav>li:nth-child(5)>a {
+	margin-right: 30px;
+}
+
+#header .navbar-default .navbar-nav>.open>a, #header .navbar-default .navbar-nav>.open>a:hover,
+	#header .navbar-default .navbar-nav>.open>a:focus {
+	color: #FF6300;
+}
+
+
+/* footer-cklee */
+#footer {
+	text-align: center;
+}
+
+#footer #footer-text {
+	float: none;
+}
+
+#footer>.p-link {
+	margin-top: 50px;
+}
+
+#footer>.p-link>a {
+	color: #FF6300;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+
+/* ------------------------------ */
+
+.content {
+    grid-area: main;
+    padding: 15px;
+}
+
+.sidebar {
+    grid-area: sd;
+}
+
+.wapper {
+    display: grid;
+    grid-template-columns: 245px;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "sd  main"
+}
+
+.content img {
+    border-radius: 10px;
+    width: 100%;
+}
+
+
+ul {
+    list-style: none;
+    padding-left: 12px;
+
+}
+
+#sidebar li {
+    font-size: 1.2em;
+    /* border: 1px solid black; */
+    margin-bottom: 16px;
+}
+
+.sidebar img {
+
+    margin-right: 7px;
+    height: 25px;
+}
+
+.searchbox {
+    border: 3px solid #FF6300;
+    position: relative;
+    bottom: 171px;
+    left: 159px;
+    width: 615px;
+    background-color: white;
+
+}
+
+#search {
+    border: 0px;
+    width: 550px;
+    height: 39px;
+    padding-left: 10px;
+
+}
+
+
+.img-button {
+    font-size: 1.4em;
+    color: #FF6300;
+    background-color: white;
+    border: 0px;
+    position: absolute;
+    top: 6px;
+    right: 13px;
+}
+
+.btn-default-upload {
+    position: relative;
+    top: -740px;
+    right: -658px;
+    width: 100px;
+}
+
+.well-pop {
+
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.line {
+    border: 1px solid #FF6300;
+}
+
+.popList {
+    float: left;
+    margin-right: 50px;
+    margin-bottom: 25px;
+}
+
+
+
+
+
+
+
+
