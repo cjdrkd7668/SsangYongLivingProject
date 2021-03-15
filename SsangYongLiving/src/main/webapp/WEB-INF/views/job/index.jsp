@@ -106,7 +106,7 @@
 		<div class="boxContent">	
 			<div class="storySCut">
 			<div class="storyHeader">
-			<h4>알바이야기</h4>
+			<h4><a href="/living/jobboard/storylist.action" style="color: white">알바이야기</a></h4>
 			</div>
 			<div class="storyContent">
 
