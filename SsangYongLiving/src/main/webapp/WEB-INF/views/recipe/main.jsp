@@ -36,7 +36,7 @@
 	<div class="recipe-gbox recipe-gbox-three">
 		
 		<div class="gbox-summary">
-			<a href="#">고수들의 레시피</a>
+			<a href="/living/recipe/board.action">고수들의 레시피</a>
 			<p>
 				다른 회원의 레시피를 보고<br>
 				한 수 배우실 시간입니다..

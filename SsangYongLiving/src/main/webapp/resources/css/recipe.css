@@ -88,10 +88,6 @@
 	background: #ffdcbf;
 }
 
-#renew-refri {
-	padding: 0px 10px;
-}
-
 #renew-refri .recipe-cart {
 	background: #FFF;
 	height: 560px;
@@ -181,8 +177,18 @@
 
 /* 냉장고 최신화 끝 */
 
+.recipe-board {
+	text-align: center;
+}
 
+.recipe-board .thumbnail {
+	text-align: center;
+}
 
+.recipe-board .thumbnail img {
+	width: 280px;
+	height: 200px;
+}
 
 
 
