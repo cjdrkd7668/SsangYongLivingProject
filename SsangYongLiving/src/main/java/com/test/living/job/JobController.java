@@ -42,4 +42,11 @@ public class JobController {
 	}
 	
 	
+	@RequestMapping(value="/jabboard/storyview.action", method={RequestMethod.GET})
+	public String storyview(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		return "jobboard.storyview";
+	}
+	
+	
 }
