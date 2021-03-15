@@ -248,7 +248,7 @@
 		</div>
 			
 		<div class="recipe-etc btn-group">
-			<button type="button" class="btn btn-primary">레시피 더 보기</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='/living/recipe/board.action'">레시피 더 보기</button>
 		</div>
 		
 	</div>
