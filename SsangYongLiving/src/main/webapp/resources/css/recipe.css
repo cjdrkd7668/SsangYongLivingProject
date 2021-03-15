@@ -136,6 +136,16 @@
 	border-color: #46b8da;
 }
 
+.recipe-etc .btn-primary {
+    background-color: #222;
+    border-color: #222;
+}
+
+.recipe-etc .btn-primary:focus {
+    background-color: #222;
+    border-color: #222;
+}
+
 .modal-open { 
 	overflow:auto;padding-right:0 !important; 
 }
@@ -163,6 +173,10 @@
 .recipe-cart .thumbnail {
 	margin: 10px 0px;
 	border-bottom: 1px solid #444;
+}
+
+.recipe-ingre:hover {
+	cursor: pointer;
 }
 
 /* 냉장고 최신화 끝 */
