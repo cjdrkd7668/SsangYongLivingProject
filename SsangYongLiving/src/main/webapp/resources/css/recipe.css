@@ -88,16 +88,13 @@
 	background: #ffdcbf;
 }
 
-#renew-refri {
-	padding: 0px 10px;
-}
-
 #renew-refri .recipe-cart {
 	background: #FFF;
-	height: 600px;
+	height: 560px;
 	border: 11px solid #EEE;
 	border-right: 0px;
 	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 .recipe-cart > .recipe-ingre-item {
@@ -121,17 +118,77 @@
 	font-size: 1.2em;
 }	
 
+.recipe-etc {
+	margin-top: 10px;
+	float: right;
+}
 
+.recipe-gbox .btn:focus {
+	outline: none;
+}
 
+.recipe-etc .btn-info:focus {
+	background-color: #5bc0de;
+	border-color: #46b8da;
+}
 
+.recipe-etc .btn-primary {
+    background-color: #222;
+    border-color: #222;
+}
 
+.recipe-etc .btn-primary:focus {
+    background-color: #222;
+    border-color: #222;
+}
 
+.modal-open { 
+	overflow:auto;padding-right:0 !important; 
+}
 
+#etc-text {
+	height: 200px;
+	resize: none;
+}
+
+.recipe-recommended {
+	padding: 10px;
+}
+
+.recipe-cart .col-md-4,
+.recipe-cart .col-sm-6 {
+	margin-left: 40px;
+	width: 300px;
+}
+
+.recipe-cart .thumbnail img {
+	width: 280px;
+	height: 180px;
+}
+
+.recipe-cart .thumbnail {
+	margin: 10px 0px;
+	border-bottom: 1px solid #444;
+}
+
+.recipe-ingre:hover {
+	cursor: pointer;
+}
 
 /* 냉장고 최신화 끝 */
 
+.recipe-board {
+	text-align: center;
+}
 
+.recipe-board .thumbnail {
+	text-align: center;
+}
 
+.recipe-board .thumbnail img {
+	width: 280px;
+	height: 200px;
+}
 
 
 

@@ -31,6 +31,13 @@
 		<put-attribute name="content" value="/WEB-INF/views/job/{1}.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp"></put-attribute>
 	</definition>
+	
+	<definition name="jobboard.*" template="/WEB-INF/views/layout/jobmain.jsp">
+		<put-attribute name="asset" value="/WEB-INF/views/inc/jobasset.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/views/jobboard/{1}.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp"></put-attribute>
+	</definition>
 
 	<!-- group 템플릿 시작  -->
 	<definition name="group.*" template="/WEB-INF/views/layout/groupmain.jsp">
