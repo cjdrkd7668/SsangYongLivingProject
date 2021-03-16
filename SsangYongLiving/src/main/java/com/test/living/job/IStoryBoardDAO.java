@@ -4,7 +4,7 @@ public interface IStoryBoardDAO {
 
 
 	
-	int member_storyadd(StoryBoardDTO dto);
+	int storyadd(StoryBoardDTO dto);
 
 	
 }

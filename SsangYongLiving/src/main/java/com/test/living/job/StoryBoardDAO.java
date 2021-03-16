@@ -11,7 +11,7 @@ public class StoryBoardDAO implements IStoryBoardDAO {
 	private SqlSessionTemplate template;
 	
 	@Override
-	public int member_storyadd(StoryBoardDTO dto) {
+	public int storyadd(StoryBoardDTO dto) {
 		return template.insert("jobboard.storyadd", dto);
 	}
 	
