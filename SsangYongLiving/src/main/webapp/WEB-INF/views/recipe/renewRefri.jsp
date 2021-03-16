@@ -332,7 +332,7 @@
 		}
 	})
 	
-	// Update the current slider value (each time you drag the slider handle)
+	//모달 내에서 range 값을 변경할 때 마다 value 보여주기
 	$('.range-ingre').on('input', function() {
 	  	$(this).parent().next().text(this.value);
 	})

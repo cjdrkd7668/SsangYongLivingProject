@@ -36,5 +36,11 @@ public class RecipeController {
 		return "recipe.detail";
 	}
 	
+	@RequestMapping(value="/recipe/addRecipe.action", method=RequestMethod.GET)
+	public String addRecipe(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		return "recipe.addRecipe";
+	}
+	
 	
 }
