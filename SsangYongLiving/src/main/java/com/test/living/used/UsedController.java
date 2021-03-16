@@ -16,4 +16,23 @@ public class UsedController {
 		
 		return "used.main";
 	}
+	
+	@RequestMapping(value="/used/productList.action", method={RequestMethod.GET})
+	public String productList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		return "used.productList";
+	}
+	
+	@RequestMapping(value="/used/productView.action", method={RequestMethod.GET})
+	public String productView(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		return "used.productView";
+	}
+	
+	@RequestMapping(value="/used/productUpload.action", method={RequestMethod.GET})
+	public String productUpload(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		return "used.productUpload";
+	}
+	
 }

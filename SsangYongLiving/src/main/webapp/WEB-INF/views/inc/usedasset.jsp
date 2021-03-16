@@ -10,4 +10,5 @@
 <link rel="icon" href="/living/resources/images/favicon.ico">
 
 <link rel="stylesheet" href="/living/resources/css/used.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
