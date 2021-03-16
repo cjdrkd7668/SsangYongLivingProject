@@ -88,7 +88,7 @@
 	background: #ffdcbf;
 }
 
-#renew-refri .recipe-cart {
+.recipe-cart {
 	background: #FFF;
 	height: 560px;
 	border: 11px solid #EEE;
@@ -123,7 +123,8 @@
 	float: right;
 }
 
-.recipe-gbox .btn:focus {
+.btn:focus,
+.btn:active {
 	outline: none;
 }
 
@@ -171,12 +172,12 @@
 	border-bottom: 1px solid #444;
 }
 
-.recipe-ingre:hover {
+.recipe-ingre-item:hover {
 	cursor: pointer;
 }
-
 /* 냉장고 최신화 끝 */
 
+/* 고수들의 레시피 시작 */
 .recipe-board {
 	text-align: center;
 }
@@ -190,11 +191,122 @@
 	height: 200px;
 }
 
+#write-button {
+	float: right;
+	margin-top: -10px;
+	margin-bottom: -30px;
+}
 
+.recipe-board nav {
+	clear: both;
+}
+/* 고수들의 레시피 끝 */
 
+/* 레시피 상세 페이지 시작 */
+.recipe-info {
+	margin-top: 30px;
+}
 
+.recipe-info .recipe-thumbnail {
+	width: 293px;
+	border: 1px solid #ddd;
+    border-radius: 4px;
+    float: left;
+    margin-right: 15px;
+} 
 
+.recipe-info .recipe-thumbnail img {
+	width: 280px;
+	height: 200px;
+	margin: 5px;
+}
 
+.recipe-info table {
+	width: -webkit-fill-available;
+}
+
+.recipe-info table tr {
+	border-bottom: 1px solid #DDD;
+}
+
+.recipe-info table th {
+	width: 100px;
+	background-color: #EEE;
+	padding-left: 10px;
+}
+
+.recipe-info table td {
+	padding-left: 10px;
+}
+
+.recipe-info table tr:last-child {
+	height: 170px;
+}
+
+#recipe-detail-container .recipe-cart {
+	height: 182px;
+}
+
+#recipe-detail-container .recipe-ingre:hover {
+	cursor: auto;
+}
+
+.recipe-order-detail img {
+	width: 280px;
+	height: 180px;
+}
+
+.recipe-order .carousel-inner img{
+	width: 500px;
+	height: 350px;
+	margin: auto;
+}
+
+.recipe-order .carousel-caption {
+	background-color: rgb(0,0,0,0.5);
+}
+
+.comment-section {
+	width: 1200px;
+	margin: auto;
+}
+
+.comment-section td {
+	padding: 5px 5px 5px 15px;
+}
+
+.comment-section th:first-child {
+	width: auto;
+}
+
+.comment-section th:last-child {
+	width: 200px;
+}
+
+.comment-section tbody tr:nth-child(2n - 1) > td:first-child {
+	background-color: #DDD;
+	border-radius: 30px;
+}
+
+.comment-section tbody tr:nth-child(2n - 1) > td:last-child {
+	border-bottom: 1px solid #DDD;
+}
+
+.comment-section tbody td:last-child {
+	text-align: right;
+}
+
+#recipe-detail-container .btn-group {
+	margin-top: 30px;
+	float: right;
+}
+
+#recipe-detail-container:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+/* 레시피 상세 페이지 끝 */
 
 
 
