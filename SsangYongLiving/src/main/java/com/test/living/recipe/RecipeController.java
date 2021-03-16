@@ -24,4 +24,11 @@ public class RecipeController {
 		return "recipe.renewRefri";
 	}
 	
+	@RequestMapping(value="/recipe/board.action", method=RequestMethod.GET)
+	public String boardRecipe(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		return "recipe.board";
+	}
+	
+	
 }
