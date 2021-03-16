@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="group">
+
+	<!-- 페이징 처리 전!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+	<!-- 커뮤니티 글 목록을 가져온다. -->
+	<select id="communityList" parameterType="groupCommunityDto" resultType="groupCommunityDto">
+		select * from (select rownum as rnum, c.* from (select * from vwCommunity where postSeq = #{postSeq} order by regDate desc) c)
+where rnum between #{nowPage} and #{nowPage} + 10
+	</select>
+	
+	<!-- 커뮤니티 특정 글의 정보를 가져온다. -->
+	<select id="communityView" parameterType="String" resultType="groupCommunityDto">
+		select
+		    seq,
+		    postSeq,
+		    (select name from tblGroupBuyingCompany where seq = (select companySeq from tblGroupBuyingPost where seq = tblCommunity.postSeq)) as companyName,
+		    (select subject from tblGroupBuyingPost where seq = tblCommunity.postSeq) as postSubject,
+		    (select name from tblMember where seq = tblCommunity.memberSeq) as memberName,
+		    memberSeq,
+		    subject,
+		    detail,
+		    to_char(regDate, 'mm/dd hh24:mi') as regDate,
+		    (sysdate- regDate) * 24 as gap,
+		    to_char(updateDate, 'mm/dd hh24:mi') as updateDate,
+		    recCount,
+		    readCount,
+		    (select count(*) from tblCommunityComment where communitySeq = #{seq}) as commentCount,
+		    delFlag
+		from tblCommunity where seq = #{seq}
+	</select>
+	
+	<!-- 커뮤니티 특정 글의 댓글 목록을 가져온다. -->
+	<select id="communityCommentList" parameterType="String" resultType="groupCommunityCommentDto">
+		select
+		    seq,
+		    pseq,
+		    communitySeq,
+		    memberSeq,
+		    (select name from tblMember where seq = tblCommunityComment.memberSeq and delFlag = 0) as memberName,
+		    detail,
+		    level,
+		    to_char(regDate, 'mm/dd hh24:mi') as regDate,
+		    (sysdate- regDate) * 24 as gap,
+		    to_char(updateDate, 'mm/dd hh24:mi') as updateDate,
+		    delFlag
+		from tblCommunityComment
+		    where delFlag = 0 and communitySeq = #{seq}
+		            start with pseq is null
+		                connect by prior seq = pseq
+	</select>
+	
+	<!-- 회원 이름을 가져온다. -->
+	<select id="memberName" parameterType="String" resultType="String">
+		select name as memberName from tblMember where seq = #{seq}
+	</select>
+	
+	<!-- 특정 공동구매 글의 정보를 가져온다. -->
+	<select id="groupBuyingPost" parameterType="String" resultType="groupBuyingPostDto">
+		select 
+		    seq,
+		    companySeq,
+		    (select name from tblGroupBuyingCompany where seq = tblGroupBuyingPost.companySeq) as companyName,
+		    (select address from tblGroupBuyingCompany where seq = tblGroupBuyingPost.companySeq) as companyAddress,
+		    to_char((select lastTime from tblGroupBuyingCompany where seq = tblGroupBuyingPost.companySeq), 'mm/dd hh24:mi') as companyLastTime,
+		    subject,
+		    detail,
+		    url,
+		    price,
+		    rate,
+		    minCount,
+		    salesCount,
+		    totalCount,
+		    to_char(startDate, 'mm/dd hh24:mi') as startDate,
+		    to_char(endDate, 'mm/dd hh24:mi') as endDate,
+		    state,
+		    delFlag
+		from tblGroupBuyingPost where seq = #{seq} and delFlag = 0
+	</select>
+	
+</mapper>
