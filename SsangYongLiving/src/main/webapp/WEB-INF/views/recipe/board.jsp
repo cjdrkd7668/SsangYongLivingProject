@@ -8,13 +8,11 @@
 	<p>다른 쌍용리빙 회원이 올린 레시피입니다.<br>
 	도전해보고싶은 레시피를 클릭해 자세히 알아보세요.</p>
 
-	<button type="button" class="btn btn-primary" id="write-button">레시피 쓰기</button>
-
 	<div class="recipe-board">
 		<div class="row">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
-					<a href="#"><img src="/living/resources/images/recipe-4.jpg" alt="recipe-4.jpg"></a>
+					<a href="/living/recipe/detail.action"><img src="/living/resources/images/recipe-4.jpg" alt="recipe-4.jpg"></a>
 					<div class="caption">
 						<h3>오븐에 빠진 오리</h3>
 						<div>작성자: imthejubugudan</div>
@@ -99,6 +97,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<button type="button" class="btn btn-primary" id="write-button" onclick="location.href='#'">레시피 쓰기</button>
 		
 		<!-- pagination -->
 		<nav>
