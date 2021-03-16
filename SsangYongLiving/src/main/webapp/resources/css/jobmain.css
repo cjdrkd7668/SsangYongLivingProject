@@ -555,3 +555,119 @@ body {
 	color: #666;
 	font-size: 0.9em;
 }
+
+.storyboardHeader {
+	margin-top: 10px;
+	margin-left: 100px;
+	width: 700px;
+	border-left: 5px solid #ddd;
+	border-right: 5px solid #ddd;
+	border-radius: 8px;
+	height: 90px;	
+	position: relative;
+	
+}
+
+.storyTitle {
+	position: absolute;
+	top: 20px;
+	left: 30px;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.storysubTitle {
+	disaply: inline-block;
+	position: absolute;
+	top: 50px;
+	left: 40px;
+}
+
+
+.boardInfo {
+	display: inline-block;
+	position: absolute;
+	top: 50px;
+	left: 560px;
+
+}
+
+
+.storyboardContent {
+	
+	margin-top: 80px;
+	margin-left: 125px;
+	width: 650px;
+	min-height: 200px;	
+
+	
+	
+}
+
+.storyCommentlist {
+	margin-left: 100px;
+	width: 700px;	
+}
+
+.commentDate {
+	font-size: 0.8em;
+	color: #777;
+}
+
+
+.sendCommentArea {
+	margin-left: 100px;
+	width: 700px;	
+	height:150px;
+	position: relative;
+}
+
+.commentSendBtn {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	left: 610px;
+	top: 10px;
+	background-color: #F0AD4E;
+	color: white;
+	border: 0;
+	outline: 0;
+	border-radius: 3px;
+}
+
+.writeTitle {
+	margin-bottom: 10px;
+}
+
+.writeStory {
+	width: 750px;
+	margin-left: 230px;
+	margin-top: 25px;
+	height: 600px;
+}
+
+.writeInfo {
+	width: 730px;
+	margin-top: 15px;
+	height: 50px;	
+	border: 2px dashed #eee;
+	text-align: center;
+	padding-top: 10px;
+	margin-left: 10px;
+}
+
+.noInfo {
+	color: #999;
+	font-size: 0.8em;
+	
+	
+}
+.writeBtns {
+	margin-top: 10px;
+	margin-left: 332px;
+}
+
+.thColor {
+	background-color: #F7F7F7;
+	text-align: center;
+}
