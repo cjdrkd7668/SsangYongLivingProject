@@ -4,7 +4,7 @@
 
 <div class="sidebar" id="sidebar">
     <ul>
-        <li><img src="/living/resources/images/used/fashion.png" alt="">패션의류</li>
+        <li><img src="/living/resources/images/used/fashion.png" alt=""><a href="/living/used/productList.action">패션의류</a></li>
         <li><img src="/living/resources/images/used/fashionaccessories.png" alt="">패션잡화</li>
         <li><img src="/living/resources/images/used/beauty.png" alt="">뷰티</li>
         <li><img src="/living/resources/images/used/child.png" alt="">출산/유아동</li>

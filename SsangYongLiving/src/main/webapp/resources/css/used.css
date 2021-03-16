@@ -242,6 +242,7 @@ ul {
     position: absolute;
     top: 6px;
     right: 13px;
+    outline: none;
 }
 
 .btn-default-upload {
@@ -268,9 +269,81 @@ ul {
 }
 
 
+.img-button-search {
+    position: relative;
+    top: 2px;
+    background-color: white;
+    left: 5px;
+    outline: none;
+    border: 0px;
+    font-size: 1.4em;
+    color: #FF6300;
+
+}
+
+.product-list {
+    margin-left: 37px;
+    margin-top: 23px;
+}
+
+.procList {
+    float: left;
+    margin-right: 42px;
+    margin-bottom: 25px;
+}
+
+.searchboxList {
+	    border: 3px solid #FF6300;
+}
+
+a:link {
+    text-decoration: none;
+     color: #333333;
+}
+
+a:visited {
+	 color: #333333;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+
+#searchList {
+	border: 0px;
+    width: 869px;
+    height: 39px;
+    padding-left: 10px;
+    outline: none;
+}
 
 
 
 
 
+.state {
+    display: inline-block; 
+    font-size: 1.2em;
+    background-color: blanchedalmond; 
+    width: 80px;
+    height: 40px;
+    margin-bottom: 10px;
+    text-align: center; 
+    vertical-align: middle;
+    border-radius: 10px;
+    
+}
 
+.wapper-product {
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "sd  main"
+}

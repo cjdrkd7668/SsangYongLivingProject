@@ -569,3 +569,95 @@ textarea {
     margin-top: -5px;
     border: 2px solid #DDD;
 }
+
+/* 업체와 일대일 문의 */
+.container .chatContainer {
+    width: 50%;
+    margin: 0px auto;
+    border: 2px solid #FF6300;
+    box-shadow: 2px 5px 8px #666;
+}
+
+.container .chatContainer th {
+    text-align: center;
+    font-size: 1.3em;
+    background-color: #FF6300;
+    color: #EEE;
+    border-bottom: 3px solid #FF6300;
+    padding-left: 3.5em;
+}
+
+.container .chatContainer small {
+    color: #E53A40;
+}
+
+.container .chatContainer th img {
+    width: 30px;
+}
+
+.container .chatContainer th span {
+    font-size: 0.9em;
+    color: #534847;
+}
+
+.container .chatContainer .companyChatInfo,
+.container .chatContainer .memberChatInfo {
+    background-color: #F0E5DE;
+    font-size: 1em;
+}
+
+.container .chatContainer .companyChatInfo td {
+    padding-left: 1.2em;
+    text-align: left;
+}
+
+.container .chatContainer .companyChatInfo img {
+    width: 20px;
+}
+
+.container .chatContainer .memberChatInfo td {
+    padding-right: 1.2em;
+    text-align: right;
+}
+
+.container .chatContainer .companyChatDetailInfo,
+.container .chatContainer .memberChatDetailInfo {
+    font-size: 1.1em;
+}
+
+.container .chatContainer .companyChatDetailInfo .companyDetail {
+    background-color: #F0E5DE;
+    border-bottom: 1px solid #FF6300;
+    text-indent: 1em;
+}
+
+.container .chatContainer .memberChatDetailInfo .memberDetail {
+    background-color: #F0E5DE;
+    border-bottom: 1px solid #FF6300;
+    text-align: right;
+    padding-right: 1em;
+}
+
+.container .chatContainer .addChat .memberName {
+    background-color: #FDD692;
+    border-bottom: #FDD692;
+    text-align: right;
+    padding-right: 1em;
+    
+}
+
+.container .chatContainer .addChat input[type="text"] {
+    border: none;
+    background-color: #FDD692;
+    border-bottom: 1px solid #FF6300;
+}
+
+.container .chatContainer .btnChat {
+    background-image: url("/living/resources/images/group/banner.png");
+    background-size: cover;
+    background-position: center center;
+}
+
+.container .chatContainer .backChatBtn {
+    float: right;
+}

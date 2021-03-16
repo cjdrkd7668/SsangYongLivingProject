@@ -1,18 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- container 시작 -->
 <div class="container">
 
     <div class="page-header">
         공구 이모저모
+        
         <b class="orange" style="font-size: 1.2em;">&nbsp;[하우스딸기 500g 특가]</b>
         <button class="btn backPostBtn" onclick="location.href='/living/group/view.action';">
             공구 글로 돌아가기
         </button>
         <br>
         <small>[식료품마켓 - 하우스딸기 500g 특가] 커뮤니티입니다.&nbsp;관련 없는 글은 무통보 삭제될 수 있습니다.</small>
-            
+        
     </div>
     <div class="divider"></div>
 
@@ -116,54 +118,18 @@
             <th class="col-md-1">추천</th>
             <th class="col-md-1">조회</th>
         </tr>
-        <tr onclick="location.href='/living/group/community/view.action';">
-            <td>3</td>
-            <td>딸기 맛있을까?</td>
-            <td>홍길동</td>
-            <td>10:10</td>
-            <td>0</td>
-            <td>0</td>
+        
+        <c:forEach items="${list }" var="dto">
+        <tr onclick="location.href='/living/group/community/view.action?seq=${dto.seq}';">
+            <td>${dto.seq }</td>
+            <td>${dto.subject }</td>
+            <td>${dto.memberName }</td>
+            <td>${dto.regDate }</td>
+            <td>${dto.recCount }</td>
+            <td>${dto.readCount }</td>
         </tr>
-         <tr>
-            <td>3</td>
-            <td>딸기 맛있을까?</td>
-            <td>홍길동</td>
-            <td>10:10</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>딸기 맛있을까?</td>
-            <td>홍길동</td>
-            <td>10:10</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>딸기 맛있을까?</td>
-            <td>홍길동</td>
-            <td>10:10</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>딸기 맛있을까?</td>
-            <td>홍길동</td>
-            <td>10:10</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>딸기 맛있을까?</td>
-            <td>홍길동</td>
-            <td>10:10</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
+        </c:forEach>
+         
     </table>
     <!-- 커뮤니티 테이블 끝 -->
 

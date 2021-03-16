@@ -33,7 +33,7 @@
 <div class="container">
 
     <div class="panel">
-        <h1><i class="fas fa-quote-left"></i>&nbsp;고당도 오렌지 1kg&nbsp;<i class="fas fa-quote-right"></i></h1>
+        <h1><i class="fas fa-quote-left"></i>&nbsp;${dto.subject }&nbsp;<i class="fas fa-quote-right"></i></h1>
     </div>
 
     <!-- 상품 설명 테이블 시작 -->
@@ -42,13 +42,10 @@
             <td colspan="2" rowspan="3">
                 <img src="/living/resources/images/group/product001.jpg">
             </td>
-            <td colspan="2"><h3 class="softbg">9900<small>&nbsp;원</small></h3></td>
+            <td colspan="2"><h3 class="softbg">${dto.price }<small>&nbsp;원</small></h3></td>
         </tr>
         <tr>
-            <td colspan="2">이번에 소개해드리는 오렌지는 더욱 맛이 진해진 고당도 오렌지입니다.<br>
-                미국의 햇살을 받아 달콤하게 자란 오렌지로 특별히 달콤한 오렌지만 골라왔습니다.<br>
-                다른 사이트에서 보지 못 했던 가격으로 제공하기 위해 한정 수량 판매합니다.<br>
-                고당도 오렌지의 달콤함을 만끽해보시길 바랍니다^^</td>
+            <td colspan="2">${dto.detail }</td>
         </tr>
         <tr>
             <td colspan="2">
@@ -65,7 +62,7 @@
             </td>
             <td colspan="2">
                 <div>
-                    총 상품 금액 : <span>9900</span>원
+                    총 상품 금액 : <span>${dto.price }</span>원
                 </div>
             </td>
         </tr>
@@ -96,7 +93,7 @@
         <button class="btn btn-default">
             <b>QnA</b>
         </button>
-        <button class="btn btn-default" onclick="location.href='/living/group/community/list.action';">
+        <button class="btn btn-default" onclick="location.href='/living/group/community/list.action?postSeq=${dto.seq}&nowPage=1';">
             <b>공구 이모저모</b>
         </button>
     </div>
@@ -184,7 +181,7 @@
     <div class="col-md-3">
         <table class="table table-default companyTable">
             <tr>
-                <th>업체 : 과일나라</th>
+                <th>업체 : ${dto.companyName }</th>
             </tr>
             <tr>
             	<!-- 지도 시작 -->
@@ -193,13 +190,13 @@
             </tr>
             <tr>
                 <td>
-                    <div>마지막 로그인 <small>14:31</small></div>
+                    <div>마지막 로그인 <small>${dto.companyLastTime }</small></div>
                     <div>진행 중인 공구 <small>3</small></div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button class="btn chatBtn">
+                    <button class="btn chatBtn" onclick="location.href='/living/group/community/chat.action?companySeq=${dto.companySeq}';">
                     	<div class="glyphicon glyphicon-envelope"></div>
                     	&nbsp;1:1 문의하기
                     </button>
@@ -229,12 +226,12 @@
 	/* 지도 시작 */
 	var postLat = 37.499343405328595;
 	var postLng = 127.03321257686713;		
-	var address = "서울시 강남구 역삼동 테헤란로 132";
+	var address = "${dto.companyAddress}";
 
 	var container = document.getElementById('map');
 	var options = {
 		center : new kakao.maps.LatLng(postLat, postLng),
-		level : 4
+		level : 3
 	};
 
 	var map = new kakao.maps.Map(container, options);
@@ -258,7 +255,7 @@
 
 	        //인포윈도우로 장소에 대한 설명을 표시합니다
 	        var infowindow = new kakao.maps.InfoWindow({
-	       	    content: '<div style="width:100px;text-align:center;padding:6px 0;">과일나라</div>'
+	       	    content: '<div style="width:90px;text-align:center;">${dto.companyName}</div>'
 	        });
 	        infowindow.open(map, marker);
 
