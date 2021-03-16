@@ -5,6 +5,15 @@
 <configuration>
 	<typeAliases>
 		<!-- 매퍼에서 자주 사용하는 자료형의 별칭 정의 -->
+		
+		
+		<!-- 공동 구매 커뮤니티 DTO 시작 -->
+		<typeAlias type="com.test.living.group.CommunityDTO" alias="groupCommunityDto"/>
+		<typeAlias type="com.test.living.group.CommunityCommentDTO" alias="groupCommunityCommentDto"/>
+		<typeAlias type="com.test.living.group.GroupBuyingPostDTO" alias="groupBuyingPostDto"/>
+		<typeAlias type="com.test.living.group.QnaDTO" alias="groupQnaDto"/>
+		<!-- 공동 구매 커뮤니티 DTO 끝 -->
+		
 	</typeAliases>
 </configuration>
 
