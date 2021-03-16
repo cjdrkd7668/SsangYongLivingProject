@@ -7,7 +7,10 @@
 	 
 	<div class="middle">
 		<h2>동네알바 찾기</h2>
-		<p><a class="btn btn-warning btn-lg" href="/living/job/recruitmentList.action" role="button">알바공고 보기</a></p>
+		<p>
+			<a class="btn btn-warning btn-lg" href="/living/job/recruitmentList.action" role="button">알바공고 보기</a>
+			<a class="btn btn-warning btn-lg" href="/living/job/auth.action" role="button">로그인</a>		
+		</p>
 		<div class="marketIMG">
 			<img src="/living/resources/images/market.png" style="width:110px; margin-right:20px;">
 			<img src="/living/resources/images/store.png" style="width:110px;">

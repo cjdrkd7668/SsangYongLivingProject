@@ -88,10 +88,6 @@
 	background: #ffdcbf;
 }
 
-#renew-refri {
-	padding: 0px 10px;
-}
-
 #renew-refri .recipe-cart {
 	background: #FFF;
 	height: 560px;
@@ -136,6 +132,16 @@
 	border-color: #46b8da;
 }
 
+.recipe-etc .btn-primary {
+    background-color: #222;
+    border-color: #222;
+}
+
+.recipe-etc .btn-primary:focus {
+    background-color: #222;
+    border-color: #222;
+}
+
 .modal-open { 
 	overflow:auto;padding-right:0 !important; 
 }
@@ -165,10 +171,24 @@
 	border-bottom: 1px solid #444;
 }
 
+.recipe-ingre:hover {
+	cursor: pointer;
+}
+
 /* 냉장고 최신화 끝 */
 
+.recipe-board {
+	text-align: center;
+}
 
+.recipe-board .thumbnail {
+	text-align: center;
+}
 
+.recipe-board .thumbnail img {
+	width: 280px;
+	height: 200px;
+}
 
 
 

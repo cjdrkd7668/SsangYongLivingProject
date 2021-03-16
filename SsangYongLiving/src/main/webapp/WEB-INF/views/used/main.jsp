@@ -8,7 +8,7 @@
 	<div class="searchbox">
 		<input type="text" class="form-control" onkeyup="enterkey();"
 			id="search" placeholder="찾고 싶은 상품을 검색해보세요!" style="display: inline;">
-		<button class="img-button" type="submit" class="btn">
+		<button class="img-button" type="submit">
 			<i class="fa fa-search"></i>
 		</button>
 	</div>
@@ -86,4 +86,4 @@
 </div>
 
 <!-- 버튼 -->
-<button class="btn btn-warning btn-default-upload">상품 올리기</button>
+<button class="btn btn-warning btn-default-upload"  onclick="location.href='/living/used/productUpload.action';">상품 올리기</button>
