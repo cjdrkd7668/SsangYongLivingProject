@@ -101,6 +101,26 @@ public class JobController {
 		return "jobboard.storyadd";
 	}
 	
-	
+	@RequestMapping(value="/jobboard/storyaddok.action", method={RequestMethod.POST})
+	public void member_addok(HttpServletRequest request, HttpServletResponse response, HttpSession session, StoryBoardDTO dto) {
+		
+		
+		dto.setMemberSeq((String)session.getAttribute("memberSeq"));
+		
+		int result = dao.storyadd(dto);
+		
+		try {
+			if (result == 1) {
+				response.sendRedirect("/living/jobboard/storylist.action");
+			} else {
+				response.sendRedirect("/living/jobboard/storyadd.action");
+			}
+			
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		
+	}
 	
 }

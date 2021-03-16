@@ -16,11 +16,12 @@
 
 	<div class="middleSearch">
 		<input type="text" class="form-control short" placeholder="내용을 입력하세요">
-		<button type="submit" class="btn btn-warning">검색</button>
+		<button type="submit" class="btn btn-warning">검색</button>		
+		<a class="btn btn-warning" href="/living/jobboard/storyadd.action" role="button" style="margin-left:830px;">글쓰기</a>
+		
 	</div>	
-
-
-	<div class="bottomWrapper">
+		
+	<div class="bottomWrapper">	
 	<div class="rItemWrapper">
 	
 	
