@@ -144,11 +144,11 @@
 
 	<div class="btn-group">
 		<button type="button" class="btn btn-default" onclick="location.href='/living/recipe/edit.action'">수정</button>
-		<button type="button" class="btn btn-default" id="delete">삭제</button>
+		<button type="button" class="btn btn-default" id="delete-btn">삭제</button>
 		<button type="button" class="btn btn-default" onclick="location.href='/living/recipe/board.action'">목록</button>
 	</div>
 
-	<div class="modal fade" id="delete-recipe" tabindex="-1" aria-hidden="true">
+	<div class="modal fade" id="delete-recipe-modal" tabindex="-1" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -158,7 +158,7 @@
 					<h4 class="modal-title">삭제</h4>
 				</div>
 				<div class="modal-body">
-					<p>정말 레시피를 삭제하시겠습니까? 이 결정은 되돌릴 수 없습니다.</p>
+					<p>정말 레시피를 삭제하시겠습니까? </p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">다시 생각해볼게요</button>
@@ -182,8 +182,8 @@
 		$('.carousel').carousel('prev');
 	})
 
-	$('#delete').click(function() {
-		$('#delete-recipe').modal('show')
+	$('#delete-btn').click(function() {
+		$('#delete-recipe-modal').modal('show')
 	})
 </script>
     

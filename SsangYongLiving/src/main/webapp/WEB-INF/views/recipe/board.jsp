@@ -98,7 +98,7 @@
 			</div>
 		</div>
 		
-		<button type="button" class="btn btn-primary" id="write-button" onclick="location.href='#'">레시피 쓰기</button>
+		<button type="button" class="btn btn-primary" id="write-button" onclick="location.href='/living/recipe/addRecipe.action'">레시피 쓰기</button>
 		
 		<!-- pagination -->
 		<nav>
