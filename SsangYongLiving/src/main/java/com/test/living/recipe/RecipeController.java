@@ -19,7 +19,16 @@ import com.test.living.inc.Pagination;
 public class RecipeController {
 	
 	@Autowired
-	private IRecipeDAO dao;
+	private IRecipeDAO rdao;
+	
+	@Autowired
+	private IRecipeStockDAO rsdao;
+	
+	@Autowired
+	private IRecipeOrderDAO rodao;
+	
+	@Autowired
+	private IRecipeCommentDAO rcdao;
 	
 	@RequestMapping(value="/recipe/main.action", method=RequestMethod.GET)
 	public String main(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
@@ -35,7 +44,6 @@ public class RecipeController {
 	
 	@RequestMapping(value="/recipe/board.action", method=RequestMethod.GET)
 	public String boardRecipe(HttpServletRequest request, HttpServletResponse response, HttpSession session, String page) {
-		
 		
 		//현재 페이지 수 구하기
 		int nowPage = 0;		//현재 페이지 번호
@@ -60,10 +68,9 @@ public class RecipeController {
 		map.put("begin", begin);
 		map.put("end", end);
 		
-		List<RecipeDTO> list = dao.getRecipeList(map);
+		List<RecipeDTO> list = rdao.getRecipeList(map);
 		
-		
-		totalCount = dao.getRecipeTotalCount();
+		totalCount = rdao.getRecipeTotalCount();
 		
 		String pageBar = Pagination.getPageBarTag(nowPage, totalCount, pageSize, blockSize, "/living/recipe/board.action");
 		
@@ -75,9 +82,37 @@ public class RecipeController {
 	}
 	
 	@RequestMapping(value="/recipe/detail.action", method=RequestMethod.GET)
-	public String boardDetail(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public String boardDetail(HttpServletRequest request, HttpServletResponse response, HttpSession session, String seq, String page) {
+		
+		RecipeDTO rdto = rdao.getRecipeDto(seq);
+		List<RecipeStockDTO> rsList = rsdao.getRecipeStockList(seq);
+		List<RecipeOrderDTO> roList = rodao.getRecipeOrderList(seq);
+		List<RecipeCommentDTO> rcList = rcdao.getRecipeCommentList(seq);
+		
+		request.setAttribute("rdto", rdto);
+		request.setAttribute("rsList", rsList);
+		request.setAttribute("roList", roList);
+		request.setAttribute("rcList", rcList);
+		request.setAttribute("page", page);
 		
 		return "recipe.detail";
+	}
+	
+	@RequestMapping(value="/recipe/delComment.action", method=RequestMethod.GET)
+	public void delComment(HttpServletRequest request, HttpServletResponse response, HttpSession session, String commentSeq, String recipeSeq, String page) {
+		
+		int result = rcdao.delComment(commentSeq);
+		
+		try {
+			if (result == 1) {
+				response.sendRedirect("/living/recipe/detail.action?seq=" + recipeSeq + "&page=" + page);				
+			} else {				
+				response.sendRedirect("/living/recipe/detail.action?seq=" + recipeSeq + "&page=" + page);				
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
 	}
 	
 	@RequestMapping(value="/recipe/addRecipe.action", method=RequestMethod.GET)

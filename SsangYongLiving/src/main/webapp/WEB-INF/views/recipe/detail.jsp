@@ -1,38 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div id="recipe-detail-container">
 
-	<h1><small>고수들의 레시피  / </small>오븐에 빠진 오리</h1>
+	<h1><small>고수들의 레시피  / </small>${rdto.recipeSubject}</h1>
 	
 	<div class="recipe-info">
 		<div class="recipe-thumbnail">
-			<a href="#"><img src="/living/resources/images/recipe-4.jpg" alt="recipe-4.jpg"></a>
+			<img src="/living/resources/images/${rdto.recipeImage}" alt="${rdto.recipeImage}">
 		</div>
 		<table>
 			<tr>
 				<th>작성자</th>
 				<td colspan="3">
-					imthejubugudan
+					${rdto.name}
 				</td>
 			</tr>
 			<tr>
 				<th>별점</th>
 				<td>
-					<c:forEach var="i" begin="0" end="2">
+					<c:forEach var="i" begin="1" end="${rdto.starAvg }">
 	    			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 					</c:forEach>
+					<c:if test="${rdto.starAvg == 0}">
+					<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+					</c:if>
 				</td>
 				<th>난이도</th>
 				<td>
-					보통
+					${rdto.recipeLevel}
 				</td>
 			</tr>
 			<tr>
 				<th>요리 설명</th>
 				<td colspan="3">
-					<span>TV에도 나온 유명 셰프의 레시피랍니다~</span>
+					<span>${rdto.recipeContent}</span>
 				</td>
 			</tr>
 		</table>
@@ -43,22 +47,14 @@
 	<div class="detail-ingre">
 
 		<div class="recipe-cart" style="background: #C8EFD4;">
-
+		
+			<c:forEach items="${rsList}" var="rsdto">
 			<div class="recipe-ingre-item">
-				<img src="/living/resources/images/ingredient-egg.png">
-				<div>계란</div>
-				<div>2 구</div>
+				<img src="/living/resources/images/${rsdto.ingredientImage}">
+				<div>${rsdto.ingredientName}</div>
+				<div>${rsdto.recipeStockNum} ${rsdto.ingredientUnit}</div>
 			</div>
-			<div class="recipe-ingre-item">
-				<img src="/living/resources/images/ingredient-leeks.png">
-				<div>대파</div>
-				<div>1 단</div>
-			</div>
-			<div class="recipe-ingre-item">
-				<img src="/living/resources/images/ingredient-bacon.png">
-				<div>베이컨</div>
-				<div>5 장</div>
-			</div>
+			</c:forEach>
 
 		</div>
 
@@ -72,26 +68,19 @@
 			data-ride="carousel">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
-				<li data-target="#carousel-example-generic" data-slide-to="0"
-					class="active"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				<c:forEach var="i" begin="1" end="${fn:length(roList)}">
+				<li class="order-carousel-indicator" data-target="#carousel-example-generic" data-slide-to="i"></li>
+				</c:forEach>
 			</ol>
 
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
-				<div class="item active">
-					<img src="/living/resources/images/recipe-order-2.jpg" alt="recipe-order-2.jpg">
-					<div class="carousel-caption">대파를 송송 썰어서 준비해주시고, 베이컨은 상온에 10분정도 두시면 됩니다.</div>
+				<c:forEach items="${roList}" var="rodto">
+				<div class="item order-carousel-item">
+					<img src="/living/resources/images/${rodto.recipeOrderImage}" alt="${rodto.recipeOrderImage}">
+					<div class="carousel-caption">${rodto.recipeOrderContent}</div>
 				</div>
-				<div class="item">
-					<img src="/living/resources/images/recipe-order-3.jpg" alt="recipe-order-3.jpg">
-					<div class="carousel-caption">대파를 송송 썰어서 준비해주시고, 베이컨은 상온에 10분정도 두시면 됩니다.</div>
-				</div>
-				<div class="item">
-					<img src="/living/resources/images/recipe-order-4.jpg" alt="recipe-order-4.jpg">
-					<div class="carousel-caption">대파를 송송 썰어서 준비해주시고, 베이컨은 상온에 10분정도 두시면 됩니다.</div>
-				</div>
+				</c:forEach>
 			</div>
 
 			<!-- Controls -->
@@ -121,31 +110,36 @@
 				</tr>
 			</thead>
 			<tbody>
+				<c:forEach items="${rcList}" var="rcdto">
 				<tr>
-					<td>cjddpf</td>
-					<td>2021-03-11</td>
+					<td>${rcdto.name}</td>
+					<td>${rcdto.recipeCommentregdate}</td>
 				</tr>
 				<tr>
-					<td>오늘 저녁으로 해먹었는데, 정말 맛있네요! 다음에도 기대하겠습니다. 레시피 또 올려주세요~</td>
-					<td><a>삭제</a></td>
+					<td>${rcdto.recipeCommentContent}</td>
+					<td>
+					<c:if test="${seq == rcdto.memberSeq}">
+					<a href='/living/recipe/delComment.action?commentSeq=${rcdto.recipeCommentSeq}&recipeSeq=${seq}&page=${page}'>삭제</a>
+					</c:if>
+					</td>
 				</tr>
-				<tr>
-					<td>jubu100dan</td>
-					<td>2021-03-12</td>
-				</tr>
-				<tr>
-					<td>솔직히 별론데 ㅋㅋ</td>
-					<td><a>삭제</a></td>
-				</tr>
+				</c:forEach>
 			</tbody>	
 		</table>
+		<form method="POST"  id="recipe-add-comment-form" >
+			<div class="form-group">
+				<label for="recipe-add-content">댓글</label> 
+				<textarea class="form-control" name="recipeCommentContent" placeholder="댓글을 작성해주세요."></textarea>
+			</div>
+			 <button type="submit" class="btn btn-default">댓글 달기</button>
+		</form>
 		
 	</div>
 
 	<div class="btn-group">
 		<button type="button" class="btn btn-default" onclick="location.href='/living/recipe/editRecipe.action'">수정</button>
 		<button type="button" class="btn btn-default" id="delete-btn">삭제</button>
-		<button type="button" class="btn btn-default" onclick="location.href='/living/recipe/board.action'">목록</button>
+		<button type="button" class="btn btn-default" onclick="location.href='/living/recipe/board.action?page=${page}'">목록</button>
 	</div>
 
 	<div class="modal fade" id="delete-recipe-modal" tabindex="-1" aria-hidden="true">
@@ -185,6 +179,9 @@
 	$('#delete-btn').click(function() {
 		$('#delete-recipe-modal').modal('show')
 	})
+	
+	$('.order-carousel-indicator').siblings().eq(0).addClass("active");
+	$('.order-carousel-item').siblings().eq(0).addClass("active");
 </script>
     
     

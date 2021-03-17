@@ -9,4 +9,6 @@ public interface IRecipeDAO {
 
 	int getRecipeTotalCount();
 
+	RecipeDTO getRecipeDto(String seq);
+
 }

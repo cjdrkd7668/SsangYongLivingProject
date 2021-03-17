@@ -12,6 +12,26 @@
 		select count(*) from vwRecipeList
 	</select>
 	
+	<select id="getRecipeDto" parameterType="string" resultType="recipeRecipeDto">
+		select * from vwRecipeList where recipeSeq = #{seq} 
+	</select>
+	
+	<select id="getRecipeStockList" parameterType="string" resultType="recipeRecipeStockDto">
+		select * from vwRecipeStock where recipeSeq = #{seq} 
+	</select>
+	
+	<select id="getRecipeOrderList" parameterType="string" resultType="recipeRecipeOrderDto">
+		select * from vwRecipeOrder where recipeSeq = #{seq}
+	</select>
+	
+	<select id="getRecipeCommentList" parameterType="string" resultType="recipeRecipeCommentDto">
+		select * from vwRecipeComment where recipeSeq = #{seq}
+	</select>
+	
+	<update id="delComment" parameterType="string">
+		update tblRecipeComment set recipeCommentDelFlag = 1 where recipeCommentSeq = #{seq}
+	</update>
+	
 </mapper>
 
 

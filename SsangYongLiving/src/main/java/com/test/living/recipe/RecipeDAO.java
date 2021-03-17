@@ -24,5 +24,11 @@ public class RecipeDAO implements IRecipeDAO {
 		
 		return template.selectOne("recipe.getRecipeTotalCount");
 	}
+
+	@Override
+	public RecipeDTO getRecipeDto(String seq) {
+		
+		return template.selectOne("recipe.getRecipeDto", seq);
+	}
 	
 }
