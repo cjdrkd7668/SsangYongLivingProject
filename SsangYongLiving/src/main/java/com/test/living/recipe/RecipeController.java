@@ -15,6 +15,8 @@ public class RecipeController {
 	@RequestMapping(value="/recipe/main.action", method=RequestMethod.GET)
 	public String main(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
+		
+		
 		return "recipe.main";
 	}
 	
@@ -47,6 +49,7 @@ public class RecipeController {
 		
 		return "recipe.editRecipe";
 	}
+	
 	
 	
 }
