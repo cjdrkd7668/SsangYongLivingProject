@@ -26,8 +26,19 @@ public class StoryBoardDAO implements IStoryBoardDAO {
 	@Override
 	public StoryBoardDTO storyget(String seq) {
 		
-		return template.selectOne("jobboard.storyget");
+		return template.selectOne("jobboard.storyget", seq);
 	}
 	
+	@Override
+	public int storydel(String seq) {
+		
+		return template.delete("jobboard.storydel", seq);
+	}
+	
+	@Override
+	public int storyedit(StoryBoardDTO dto) {
+		
+		return template.update("jobboard.storyedit", dto);
+	}
 	
 }

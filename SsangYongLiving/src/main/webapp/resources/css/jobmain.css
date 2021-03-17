@@ -604,6 +604,12 @@ body {
 	
 }
 
+.storyBottom {
+	margin-top: 25px;
+	margin-left: 600px;
+	width: 200px;
+}
+
 .storyCommentlist {
 	margin-left: 100px;
 	width: 700px;	

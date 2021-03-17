@@ -38,7 +38,7 @@ public class JobController {
 	public void login(HttpServletRequest request, HttpServletResponse response, HttpSession session, String memberSeq) {
 			
 		session.setAttribute("memberSeq", memberSeq);
-		
+		//인증수단 
 		
 		try {
 			response.sendRedirect("/living/job/index.action");
@@ -114,7 +114,7 @@ public class JobController {
 	}
 	
 	@RequestMapping(value="/jobboard/storyaddok.action", method={RequestMethod.POST})
-	public void member_addok(HttpServletRequest request, HttpServletResponse response, HttpSession session, StoryBoardDTO dto) {
+	public void member_storyaddok(HttpServletRequest request, HttpServletResponse response, HttpSession session, StoryBoardDTO dto) {
 		
 		
 		dto.setMemberSeq((String)session.getAttribute("memberSeq"));
@@ -133,6 +133,66 @@ public class JobController {
 		}
 		
 		
+	}
+	
+	@RequestMapping(value="/jobboard/storydel.action", method={RequestMethod.GET})
+	public String member_owner_storydel(HttpServletRequest request, HttpServletResponse response, HttpSession sesssion, String seq) {
+		
+		request.setAttribute("seq", seq);
+		
+		return "jobboard.storydel";
+	}
+	
+	
+	@RequestMapping(value="/jobboard/storydelok.action", method={RequestMethod.POST})
+	public void member_owner_storydelok(HttpServletRequest request, HttpServletResponse response, HttpSession session, String seq) {
+		
+		int result = dao.storydel(seq);
+		
+		try {
+			if (result == 1) {
+				response.sendRedirect("/living/jobboard/storylist.action");
+			} else {
+				response.sendRedirect("/living/jobboard/storyview.action?seq=" + seq);
+			}
+			
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
+	}
+	
+	
+	@RequestMapping(value="/jobboard/storyedit.action", method={RequestMethod.GET})
+	public String member_owner_storyedit(HttpServletRequest request, HttpServletResponse response, HttpSession session, String seq) {
+		
+		StoryBoardDTO dto =  dao.storyget(seq);
+		
+		request.setAttribute("dto", dto);
+		
+		return "jobboard.storyedit";
+	}
+	
+	
+	@RequestMapping(value="/jobboard/storyeditok.action", method={RequestMethod.POST})
+	public void member_owner_storyeditok(HttpServletRequest request, HttpServletResponse response, HttpSession session, StoryBoardDTO dto) {
+		
+		
+		dto.setMemberSeq((String) session.getAttribute("memberSeq"));
+		
+		int result = dao.storyedit(dto);
+		
+		try {
+			
+			if (result == 1) {
+				response.sendRedirect("/living/jobboard/storyview.action?seq=" + dto.getSeq());
+			} else {
+				response.sendRedirect("/living/jobboard/storyedit.action?seq=" + dto.getSeq());
+			}
+			
+		} catch(Exception e) {
+			System.out.println(e);
+		}
 	}
 	
 }

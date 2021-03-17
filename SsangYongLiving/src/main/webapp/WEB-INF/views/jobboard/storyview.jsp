@@ -26,6 +26,10 @@
 	${dto.material}
 	</div>
 	
+	<div class="storyBottom">
+	<button type="button" class="btn btn-warning" onclick="location.href='/living/jobboard/storyedit.action?seq=${dto.seq}';"><span class="glyphicon glyphicon-wrench"></span>수정</button>	
+	<button type="button" class="btn btn-warning" onclick="location.href='/living/jobboard/storydel.action?seq=${dto.seq}';"><span class="glyphicon glyphicon-scissors">삭제</span></button>	
+	</div>
 	
 	<div class="storyCommentlist">
 	<hr>

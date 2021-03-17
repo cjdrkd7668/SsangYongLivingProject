@@ -12,5 +12,9 @@ public interface IStoryBoardDAO {
 
 	StoryBoardDTO storyget(String seq);
 
+	int storydel(String seq);
+
+	int storyedit(StoryBoardDTO dto);
+
 	
 }
