@@ -32,6 +32,14 @@
 		update tblRecipeComment set recipeCommentDelFlag = 1 where recipeCommentSeq = #{seq}
 	</update>
 	
+	<insert id="addRecipeComment" parameterType="recipeRecipeCommentDto">
+		insert into tblRecipeComment values (seqRecipeComment.nextVal, #{recipeCommentContent}, default, #{recipeCommentStar}, 0, #{memberSeq}, #{recipeSeq})
+	</insert>
+	
+	<update id="delRecipe" parameterType="string">
+		update tblRecipe set recipeDelFlag = 1 where recipeSeq = #{seq}
+	</update>
+	
 </mapper>
 
 

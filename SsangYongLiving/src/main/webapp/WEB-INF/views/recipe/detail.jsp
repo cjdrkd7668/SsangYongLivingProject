@@ -119,26 +119,41 @@
 					<td>${rcdto.recipeCommentContent}</td>
 					<td>
 					<c:if test="${seq == rcdto.memberSeq}">
-					<a href='/living/recipe/delComment.action?commentSeq=${rcdto.recipeCommentSeq}&recipeSeq=${seq}&page=${page}'>삭제</a>
+					<a href='/living/recipe/delComment.action?commentSeq=${rcdto.recipeCommentSeq}&recipeSeq=${rdto.recipeSeq}&page=${page}'>삭제</a>
 					</c:if>
 					</td>
 				</tr>
 				</c:forEach>
 			</tbody>	
 		</table>
-		<form method="POST"  id="recipe-add-comment-form" >
+		<c:if test="${access == 1 || access == 0}">
+		<form method="POST" action="/living/recipe/addComment.action" id="recipe-add-comment-form" >
 			<div class="form-group">
 				<label for="recipe-add-content">댓글</label> 
-				<textarea class="form-control" name="recipeCommentContent" placeholder="댓글을 작성해주세요."></textarea>
+				<textarea class="form-control" name="recipeCommentContent" placeholder="댓글을 작성해주세요." required></textarea>
 			</div>
-			 <button type="submit" class="btn btn-default">댓글 달기</button>
+			<button type="submit" class="btn btn-default">댓글 달기</button>
+			<div class="comment-star">
+				<span>별점 : </span>
+				<span class="star glyphicon glyphicon-star"></span>
+				<span class="star glyphicon glyphicon-star"></span>
+				<span class="star glyphicon glyphicon-star"></span>
+				<span class="star glyphicon glyphicon-star-empty"></span>
+				<span class="star glyphicon glyphicon-star-empty"></span>			
+			</div>
+			<input type="hidden" name="recipeCommentStar" id="recipeCommentStar" value="3">
+			<input type="hidden" name="recipeSeq" id="recipeSeq" value="${rdto.recipeSeq}">
+			<input type="hidden" name="page" id="page" value="${page}">
 		</form>
+		</c:if>
 		
 	</div>
 
 	<div class="btn-group">
+		<c:if test="${seq == rdto.memberSeq}">
 		<button type="button" class="btn btn-default" onclick="location.href='/living/recipe/editRecipe.action'">수정</button>
 		<button type="button" class="btn btn-default" id="delete-btn">삭제</button>
+		</c:if>
 		<button type="button" class="btn btn-default" onclick="location.href='/living/recipe/board.action?page=${page}'">목록</button>
 	</div>
 
@@ -156,7 +171,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">다시 생각해볼게요</button>
-					<button type="button" class="btn btn-danger" onclick="location.href='/living/recipe/delete.action'">예, 삭제하겠습니다</button>
+					<button type="button" class="btn btn-danger" onclick="location.href='/living/recipe/delRecipe.action?seq=${rdto.recipeSeq}&page=${page}'">예, 삭제하겠습니다</button>
 				</div>
 			</div>
 		</div>
@@ -182,6 +197,18 @@
 	
 	$('.order-carousel-indicator').siblings().eq(0).addClass("active");
 	$('.order-carousel-item').siblings().eq(0).addClass("active");
+	
+	$('.star').click(function() {
+		$('.star').removeClass('glyphicon-star-empty');
+		$('.star').removeClass('glyphicon-star');
+		$(this).prevAll().addClass('glyphicon-star');
+		$(this).addClass('glyphicon-star');
+		$(this).nextAll().addClass('glyphicon-star-empty');
+		$(this).siblings().eq(0).removeClass('glyphicon-star');
+		
+		$('#recipeCommentStar').attr('value', $(this).parent().find('.glyphicon-star').length);
+		console.log($(this).parent().find('.glyphicon-star').length);
+	});
 </script>
     
     
