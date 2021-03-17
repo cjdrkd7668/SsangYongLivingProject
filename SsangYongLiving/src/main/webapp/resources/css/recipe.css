@@ -207,7 +207,7 @@
 	margin-top: 30px;
 }
 
-.recipe-info .recipe-thumbnail {
+.recipe-thumbnail {
 	width: 293px;
 	border: 1px solid #ddd;
     border-radius: 4px;
@@ -215,7 +215,7 @@
     margin-right: 15px;
 } 
 
-.recipe-info .recipe-thumbnail img {
+.recipe-thumbnail img {
 	width: 280px;
 	height: 200px;
 	margin: 5px;
@@ -308,8 +308,106 @@
 }
 /* 레시피 상세 페이지 끝 */
 
+/* 레시피 쓰기 시작 */
+.add-ingre > .recipe-cart {
+	height: 182px;
+}
+
+.add-ingre > .recipe-ingre-item:hover {
+	cursor: auto;
+}
+
+#recipe-add-container button {
+	float: right;
+}
+
+#add-btn {
+	margin-top: -43px;
+}
+
+#recipe-add-container .btn-group {
+	display: block;
+}
+
+#recipe-add-container .btn-group:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+#add-ingre-modal .recipe-cart {
+	width: 500px;
+	margin: auto;
+}
+
+#recipe-add-level {
+	width: 30%;
+}
+
+.add-form-block {
+	width: 50%;
+	float: left;
+}
+
+.add-recipe-info:after {
+	content: '';
+	display: block;
+	clear: both;	
+}
+
+.add-recipe-info .recipe-thumbnail {
+	float: right;
+}
+
+#recipe-add-content {
+	height: 200px;
+	resize: none;
+	overflow-y: scroll;
+}
+
+.add-recipe-order .btn-info {
+    background-color: #444;
+    border-color: #444;
+}
+
+.add-recipe-order .btn-info:focus {
+    background-color: #444;
+    border-color: #444;
+}
+
+#recipe-add-container #add-order-btn {
+	float: none;
+}
+
+#add-orders-here {
+	margin-top: 15px;
+	padding: 5px;
+	border: 1px solid #CCC;
+}
+
+.added-order {
+	padding: 5px;
+	border: 1px solid #EEE;
+}
+
+#recipe-add-container .btn-group-ok {
+	margin-top: 15px;
+}
+
+#recipe-add-container:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.added-order:after {
+	content: '';
+	display: block;
+	clear: both;	
+}
 
 
+/* 레시피 쓰기 끝 */
 
 
 
