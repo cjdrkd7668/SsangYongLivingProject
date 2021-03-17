@@ -14,6 +14,9 @@
 		<typeAlias type="com.test.living.group.QnaDTO" alias="groupQnaDto"/>
 		<!-- 공동 구매 커뮤니티 DTO 끝 -->
 		
+		<!-- 고수들의 레시피 DTO 시작 -->
+		<typeAlias type="com.test.living.recipe.RecipeDTO" alias="recipeRecipeDto" />
+		
 	</typeAliases>
 </configuration>
 
