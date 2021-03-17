@@ -13,7 +13,7 @@
 			<c:forEach items="${list}" var="rdto">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
-					<a href="/living/recipe/detail?seq=${rdto.recipeSeq}&page=${page}.action"><img src="/living/resources/images/${rdto.recipeImage}"  alt="${rdto.recipeImage}"></a>
+					<a href="/living/recipe/detail.action?seq=${rdto.recipeSeq}&page=${page}"><img src="/living/resources/images/${rdto.recipeImage}"  alt="${rdto.recipeImage}"></a>
 					<div class="caption">
 						<h3>${rdto.recipeSubject}</h3>
 						<div>작성자: ${rdto.name}</div>
