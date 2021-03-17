@@ -1,6 +1,7 @@
 package com.test.living.job;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -82,17 +83,28 @@ public class JobController {
 	@RequestMapping(value="/jobboard/storylist.action", method={RequestMethod.GET})
 	public String storylist(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
+		
+		List<StoryBoardDTO> list = dao.storylist();
+		
+		request.setAttribute("list", list);
+		
 		return "jobboard.storylist";
 	}
 	
 	
-	@RequestMapping(value="/jabboard/storyview.action", method={RequestMethod.GET})
-	public String storyview(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	@RequestMapping(value="/jobboard/storyview.action", method={RequestMethod.GET})
+	public String storyview(HttpServletRequest request, HttpServletResponse response, HttpSession session, String seq) {
+		
+		StoryBoardDTO dto = dao.storyget(seq);
+		
+		request.setAttribute("dto", dto);
+		
 		
 		return "jobboard.storyview";
 	}
 	
-
+	
+	
 	@RequestMapping(value="/jobboard/storyadd.action", method={RequestMethod.GET})
 	public String member_storyadd(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		

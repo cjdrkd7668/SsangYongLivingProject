@@ -33,36 +33,14 @@
 			<th>작성자</th>
 			<th>조회수</th>
 		</tr>
+		<c:forEach items="${list}" var="dto">
 		<tr>
-			<td><span class="dayColor">2020-09-09</td>
-			<td><span class="storySubject">알바 인생 이야기</span></td>
-			<td><span class="writer">asd***</span></td>
-			<td>2</td>
+			<td><span class="dayColor">${dto.regDate}</td>
+			<td><a href="/living/jobboard/storyview.action?seq=${dto.seq}"><span class="storySubject">${dto.title}</span></a></td>
+			<td><span class="writer">asd***${dto.seq} 글번호</span></td>
+			<td>${dto.hits}</td>
 		</tr>
-		<tr>
-			<td><span class="dayColor">2020-09-09</td>
-			<td><span class="storySubject">알바 인생 이야기</span></td>
-			<td><span class="writer">asd***</span></td>
-			<td>2</td>
-		</tr>
-		<tr>
-			<td><span class="dayColor">2020-09-09</td>
-			<td><span class="storySubject">알바 인생 이야기</span></td>
-			<td><span class="writer">asd***</span></td>
-			<td>2</td>
-		</tr>
-		<tr>
-			<td><span class="dayColor">2020-09-09</td>
-			<td><span class="storySubject">알바 인생 이야기</span></td>
-			<td><span class="writer">asd***</span></td>
-			<td>2</td>
-		</tr>	
-		<tr>
-			<td><span class="dayColor">2020-09-09</td>
-			<td><span class="storySubject">알바 인생 이야기</span></td>
-			<td><span class="writer">asd***</span></td>
-			<td>2</td>
-		</tr>	
+		</c:forEach>
 	</table>
 
 	
