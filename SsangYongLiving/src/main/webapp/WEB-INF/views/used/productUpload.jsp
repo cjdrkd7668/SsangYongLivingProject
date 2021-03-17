@@ -4,7 +4,7 @@
 <div class="content" id="content">
         <h3 style="text-align: center;">물건 올리기</h3>
         <hr>
-        <form method="POST" action="#" encType="multipart/form-data">
+        <form method="POST" action="/living/used/productUploadok.action" enctype="multipart/form-data">
 
 
             <table class="table table-bordered">
@@ -13,37 +13,41 @@
                     <td style="width: 300px;" >
                         <div class="form-group">
                             <label for="sel1"></label>
-                            <select class="form-control" id="sel1" style="margin: -24px 2px; width: 150px; height: 30px; padding:0;" name="category" required>
+                            <select class="form-control" name="categorySeq" id="sel1" style="margin: -24px 2px; width: 150px; height: 30px; padding:0;" required>
                                 <option>선택하세요.</option>
-                                <option value="패션의류">패션의류</option>
-                                <option value="패션잡화">패션잡화</option>
-                                <option value="뷰티">뷰티</option>
-                                <option value="출산/유아동">출산/유아동</option>
-                                <option value="모바일/태블릿">모바일/태블릿</option>
-                                <option value="가전제품">가전제품</option>
-                                <option value="노트북/데스크탑">노트북/데스크탑</option>
-                                <option value="카메라/캠코더">카메라/캠코더</option>
-                                <option value="가구/인테리">가구/인테리어</option>
-                                <option value="리빙/생활">리빙/생활</option>
-                                <option value="게임">게임</option>
-                                <option value="반려동물/취미">반려동물/취미</option>
-                                <option value="도서/음반/문구">도서/음반/문구</option>
-                                <option value="티켓/쿠폰">티켓/쿠폰</option>
-                                <option value="스포츠">스포츠</option>
-                                <option value="레저/여행">레저/여행</option>
-                                <option value="오토바이">오토바이</option>
-                                <option value="공구/산업용품">공구/산업용품</option>
+                                <option value="1">패션의류</option>
+                                <option value="2">패션잡화</option>
+                                <option value="3">뷰티</option>
+                                <option value="4">출산/유아동</option>
+                                <option value="5">모바일/태블릿</option>
+                                <option value="6">가전제품</option>
+                                <option value="7">노트북/데스크탑</option>
+                                <option value="8">카메라/캠코더</option>
+                                <option value="9">가구/인테리어</option>
+                                <option value="10">리빙/생활</option>
+                                <option value="11">게임</option>
+                                <option value="12">반려동물/취미</option>
+                                <option value="13">도서/음반/문구</option>
+                                <option value="14">티켓/쿠폰</option>
+                                <option value="15">스포츠</option>
+                                <option value="16">레저/여행</option>
+                                <option value="17">오토바이</option>
+                                <option value="18">공구/산업용품</option>
                             </select>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <th style="width: 50px; text-align: center;">제목</th>
-                    <td><input type="text" class="form-control" style="width: 100%; height: 30px; padding:0;"></td>
+                    <td><input type="text" name="subject" class="form-control" style="width: 100%; height: 30px; padding:0;"></td>
                 </tr>
                 <tr>
                     <th style="width: 50px; text-align: center;">제품</th>
-                    <td><input type="text" class="form-control" style="width: 100%; height: 30px; padding:0;"></td>
+                    <td><input type="text" name="name" class="form-control" style="width: 100%; height: 30px; padding:0;"></td>
+                </tr>
+                <tr>
+                    <th style="width: 50px; text-align: center;">가격</th>
+                    <td><input type="text" name="price" class="form-control" style="width: 100px; height: 30px; padding:0; display: inline;"><span>&nbsp;원</span></td>
                 </tr>
                 
                
@@ -53,7 +57,7 @@
                     <td style="width: 300px;">
                         <div class="form-group">
                         <label for="sel2"></label>
-                        <select class="form-control" id="sel2" style="margin: -24px 2px; width: 150px; height: 30px; padding:0;" name="product-state" required>
+                        <select class="form-control" id="sel2" style="margin: -24px 2px; width: 150px; height: 30px; padding:0;" name="productStatus" required>
                             <option>선택하세요.</option>
                             <option value="거의 새 것">거의 새것</option>
                             <option value="미 개봉">미개봉</option>
@@ -68,7 +72,7 @@
                 <td style="width: 300px;">
                     <div class="form-group">
                     <label for="sel2"></label>
-                    <select class="form-control" id="sel2" style="margin: -24px 2px; width: 150px; height: 30px; padding:0;" name="howtotrade" required>
+                    <select class="form-control" id="sel2" style="margin: -24px 2px; width: 150px; height: 30px; padding:0;" name="trade" required>
                         <option>선택하세요.</option>
                         <option value="직거래">직거래</option>
                         <option value="택배">택배</option>
@@ -81,15 +85,15 @@
                 <th style="width: 50px; text-align: center;">상세설명</th>
                 
                 <td>
-                    <textarea class="form-control" rows="5" style="resize: none; font-size: 1em;" name="detail" required></textarea>
+                    <textarea class="form-control" rows="5" style="resize: none; font-size: 1em;" name="content" required></textarea>
                 </td>
             </tr>
             <tr>
                 <th style="width: 50px; text-align: center;">사진</th>
-                <td>
-                    <input type="file" class="form-control" name="url1" required>
-                    <input type="file" class="form-control" name="url2" required>
-                </td>
+                 <td>
+                    <input type="file" class="form-control" name="uploadFile" required>
+                   <!--  <input type="file" class="form-control" name="url2" required> -->
+                </td> 
             </tr>
 
             
@@ -100,11 +104,12 @@
             <button type="submit" class="btn btn-info" style="background-color: #486BB8;">
                 <span class="glyphicon glyphicon-ok"></span> 등록하기
             </button>
-            <button type="button" class="btn btn-default" onclick="location.href='#'">
+            <button type="button" class="btn btn-default" onclick="location.href='/living/used/main.action'">
                 <span class="glyphicon glyphicon-remove"></span> 취소하기
             </button>
             
         </div>
+        <input type="hidden" name="seq" value="seq" value="${seq}"> 
     </form>
         
         
