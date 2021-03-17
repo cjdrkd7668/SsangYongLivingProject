@@ -399,6 +399,14 @@
 	display: block;
 	clear: both;
 }
+
+.added-order:after {
+	content: '';
+	display: block;
+	clear: both;	
+}
+
+
 /* 레시피 쓰기 끝 */
 
 

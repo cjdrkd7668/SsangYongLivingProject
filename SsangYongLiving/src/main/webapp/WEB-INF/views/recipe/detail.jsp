@@ -143,7 +143,7 @@
 	</div>
 
 	<div class="btn-group">
-		<button type="button" class="btn btn-default" onclick="location.href='/living/recipe/edit.action'">수정</button>
+		<button type="button" class="btn btn-default" onclick="location.href='/living/recipe/editRecipe.action'">수정</button>
 		<button type="button" class="btn btn-default" id="delete-btn">삭제</button>
 		<button type="button" class="btn btn-default" onclick="location.href='/living/recipe/board.action'">목록</button>
 	</div>
