@@ -336,6 +336,7 @@
 	$('.range-ingre').on('input', function() {
 	  	$(this).parent().next().text(this.value);
 	})
+
 </script>
 
 

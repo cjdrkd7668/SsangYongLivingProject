@@ -168,7 +168,7 @@
 			</div>
 		</div>
 		<div class="recipe-thumbnail">
-			<img src="/living/resources/images/default-image.png" alt="이미지를 첨부해주세요.">
+			<img src="/living/resources/images/default-image.png" id="recipe-thumbnail-img" alt="이미지를 첨부해주세요.">
 		</div>
 
 	</div>
@@ -263,6 +263,33 @@
 		$(this).remove();
 	});
 	
+	//이미지 첨부파일 미리보기
+	$(document).ready(function() {
+		$("#recipe-add-thumbnail").on("change", handleImgFileSelect);
+	});
+	
+	function handleImgFileSelect(e) {
+		
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+		
+		filesArr.forEach(function(f) {
+			if(!f.type.match("image.*")) {
+				alert("확장자는 이미지 확장자만 가능합니다.")
+				return;			
+			}
+			
+			sel_file = f;
+			
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("#recipe-thumbnail-img").attr("src", e.target.result);
+			}
+			reader.readAsDataURL(f);
+			
+		});
+		
+	}
 </script>
 
 
