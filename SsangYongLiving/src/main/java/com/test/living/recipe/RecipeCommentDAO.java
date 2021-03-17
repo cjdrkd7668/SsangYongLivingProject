@@ -24,4 +24,10 @@ public class RecipeCommentDAO implements IRecipeCommentDAO {
 		return template.update("recipe.delComment", commentSeq);
 	}
 
+	@Override
+	public int addRecipeComment(RecipeCommentDTO rcdto) {
+		
+		return template.insert("recipe.addRecipeComment", rcdto);
+	}
+
 }

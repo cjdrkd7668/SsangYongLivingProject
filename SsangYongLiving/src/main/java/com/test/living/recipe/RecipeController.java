@@ -115,6 +115,41 @@ public class RecipeController {
 		
 	}
 	
+	@RequestMapping(value="/recipe/addComment.action", method=RequestMethod.POST)
+	public void addComment(HttpServletRequest request, HttpServletResponse response, HttpSession session, RecipeCommentDTO rcdto, String page) {
+		
+		rcdto.setMemberSeq((String)session.getAttribute("seq"));
+		String recipeSeq = rcdto.getRecipeSeq();
+		int result = rcdao.addRecipeComment(rcdto);
+		
+		try {
+			if (result == 1) {
+				response.sendRedirect("/living/recipe/detail.action?seq=" + recipeSeq + "&page=" + page);
+			} else {
+				response.sendRedirect("/living/recipe/detail.action?seq=" + recipeSeq + "&page=" + page);				
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	@RequestMapping(value="/recipe/delRecipe.action", method=RequestMethod.GET)
+	public void delRecipe(HttpServletRequest request, HttpServletResponse response, HttpSession session, String seq, String page) {
+		
+		int result = rdao.delRecipe(seq);
+		
+		try {
+			if (result == 1) {
+				response.sendRedirect("/living/recipe/board.action");				
+			} else {				
+				response.sendRedirect("/living/recipe/detail.action?seq=" + seq + "&page=" + page);				
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		
+	}
+	
 	@RequestMapping(value="/recipe/addRecipe.action", method=RequestMethod.GET)
 	public String addRecipe(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		

@@ -31,8 +31,9 @@
 			</c:forEach>
 		</div>
 		
-		<button type="button" class="btn btn-primary" id="write-button" onclick="location.href='/living/recipe/addRecipe.action'">레시피 쓰기</button>
-		
+		<c:if test="${access == 1 || access == 0}">
+		<button type="button" class="btn btn-primary" id="write-button" onclick="location.href='/living/recipe/addRecipe.action'">레시피 쓰기</button>		
+		</c:if>
 		<!-- pagination -->
 		<nav>
 			<ul class="pagination">

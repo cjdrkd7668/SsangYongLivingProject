@@ -11,4 +11,6 @@ public interface IRecipeDAO {
 
 	RecipeDTO getRecipeDto(String seq);
 
+	int delRecipe(String recipeSeq);
+
 }
