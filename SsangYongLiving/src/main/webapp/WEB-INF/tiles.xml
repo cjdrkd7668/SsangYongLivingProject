@@ -13,6 +13,15 @@
 	</definition>
 	<!-- 홈 화면 템플릿 끝 -->
 	
+	<!-- 인증 템플릿 시작 -->
+	<definition name="auth.*" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/views/auth/{1}.jsp"></put-attribute>
+	</definition>
+	<!-- 인증 템플릿 끝 -->
+	
 	<!-- recipe 템플릿 시작 -->
 	<definition name="recipe.*" template="/WEB-INF/views/layout/recipemain.jsp">
 		<put-attribute name="recipeasset" value="/WEB-INF/views/inc/recipeasset.jsp"></put-attribute>
