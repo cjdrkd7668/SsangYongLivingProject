@@ -21,6 +21,9 @@
 
 		<!-- 고수들의 레시피 DTO 시작 -->
 		<typeAlias type="com.test.living.recipe.RecipeDTO" alias="recipeRecipeDto" />
+		<typeAlias type="com.test.living.recipe.RecipeStockDTO" alias="recipeRecipeStockDto" />
+		<typeAlias type="com.test.living.recipe.RecipeOrderDTO" alias="recipeRecipeOrderDto" />
+		<typeAlias type="com.test.living.recipe.RecipeCommentDTO" alias="recipeRecipeCommentDto" />
 
 		
 	</typeAliases>

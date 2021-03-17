@@ -14,6 +14,7 @@ public class RecipeDTO {
 	private String recipeRegdate;
 	private String name;
 	private String starAvg;
+	private String recipeContent;
 	
 	private String rnum;
 }

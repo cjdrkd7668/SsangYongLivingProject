@@ -306,6 +306,26 @@
 	display: block;
 	clear: both;
 }
+
+.recipe-comment tbody a {
+	cursor: pointer;
+}
+
+#recipe-add-comment-form textarea {
+	height: 100px;
+}
+
+#recipe-add-comment-form .btn {
+	margin-top: -17px;
+	float: right;
+}
+
+#recipe-add-comment-form:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
 /* 레시피 상세 페이지 끝 */
 
 /* 레시피 쓰기 시작 */

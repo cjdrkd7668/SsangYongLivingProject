@@ -18,9 +18,12 @@
 						<h3>${rdto.recipeSubject}</h3>
 						<div>작성자: ${rdto.name}</div>
 						<span>난이도: ${rdto.recipeLevel} | 별점:
-						<c:forEach var="i" begin="0" end="${rdto.starAvg }">
-		    			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						</c:forEach>
+							<c:forEach var="i" begin="1" end="${rdto.starAvg }">
+			    			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							</c:forEach> 
+							<c:if test="${rdto.starAvg == 0}">
+							<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+							</c:if>
 						</span>
 					</div>
 				</div>
