@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="recipe">
+	
+	<select id="getRecipeList" parameterType="hashmap" resultType="recipeRecipeDto">
+		select * from (select rownum as rnum, rc.* from vwRecipeList rc) where rnum between #{begin} and #{end}
+	</select>
+	
+	<select id="getRecipeTotalCount" resultType="int">
+		select count(*) from vwRecipeList
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -18,9 +18,6 @@ public class BoardController {
 	
 	@Autowired
 	private IBoardDAO dao;
-	
-	
-	
 
 	//http://localhost:8090/board/board/template.action
 	@RequestMapping(value="/board/template.action", method={RequestMethod.GET})
