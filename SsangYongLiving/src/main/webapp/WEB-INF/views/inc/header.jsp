@@ -12,7 +12,7 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="/living/index.action">홈</a></li>
 					<li><a href="/living/recipe/main.action">냉장고 털기</a></li>
-					<li><a href="#">공동 구매 찾기</a></li>
+					<li><a href="/living/group/view.action?seq=1&nowPage=1">공동 구매 찾기</a></li>
 					<li><a href="/living/job/index.action">내 동네 알바 찾기</a></li>
 					<li><a href="/living/used/main.action">중고 거래 하기</a></li>
 					

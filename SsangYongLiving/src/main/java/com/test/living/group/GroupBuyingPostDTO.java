@@ -14,6 +14,7 @@ public class GroupBuyingPostDTO {
 	private String companySeq;
 	private String companyName;
 	private String companyAddress;
+	private String companyCount;
 	private String companyLastTime;
 	private String subject;
 	private String detail;
@@ -25,6 +26,7 @@ public class GroupBuyingPostDTO {
 	private String totalCount;
 	private String startDate;
 	private String endDate;
+	private String timeRemaining;
 	private String state;
 	private String delFlag;
 
