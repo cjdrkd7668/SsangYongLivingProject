@@ -9,5 +9,9 @@
 		select * from vwJobList order by recruitmentseq desc
 	</select>
 	
+	<select id="recruitmentget" parameterType="String" resultType="com.test.living.job.RecruitmentDTO">
+		select * from tblRecruitment where seq = #{recruitmentSeq}
+	</select>
+	
 
 </mapper>

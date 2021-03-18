@@ -6,4 +6,6 @@ public interface IRecruitmentDAO {
 
 	List<RecruitmentDTO> recruitmentlist();
 
+	RecruitmentDTO recruitmentget(String recruitmentSeq);
+
 }

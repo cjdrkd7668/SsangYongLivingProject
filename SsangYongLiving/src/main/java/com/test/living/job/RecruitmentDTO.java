@@ -6,7 +6,9 @@ import lombok.Data;
 public class RecruitmentDTO {
 	
 	
-	private String seq;
+	private String recruitmentSeq; //join view에서 사용
+	private String seq; //tbl 조회에서 사용
+	
 	private String employerSeq;
 	private String startDay;
 	private String endDay;

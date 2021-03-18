@@ -23,12 +23,12 @@
 	<c:forEach items="${list}" var="dto">
 	<div class="rItem">
 	<img src="/living/resources/images/job/${dto.businessURL}" style="width:80px; border-radius:3px;">
-	<a href="/living/job/recruitmentView.action" style="color: black; text-decoration:none;">
+	<a href="/living/job/recruitmentView.action?recruitmentSeq=${dto.recruitmentSeq}" style="color: black; text-decoration:none;">
 	<div class="rTitle">${dto.storeName}</div>
 	</a>
 	<div class="rAddress">${dto.address}</div>
 	<div class="rWage">${dto.wage}원</div>
-	<div class="rRegdate">2020-01-01</div>
+	<!-- <div class="rRegdate">2020-01-01</div> -->
 	<div class="rPoint">${dto.mainPoint}</div>
 	
 	</div>

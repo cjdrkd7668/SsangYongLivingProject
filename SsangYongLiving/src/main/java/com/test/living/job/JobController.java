@@ -81,7 +81,11 @@ public class JobController {
 	
 	
 	@RequestMapping(value="/job/recruitmentView.action", method={RequestMethod.GET})
-	public String recruitmentView(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public String recruitmentView(HttpServletRequest request, HttpServletResponse response, HttpSession session, String recruitmentSeq, String address) {
+		
+		RecruitmentDTO dto = rdao.recruitmentget(recruitmentSeq);
+		
+		request.setAttribute("dto", dto);
 		
 		return "job.recruitmentView";
 	}

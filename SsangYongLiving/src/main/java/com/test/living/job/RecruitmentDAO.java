@@ -17,6 +17,14 @@ public class RecruitmentDAO implements IRecruitmentDAO {
 		
 		return template.selectList("jobrecruitment.recruitmentlist");
 	}
+
+	@Override
+	public RecruitmentDTO recruitmentget(String recruitmentSeq) {
+		
+		return template.selectOne("jobrecruitment.recruitmentget", recruitmentSeq);
+	}
+	
+	
 	
 	
 }
