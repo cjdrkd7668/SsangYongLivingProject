@@ -73,8 +73,9 @@
 	
 	<script>
 
-	var address = ${dto.address};	//이 부분 ajax로 해야 할듯
-	console.log(address);
+	var address = "<c:out value='${dto.address}'/>";	
+	//코드 실행 순서는 JAVA -> JSTL -> HTML -> JavaScript 순이기 때문에
+	//script 영역에서 jstl의 el 구문을 사용할 수 있다. --> 
 	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -104,7 +105,7 @@
 	
 	        // 인포윈도우로 장소에 대한 설명을 표시합니다
 	        var infowindow = new kakao.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리 가게</div>'
 	        });
 	        infowindow.open(map, marker);
 	
