@@ -63,6 +63,7 @@ where rnum between #{nowPage} and #{nowPage} + 10
 		    seq,
 		    companySeq,
 		    (select name from tblGroupBuyingCompany where seq = tblGroupBuyingPost.companySeq) as companyName,
+		    (select count(*) from tblGroupBuyingPost where companySeq = (select companySeq from tblGroupBuyingPost where seq = #{seq}) and state = 1 and delFlag = 0) as companyCount,
 		    (select address from tblGroupBuyingCompany where seq = tblGroupBuyingPost.companySeq) as companyAddress,
 		    to_char((select lastTime from tblGroupBuyingCompany where seq = tblGroupBuyingPost.companySeq), 'mm/dd hh24:mi') as companyLastTime,
 		    subject,
@@ -75,9 +76,32 @@ where rnum between #{nowPage} and #{nowPage} + 10
 		    totalCount,
 		    to_char(startDate, 'mm/dd hh24:mi') as startDate,
 		    to_char(endDate, 'mm/dd hh24:mi') as endDate,
+		    (to_date(endDate, 'yyyy-mm-dd hh24:mi:ss') - to_date(sysdate, 'yyyy-mm-dd hh24:mi:ss')) as timeRemaining,
 		    state,
 		    delFlag
 		from tblGroupBuyingPost where seq = #{seq} and delFlag = 0
+	</select>
+	
+	<!-- Qna 글 목록을 가져온다. -->
+	<select id="qnaList" parameterType="groupQnaDto" resultType="groupQnaDto">
+		select
+		    a.seq as seq,
+		    a.postSeq as postSeq,
+		    a.companySeq as companySeq,
+		    case
+		        when a.companySeq is null then (select name from tblMember where seq = a.memberSeq)
+		        when a.memberSeq is null then (select name from tblGroupBuyingCompany where seq = a.companySeq)
+		    end as name,
+		    a.memberSeq as memberSeq,
+		    a.subject as subject,
+		    to_char(a.regDate, 'mm/dd hh24:mi') as regDate,
+		    (sysdate - a.regDate) * 24 as gap,
+		    to_char(a.updateDate, 'mm/dd hh24:mi') as updateDate,
+		    a.readcount as readCount,
+		    a.fileName as fileName,
+		    a.openFlag as openFlag
+		from (select rownum as rnum, q.* from (select * from tblQna where delFlag = 0 and postSeq = #{postSeq} order by thread desc) q) a
+		    where rnum between (#{nowPage}-1)*6+1 and #{nowPage}*6
 	</select>
 	
 </mapper>

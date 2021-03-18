@@ -1,5 +1,9 @@
 package com.test.living.group;
 
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,5 +13,15 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class QnaDAO implements IQnaDAO {
+
+	@Autowired
+	private SqlSessionTemplate template;
+	
+	//Qna 글 목록
+	@Override
+	public List<QnaDTO> list(QnaDTO qdto) {
+		
+		return template.selectList("group.qnaList", qdto);
+	}
 
 }
