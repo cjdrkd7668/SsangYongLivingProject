@@ -351,6 +351,17 @@ body {
 	margin-top: 10px;
 }
 
+.rInfoBottom {
+	width: 800px;
+	text-align: left;
+	height: 100px;
+	padding-top: 10px;
+	border-radius: 3px;
+	background-color: #F8F9FA; 
+	margin-top: 10px;
+	
+}
+
 
 
 .storySCut {
@@ -443,6 +454,7 @@ body {
 
 .rPoint {
 	color: #777;
+	font-weight: 0.7em;
 	margin-left: 110px;
 }
 
@@ -602,6 +614,12 @@ body {
 
 	
 	
+}
+
+.storyBottom {
+	margin-top: 25px;
+	margin-left: 600px;
+	width: 200px;
 }
 
 .storyCommentlist {

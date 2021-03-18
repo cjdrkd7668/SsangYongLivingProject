@@ -19,20 +19,23 @@
 
 	<div class="bottomWrapper">
 	<div class="rItemWrapper">
+	
+	<c:forEach items="${list}" var="dto">
 	<div class="rItem">
-	<img src="/living/resources/images/market02.jpg" style="width:80px; border-radius:3px;">
-	<a href="/living/job/recruitmentView.action" style="color: black; text-decoration:none;">
-	<div class="rTitle">고기굽는날</div>
+	<img src="/living/resources/images/job/${dto.businessURL}" style="width:80px; border-radius:3px;">
+	<a href="/living/job/recruitmentView.action?recruitmentSeq=${dto.recruitmentSeq}" style="color: black; text-decoration:none;">
+	<div class="rTitle">${dto.storeName}</div>
 	</a>
-	<div class="rAddress">서울시 강북구</div>
-	<div class="rWage">8,720원</div>
-	<div class="rRegdate">2020-01-01</div>
-	<div class="rPoint">저희 매장은 바쁜 저녁, 성실하게 일해주실 수 있는 분을 기다리고 있습니다.</div>
+	<div class="rAddress">${dto.address}</div>
+	<div class="rWage">${dto.wage}원</div>
+	<!-- <div class="rRegdate">2020-01-01</div> -->
+	<div class="rPoint">${dto.mainPoint}</div>
 	
 	</div>
 
 	<hr>	
-
+	</c:forEach>
+	<!-- 
 	<div class="rItem">
 	<img src="/living/resources/images/market02.jpg" style="width:80px; border-radius:3px;">
 	<div class="rTitle">고기굽는날</div>
@@ -43,39 +46,8 @@
 	</div>
 
 	<hr>	
-
-	<div class="rItem">
-	<img src="/living/resources/images/market02.jpg" style="width:80px; border-radius:3px;">
-	<div class="rTitle">고기굽는날</div>
-	<div class="rAddress">서울시 강북구</div>
-	<div class="rWage">8,720원</div>
-	<div class="rRegdate">2020-01-01</div>
-	<div class="rPoint">저희 매장은 바쁜 저녁, 성실하게 일해주실 수 있는 분을 기다리고 있습니다.</div>
-	</div>
-
-	<hr>
+	 -->
 	
-	<div class="rItem">
-	<img src="/living/resources/images/market02.jpg" style="width:80px; border-radius:3px;">
-	<div class="rTitle">고기굽는날</div>
-	<div class="rAddress">서울시 강북구</div>
-	<div class="rWage">8,720원</div>
-	<div class="rRegdate">2020-01-01</div>
-	<div class="rPoint">저희 매장은 바쁜 저녁, 성실하게 일해주실 수 있는 분을 기다리고 있습니다.</div>
-	</div>
-
-	<hr>
-	
-	<div class="rItem">
-	<img src="/living/resources/images/market02.jpg" style="width:80px; border-radius:3px;">
-	<div class="rTitle">고기굽는날</div>
-	<div class="rAddress">서울시 강북구</div>
-	<div class="rWage">8,720원</div>
-	<div class="rRegdate">2020-01-01</div>
-	<div class="rPoint">저희 매장은 바쁜 저녁, 성실하게 일해주실 수 있는 분을 기다리고 있습니다.</div>
-	</div>
-
-	<hr>		
 	
 	</div>
 	</div>

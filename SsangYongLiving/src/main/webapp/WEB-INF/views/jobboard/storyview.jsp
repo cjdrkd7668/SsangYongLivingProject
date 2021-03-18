@@ -17,16 +17,19 @@
 	<div class="bottomWrapper">
 	
 	<div class="storyboardHeader">
-	<div class="storyTitle">이제 3일차인데, 아직 적응이 안 되네요</div>
-	<div class="storysubTitle">asdf** |&nbsp;&nbsp;&nbsp;<span class="dayColor">2020-0101</span></div><div class="boardInfo">댓글 6 | 조회 10</div>
+	<div class="storyTitle">${dto.title}</div>
+	<div class="storysubTitle">asdf** |&nbsp;&nbsp;&nbsp;<span class="dayColor">${dto.regDate}</span></div><div class="boardInfo">댓글 6 | 조회 ${dto.hits}</div>
 	</div>
 	
 	
 	<div class="storyboardContent">
-	3일차입니다. 아직도 알바 출근 시간만 되면 심장이 벌렁거려요.<br>
-	추노하고 싶은 심정을 간신히 참고 있습니다.
+	${dto.material}
 	</div>
 	
+	<div class="storyBottom">
+	<button type="button" class="btn btn-warning" onclick="location.href='/living/jobboard/storyedit.action?seq=${dto.seq}';"><span class="glyphicon glyphicon-wrench"></span>수정</button>	
+	<button type="button" class="btn btn-warning" onclick="location.href='/living/jobboard/storydel.action?seq=${dto.seq}';"><span class="glyphicon glyphicon-scissors">삭제</span></button>	
+	</div>
 	
 	<div class="storyCommentlist">
 	<hr>

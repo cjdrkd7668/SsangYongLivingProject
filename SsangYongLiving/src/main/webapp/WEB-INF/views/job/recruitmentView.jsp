@@ -6,9 +6,9 @@
 <section>
 
 	<div>
-	<img src="/living/resources/images/market02.jpg" style="filter: brightness(50%);" class="middleContent">
+	<img src="/living/resources/images/job/market02.jpg" style="filter: brightness(50%);" class="middleContent">
 	<div class="middleSub">서빙/음식점</div>
-	<div class="middleTitle">두루치기사랑</div>
+	<div class="middleTitle">${dto.storeName}</div>
 	</div>
 	
 	
@@ -27,12 +27,12 @@
 		
 		<div class="aInfoContent">
 		<div><img src="/living/resources/images/job/money.png" style="width:50px;"></div>
-		<div class="infoDetail">8720원</div>
+		<div class="infoDetail">${dto.wage}원</div>
 		</div>
 		
 		<div class="aInfoContent">
 		<div><img src="/living/resources/images/job/calendar.png" style="width:50px;"></div>
-		<div class="infoDetail">월수금</div>
+		<div class="infoDetail">${dto.workingDay}</div>
 		</div>
 		
 		<div class="aInfoContent">
@@ -46,9 +46,9 @@
 	
 	<div class="announcementLine"></div>
 		
-	<div class="startInfo">근무시작일: <span class="aStartDate">2020-10-10 ~ 2020-11-20</span></div>
+	<div class="startInfo">근무시작일: <span class="aStartDate">${dto.startDay} ~ ${dto.endDay}</span></div>
 
-	<div class="aAddress">주소: <span class="aAddressImpact">서울시 도봉구 도봉로 시루봉로 55-29</span></div>
+	<div class="aAddress">주소: <span class="aAddressImpact">${dto.address}</span></div>
 	
 	
 	<div class="applyArea">
@@ -57,7 +57,7 @@
 	
 	</div>
 	<!-- announcementUpper 끝 -->
-	<div class="infoBottom">한줄 주요사항: 가족처럼 지내실 성실한 알바님을 모십니다. ^^</div>
+	<div class="rInfoBottom">한줄 주요사항: ${dto.mainPoint}</div>
 	
 	
 	
@@ -66,19 +66,55 @@
 	
 	
 	<div id="map" style="width:800px;height:300px;"></div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	f8be647e9bcdabb5c7ddc1287e93d363"></script>
+	
+	
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	f8be647e9bcdabb5c7ddc1287e93d363&libraries=services"></script>
 	
 	
 	<script>
+
+	var address = "<c:out value='${dto.address}'/>";	
+	//코드 실행 순서는 JAVA -> JSTL -> HTML -> JavaScript 순이기 때문에
+	//script 영역에서 jstl의 el 구문을 사용할 수 있다. --> 
 	
-		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-		var options = { //지도를 생성할 때 필요한 기본 옵션
-			center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-			level: 3 //지도의 레벨(확대, 축소 정도)
-		};
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
+
+	// 지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
 	
-		var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
 	
+	// 주소로 좌표를 검색합니다
+	geocoder.addressSearch(address, function(result, status) {
+	
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === kakao.maps.services.Status.OK) {
+	
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	
+	        // 결과값으로 받은 위치를 마커로 표시합니다
+	        var marker = new kakao.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+	
+	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	        var infowindow = new kakao.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리 가게</div>'
+	        });
+	        infowindow.open(map, marker);
+	
+	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	        map.setCenter(coords);
+	    } 
+	});  
+	
+		
 	</script>
 	
 	
