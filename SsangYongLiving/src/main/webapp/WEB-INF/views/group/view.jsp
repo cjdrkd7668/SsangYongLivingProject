@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
 /* 차트 CSS 시작 */
 @import 'https://code.highcharts.com/css/highcharts.css';
@@ -50,19 +50,19 @@
         <tr>
             <td colspan="2">
                 <div>
-                    <input type="number" class="form-control" min="1" max="10" step="1" value="1"> 개
+                    <input type="number" id="count" class="form-control" min="1" max="10" step="1" value="1"> 개
                 </div>
             </td>
         </tr>
         <tr>
             <td colspan="2">
                 <div>
-                    <span class="orange">5</span>일 남음&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="orange">${dto.timeRemaining}</span>일 남음&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
             </td>
             <td colspan="2">
                 <div>
-                    총 상품 금액 : <span>${dto.price }</span>원
+                    총 상품 금액 : <span id="totalPrice"></span>원
                 </div>
             </td>
         </tr>
@@ -103,7 +103,7 @@
     <div class="col-md-9">
 
         <!-- Qna 테이블 시작 -->
-        <table class="table table-hover commuTable">
+        <table class="table commuTable">
             <tr class="softbg">
                 <th>번호</th>
                 <th>제목</th>
@@ -111,62 +111,31 @@
                 <th>작성일</th>
                 <th>조회</th>
             </tr>
+            
+            <c:forEach items="${qlist }" var="qdto">
+            
+            <!-- 회원이 쓴 글이라면 --> 
+            <c:if test="${not empty qdto.memberSeq}">
             <tr>
-                <td>3</td>
-                <td>배송 언제 되나요?</td>
-                <td>홍길동</td>
-                <td>10:10</td>
-                <td>1</td>
+                <td>${qdto.seq}</td>
+	            <td>${qdto.subject}</td>
+	            <td>${qdto.name }</td>
+                <td>${qdto.updateDate }</td>
+                <td>${qdto.readCount }</td>
             </tr>
-            <tr>
-                <td>3</td>
-                <td>RE: 답변입니다.</td>
-                <td>과일나라</td>
-                <td>10:11</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>배송 언제 되나요?</td>
-                <td>홍길동</td>
-                <td>10:10</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>RE: 답변입니다.</td>
-                <td>과일나라</td>
-                <td>10:11</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>배송 언제 되나요?</td>
-                <td>홍길동</td>
-                <td>10:10</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>RE: 답변입니다.</td>
-                <td>과일나라</td>
-                <td>10:11</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>배송 언제 되나요?</td>
-                <td>홍길동</td>
-                <td>10:10</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>RE: 답변입니다.</td>
-                <td>과일나라</td>
-                <td>10:11</td>
-                <td>1</td>
-            </tr>
+            </c:if>
+            
+            <!-- 업체가 쓴 글이라면 -->
+            <c:if test="${not empty qdto.companySeq}">
+            <tr class="softbg">
+                <td>${qdto.seq}</td>
+	            <td>RE : ${qdto.subject}</td>
+	            <td>${qdto.name }</td>
+                <td>${qdto.updateDate }</td>
+                <td>${qdto.readCount }</td>
+	        </tr>
+            </c:if>
+            </c:forEach>
         </table>
         <!-- Qna 테이블 끝 -->
 
@@ -191,7 +160,7 @@
             <tr>
                 <td>
                     <div>마지막 로그인 <small>${dto.companyLastTime }</small></div>
-                    <div>진행 중인 공구 <small>3</small></div>
+                    <div>진행 중인 공구 <small>${dto.companyCount }</small></div>
                 </td>
             </tr>
             <tr>
@@ -313,5 +282,16 @@
     
     });
 	/* 차트 끝 */
+	
+	//페이지 로드 되었을 때는 1개의 값
+	window.onload = function() {
+		$("#totalPrice").text(${dto.price});
+    };
+
+	//구매 개수를 다르게 할 때마다 총 값도 변한다.
+	$("#count").change(function(){
+		var price = ${dto.price};
+		$("#totalPrice").text($("#count").val() * price);
+	});
 	
 </script>

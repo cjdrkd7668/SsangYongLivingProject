@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="used">
+
+	<insert id="productUpload" parameterType="dto">
+		insert into tblUsed_product (seq, subject, price, name, content, productStatus, trade, regDate, status, viewCount, delFlag, memberSeq, categorySeq) values(seqUsed_product.nextVal, #{subject}, #{price}, #{name}, #{content}, #{productStatus}, #{trade}, sysdate, '판매 중', 0, 0,  #{seq}, #{categorySeq})
+	</insert>
+
+
+</mapper>
+

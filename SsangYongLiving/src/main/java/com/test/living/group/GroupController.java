@@ -40,19 +40,23 @@ public class GroupController {
 	
 	//공동구매 특정 글 페이지 + Qna 글 리스트 페이지
 	@RequestMapping(value="/group/view.action", method={RequestMethod.GET})
-	public String view(HttpServletRequest request, HttpServletResponse response, HttpSession session, String seq) {
+	public String view(HttpServletRequest request, HttpServletResponse response, HttpSession session, String seq, int nowPage) {
 		
-		//TODO 임시...
-		seq = "1";
+		//String seq 공동구매 글 번호
+		//String nowPage 현재 페이지
 		
 		//공동구매 글 정보 가져오기
 		GroupBuyingPostDTO dto = groupBuyingPostDao.view(seq);
 		
+		QnaDTO qdto = new QnaDTO();
+		qdto.setPostSeq(seq);
+		qdto.setNowPage(nowPage);
+		
 		//Qna 글 목록 가져오기
-		
-		
+		List<QnaDTO> qlist = qnaDao.list(qdto);
 		
 		request.setAttribute("dto", dto);
+		request.setAttribute("qlist", qlist);
 		
 		return "group.view";
 	}

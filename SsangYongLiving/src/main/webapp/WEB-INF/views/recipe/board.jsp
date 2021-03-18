@@ -8,111 +8,36 @@
 	<p>다른 쌍용리빙 회원이 올린 레시피입니다.<br>
 	도전해보고싶은 레시피를 클릭해 자세히 알아보세요.</p>
 
-	<button type="button" class="btn btn-primary" id="write-button">레시피 쓰기</button>
-
 	<div class="recipe-board">
 		<div class="row">
+			<c:forEach items="${list}" var="rdto">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
-					<a href="#"><img src="/living/resources/images/recipe-4.jpg" alt="recipe-4.jpg"></a>
+					<a href="/living/recipe/detail.action?seq=${rdto.recipeSeq}&page=${page}"><img src="/living/resources/images/${rdto.recipeImage}"  alt="${rdto.recipeImage}"></a>
 					<div class="caption">
-						<h3>오븐에 빠진 오리</h3>
-						<div>작성자: imthejubugudan</div>
-						<span>난이도: 보통 | 별점:
-						<c:forEach var="i" begin="0" end="2">
-		    			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						</c:forEach>
+						<h3>${rdto.recipeSubject}</h3>
+						<div>작성자: ${rdto.name}</div>
+						<span>난이도: ${rdto.recipeLevel} | 별점:
+							<c:forEach var="i" begin="1" end="${rdto.starAvg }">
+			    			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							</c:forEach> 
+							<c:if test="${rdto.starAvg == 0}">
+							<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+							</c:if>
 						</span>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<a href="#"><img src="/living/resources/images/recipe-1.jpg" alt="recipe-4.jpg"></a>
-					<div class="caption">
-						<h3>오븐에 빠진 오리</h3>
-						<div>작성자: imthejubugudan</div>
-						<span>난이도: 보통 | 별점:
-						<c:forEach var="i" begin="0" end="2">
-		    			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						</c:forEach>
-						</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<a href="#"><img src="/living/resources/images/recipe-9.jpg" alt="recipe-4.jpg"></a>
-					<div class="caption">
-						<h3>오븐에 빠진 오리</h3>
-						<div>작성자: imthejubugudan</div>
-						<span>난이도: 보통 | 별점:
-						<c:forEach var="i" begin="0" end="2">
-		    			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						</c:forEach>
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<a href="#"><img src="/living/resources/images/recipe-7.jpg" alt="recipe-4.jpg"></a>
-					<div class="caption">
-						<h3>오븐에 빠진 오리</h3>
-						<div>작성자: imthejubugudan</div>
-						<span>난이도: 보통 | 별점:
-						<c:forEach var="i" begin="0" end="2">
-		    			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						</c:forEach>
-						</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<a href="#"><img src="/living/resources/images/recipe-8.jpg" alt="recipe-4.jpg"></a>
-					<div class="caption">
-						<h3>오븐에 빠진 오리</h3>
-						<div>작성자: imthejubugudan</div>
-						<span>난이도: 보통 | 별점:
-						<c:forEach var="i" begin="0" end="2">
-		    			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						</c:forEach>
-						</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<a href="#"><img src="/living/resources/images/recipe-3.jpg" alt="recipe-4.jpg"></a>
-					<div class="caption">
-						<h3>오븐에 빠진 오리</h3>
-						<div>작성자: imthejubugudan</div>
-						<span>난이도: 보통 | 별점:
-						<c:forEach var="i" begin="0" end="2">
-		    			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						</c:forEach>
-						</span>
-					</div>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 		
+		<c:if test="${access == 1 || access == 0}">
+		<button type="button" class="btn btn-primary" id="write-button" onclick="location.href='/living/recipe/addRecipe.action'">레시피 쓰기</button>		
+		</c:if>
 		<!-- pagination -->
 		<nav>
 			<ul class="pagination">
-				<li><a href="#" aria-label="Previous"> <span
-						aria-hidden="true">&laquo;</span>
-				</a></li>
-				<li class="active"><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-				</a></li>
+				${pageBar}
 			</ul>
 		</nav>
 

@@ -88,7 +88,7 @@
 	background: #ffdcbf;
 }
 
-#renew-refri .recipe-cart {
+.recipe-cart {
 	background: #FFF;
 	height: 560px;
 	border: 11px solid #EEE;
@@ -123,7 +123,8 @@
 	float: right;
 }
 
-.recipe-gbox .btn:focus {
+.btn:focus,
+.btn:active {
 	outline: none;
 }
 
@@ -171,12 +172,12 @@
 	border-bottom: 1px solid #444;
 }
 
-.recipe-ingre:hover {
+.recipe-ingre-item:hover {
 	cursor: pointer;
 }
-
 /* 냉장고 최신화 끝 */
 
+/* 고수들의 레시피 시작 */
 .recipe-board {
 	text-align: center;
 }
@@ -190,14 +191,258 @@
 	height: 200px;
 }
 
+#write-button {
+	float: right;
+	margin-top: -10px;
+	margin-bottom: -30px;
+}
+
+.recipe-board nav {
+	clear: both;
+}
+/* 고수들의 레시피 끝 */
+
+/* 레시피 상세 페이지 시작 */
+.recipe-info {
+	margin-top: 30px;
+}
+
+.recipe-thumbnail {
+	width: 293px;
+	border: 1px solid #ddd;
+    border-radius: 4px;
+    float: left;
+    margin-right: 15px;
+} 
+
+.recipe-thumbnail img {
+	width: 280px;
+	height: 200px;
+	margin: 5px;
+}
+
+.recipe-info table {
+	width: -webkit-fill-available;
+}
+
+.recipe-info table tr {
+	border-bottom: 1px solid #DDD;
+}
+
+.recipe-info table th {
+	width: 100px;
+	background-color: #EEE;
+	padding-left: 10px;
+}
+
+.recipe-info table td {
+	padding-left: 10px;
+}
+
+.recipe-info table tr:last-child {
+	height: 170px;
+}
+
+#recipe-detail-container .recipe-cart {
+	height: 182px;
+}
+
+#recipe-detail-container .recipe-ingre:hover {
+	cursor: auto;
+}
+
+.recipe-order-detail img {
+	width: 280px;
+	height: 180px;
+}
+
+.recipe-order .carousel-inner img{
+	width: 500px;
+	height: 350px;
+	margin: auto;
+}
+
+.recipe-order .carousel-caption {
+	background-color: rgb(0,0,0,0.5);
+}
+
+.comment-section {
+	width: 1200px;
+	margin: auto;
+}
+
+.comment-section td {
+	padding: 5px 5px 5px 15px;
+}
+
+.comment-section th:first-child {
+	width: auto;
+}
+
+.comment-section th:last-child {
+	width: 200px;
+}
+
+.comment-section tbody tr:nth-child(2n - 1) > td:first-child {
+	background-color: #DDD;
+	border-radius: 30px;
+}
+
+.comment-section tbody tr:nth-child(2n - 1) > td:last-child {
+	border-bottom: 1px solid #DDD;
+}
+
+.comment-section tbody td:last-child {
+	text-align: right;
+}
+
+#recipe-detail-container .btn-group {
+	margin-top: 30px;
+	float: right;
+}
+
+#recipe-detail-container:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.recipe-comment tbody a {
+	cursor: pointer;
+}
+
+#recipe-add-comment-form textarea {
+	height: 100px;
+}
+
+#recipe-add-comment-form .btn {
+	margin-top: -17px;
+	float: right;
+}
+
+#recipe-add-comment-form:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.comment-star {
+	margin-top: -15px;
+	float: right;
+	margin-right: 10px;
+}
+
+.comment-star span:first-child {
+	font-size: 18px;	
+}
+
+.comment-star .star {
+	font-size: 2em;
+	color: #FF6300;
+}
+
+/* 레시피 상세 페이지 끝 */
+
+/* 레시피 쓰기 시작 */
+.add-ingre > .recipe-cart {
+	height: 182px;
+}
+
+.add-ingre > .recipe-ingre-item:hover {
+	cursor: auto;
+}
+
+#recipe-add-container button {
+	float: right;
+}
+
+#add-btn {
+	margin-top: -43px;
+}
+
+#recipe-add-container .btn-group {
+	display: block;
+}
+
+#recipe-add-container .btn-group:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+#add-ingre-modal .recipe-cart {
+	width: 500px;
+	margin: auto;
+}
+
+#recipe-add-level {
+	width: 30%;
+}
+
+.add-form-block {
+	width: 50%;
+	float: left;
+}
+
+.add-recipe-info:after {
+	content: '';
+	display: block;
+	clear: both;	
+}
+
+.add-recipe-info .recipe-thumbnail {
+	float: right;
+}
+
+#recipe-add-content {
+	height: 200px;
+	resize: none;
+	overflow-y: scroll;
+}
+
+.add-recipe-order .btn-info {
+    background-color: #444;
+    border-color: #444;
+}
+
+.add-recipe-order .btn-info:focus {
+    background-color: #444;
+    border-color: #444;
+}
+
+#recipe-add-container #add-order-btn {
+	float: none;
+}
+
+#add-orders-here {
+	margin-top: 15px;
+	padding: 5px;
+	border: 1px solid #CCC;
+}
+
+.added-order {
+	padding: 5px;
+	border: 1px solid #EEE;
+}
+
+#recipe-add-container .btn-group-ok {
+	margin-top: 15px;
+}
+
+#recipe-add-container:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.added-order:after {
+	content: '';
+	display: block;
+	clear: both;	
+}
 
 
-
-
-
-
-
-
+/* 레시피 쓰기 끝 */
 
 
 

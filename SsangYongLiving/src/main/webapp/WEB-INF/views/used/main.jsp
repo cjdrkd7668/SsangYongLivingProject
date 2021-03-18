@@ -3,6 +3,11 @@
 	
 <div class="content" id="content">
 
+	<!-- 로그인 session test -->
+	<div>${empty seq ? "익명" : seq}</div>	
+	<div><a href="/living/used/auth.action">로그인하기</a></div>
+	<!-- Test End -->
+	
 	<img src="/living/resources/images/used/mainimg.jpg" alt="mainimg">
 
 	<div class="searchbox">

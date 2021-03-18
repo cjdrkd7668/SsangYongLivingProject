@@ -14,6 +14,7 @@ public class QnaDTO {
 	private String postSeq;
 	private String companySeq;
 	private String memberSeq;
+	private String name;
 	private String subject;
 	private String regDate;
 	private String gap;
@@ -22,4 +23,6 @@ public class QnaDTO {
 	private String fileName;
 	private String openFlag;
 
+	private int nowPage;
+	private int totalPage;
 }
