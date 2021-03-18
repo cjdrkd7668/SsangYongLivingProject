@@ -6,7 +6,7 @@
 <section>
 
 	<div>
-	<img src="/living/resources/images/market02.jpg" style="filter: brightness(50%);" class="middleContent">
+	<img src="/living/resources/images/job/market02.jpg" style="filter: brightness(50%);" class="middleContent">
 	<div class="middleSub">서빙/음식점</div>
 	<div class="middleTitle">두루치기사랑</div>
 	</div>

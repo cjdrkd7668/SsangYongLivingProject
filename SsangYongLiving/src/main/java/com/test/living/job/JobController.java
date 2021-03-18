@@ -17,7 +17,10 @@ public class JobController {
 
 	
 	@Autowired
-	private IStoryBoardDAO dao;
+	private IStoryBoardDAO dao; //알바이야기 게시판 관련
+	
+	@Autowired
+	private IRecruitmentDAO rdao; //알바모집공고 관련
 	
 	@RequestMapping(value="/job/index.action", method={RequestMethod.GET})
 	public String index(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
@@ -67,6 +70,10 @@ public class JobController {
 	@RequestMapping(value="/job/recruitmentList.action", method={RequestMethod.GET})
 	public String recruitmentList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 	
+		
+		List<RecruitmentDTO> list = rdao.recruitmentlist();
+		
+		request.setAttribute("list", list);
 		
 		return "job.recruitmentList";
 			
