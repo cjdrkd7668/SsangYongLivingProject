@@ -8,4 +8,6 @@ public interface IRecipeCommentDAO {
 
 	int delComment(String commentSeq);
 
+	int addRecipeComment(RecipeCommentDTO rcdto);
+
 }

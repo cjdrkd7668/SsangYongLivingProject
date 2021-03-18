@@ -30,5 +30,11 @@ public class RecipeDAO implements IRecipeDAO {
 		
 		return template.selectOne("recipe.getRecipeDto", seq);
 	}
+
+	@Override
+	public int delRecipe(String seq) {
+		
+		return template.update("recipe.delRecipe", seq);
+	}
 	
 }

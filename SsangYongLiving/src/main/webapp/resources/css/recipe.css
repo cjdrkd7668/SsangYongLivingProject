@@ -326,6 +326,21 @@
 	clear: both;
 }
 
+.comment-star {
+	margin-top: -15px;
+	float: right;
+	margin-right: 10px;
+}
+
+.comment-star span:first-child {
+	font-size: 18px;	
+}
+
+.comment-star .star {
+	font-size: 2em;
+	color: #FF6300;
+}
+
 /* 레시피 상세 페이지 끝 */
 
 /* 레시피 쓰기 시작 */
