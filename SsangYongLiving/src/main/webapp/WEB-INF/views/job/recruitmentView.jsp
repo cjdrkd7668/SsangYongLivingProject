@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
 <section>
 
@@ -59,8 +58,11 @@
 	<!-- announcementUpper 끝 -->
 	<div class="rInfoBottom">한줄 주요사항: ${dto.mainPoint}</div>
 	
-	
-	
+	<!-- 브라우저에 띄워보기 -->
+	<!-- 
+	<div>남지원자수: ${cdto.MNum} 여지원자수: ${cdto.FNum} 총합:${cdto.totalNum}</div>
+	 -->
+	 
 	<div class="announcementLower">
 	<h4>오시는 길</h4>
 	
@@ -73,7 +75,7 @@
 	
 	<script>
 
-	var address = "<c:out value='${dto.address}'/>";	
+	var address = "${dto.address}";	
 	//코드 실행 순서는 JAVA -> JSTL -> HTML -> JavaScript 순이기 때문에
 	//script 영역에서 jstl의 el 구문을 사용할 수 있다. --> 
 	
@@ -158,13 +160,24 @@
 <!-- 파이차트 -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+ 
+        <!-- 이 부분은 get으로 가져오기 -->
+        <!-- lombok이 인지를 하지 못하고 있음 앞에 문자가 소문자로 오는 것을 -->
+		var man = ${cdto.getMNum()};
+		var woman = ${cdto.getFNum()};
+		var totalNum = ${cdto.getTotalNum()};
+		
+		var manInfo = man / totalNum * 10;
+		var womanInfo = woman / totalNum * 10;
+		
+		
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Language', 'Speakers (in millions)'],
-          ['남',  6.0],
-          ['여',  5.0]
+          ['남',  manInfo],
+          ['여',  womanInfo]
         ]);
 
       var options = {
