@@ -9,6 +9,26 @@
 		INSERT INTO tblJobStory (seq, title, material, regDate, hits, memberSeq, reports) VALUES (seqJobStory.nextVal, #{title}, #{material},  default, 0, #{memberSeq}, 0)
 	</insert>
 
+	<select id="storylist" resultType="com.test.living.job.StoryBoardDTO">
+		SELECT * FROM tblJobStory order by seq desc
+	</select>
+
+	<select id="storyget" parameterType="String" resultType="com.test.living.job.StoryBoardDTO">
+		SELECT * FROM tblJobStory where seq = #{seq}	
+	</select>
+
+	<delete id="storydel" parameterType="String">
+		DELETE from tblJobStory where seq = #{seq}
+	</delete>
+	
+	<update id="storyedit" parameterType="com.test.living.job.StoryBoardDTO">
+		update tblJobStory set
+			title = #{title},
+			material = #{material},
+			regdate = sysdate
+				where memberSeq = #{memberSeq}
+				and seq = #{seq}
+	</update>
 
 
 </mapper>
