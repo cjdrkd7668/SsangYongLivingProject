@@ -19,7 +19,7 @@ public class CommunityDTO {
 	private String subject;
 	private String detail;
 	private String regDate;
-	private String gap;
+	private int gap;
 	private String updateDate;
 	private String recCount;
 	private String readCount;

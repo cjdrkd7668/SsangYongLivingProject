@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일대일 문의</title>
+
+    <link rel="stylesheet" href="/living/resources/css/bootstrap.css">
+    <script src="/living/resources/js/jquery-1.12.4.js"></script>
+    <script src="/living/resources/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+
+    <style>
+
 @charset "UTF-8";
 
 @font-face {
@@ -58,10 +73,6 @@ textarea {
     color: #F0E5DE;
 }
 
-.replybg {
-	background-color: #dddfe6;
-}
-
 .red {
     color: #EF1804;
 }
@@ -78,32 +89,6 @@ textarea {
     width: 120px;
     height: 40px;
     outline: none;
-}
-
-.newBadge {
-	background-color: red;
-	width: 16px;
-	height: 16px;
-	padding: 4px;
-	font-size: 0.5em;
-}
-
-#pagebar {
-	width: 100%;
-	height: 50px;
-	text-align: center;
-}
-
-#pagebar button {
-	padding: 5px; 
-	width: 30px;
-	height: 35px; 
-	margin: 5px 5px;
-}
-
-#pagebar .active {
-	color: #EEE;
-	background-color: #FF6300;
 }
 
 .headerBtn {
@@ -632,7 +617,7 @@ textarea {
 
 .container .chatContainer .companyChatInfo,
 .container .chatContainer .memberChatInfo {
-    background-color: #EEE;
+    background-color: #E0E3DA;
     font-size: 1em;
 }
 
@@ -656,13 +641,13 @@ textarea {
 }
 
 .container .chatContainer .companyChatDetailInfo .companyDetail {
-    background-color: #EEE;
+    background-color: #E0E3DA;
     border-bottom: 1px solid #FF6300;
     text-indent: 1em;
 }
 
 .container .chatContainer .memberChatDetailInfo .memberDetail {
-    background-color: #EEE;
+    background-color: #E0E3DA;
     border-bottom: 1px solid #FF6300;
     text-align: right;
     padding-right: 1em;
@@ -672,6 +657,17 @@ textarea {
     border: none;
     border-bottom: 1px solid #FF6300;
     height: 40px;
+    width: 80%;
+    float: left;
+}
+
+.container .chatContainer .addChat #sendBtn {
+	width: 19%;
+	height: 38px;
+	border: none;
+	float: right;
+	margin-left: 1px;
+	
 }
 
 .container .chatContainer .btnChat {
@@ -693,3 +689,155 @@ textarea {
 .container .chatContainer #btnDisconnect {
     height: 40px;
 }
+
+
+    </style>
+</head>
+<body>
+
+<!-- container 시작 -->
+<div class="container">
+
+    <table class="chatContainer">
+        
+        <thead>
+            <tr>
+                <th colspan="2">
+                    <img src="/living/resources/images/group/chat.png">&nbsp;식료품마켓 1:1 문의&nbsp;&nbsp;
+                    <img src="/living/resources/images/group/24.png" style="width: 80px; float: right;">&nbsp;<br>
+                    <span>&nbsp;~무엇이든 물어보세요~</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="memberChatInfo">
+                <td colspan="2">
+                	<div id="output"></div>
+               	</td>
+            </tr>
+
+            <!-- 대화 상자 시작 -->
+            <tr class="addChat">
+                <td colspan="2">
+                    <div>
+                        <input type="text" id="textID" name="message" class="form-control detail" placeholder="대화 내용을 입력한 뒤 엔터 키를 누르세요.">
+                        <input onclick="send_message()" value="보내기" type="button" id="sendBtn" class="btn">
+                    </div>
+                </td>
+            </tr>
+            <!-- 대화 상자 끝 -->
+
+            <tr class="btnChat softbg">
+               <td colspan="2">
+                    <button class="btn greybg backChatBtn">
+                        돌아가기
+                    </button>
+                    
+               </td> 
+            </tr>
+        </tbody>
+
+    </table>
+
+
+    
+ 
+    
+
+</div>
+<!-- container 끝 -->
+
+<script>
+
+    window.onload = function() {
+        $(".detail").focus();
+    };
+
+    $(".detail").click(function(){
+
+    });
+
+    
+    
+
+	var wsUri = "ws://localhost:8090/living/echo.action";
+
+	function init() {
+
+		output = document.getElementById("output");
+
+	}
+
+	function send_message() {
+
+		websocket = new WebSocket(wsUri);
+
+		websocket.onopen = function(evt) {
+
+			onOpen(evt)
+
+		};
+
+		websocket.onmessage = function(evt) {
+
+			onMessage(evt)
+
+		};
+
+		websocket.onerror = function(evt) {
+
+			onError(evt)
+
+		};
+
+	}
+
+	function onOpen(evt) {
+
+		writeToScreen("Connected to Endpoint!");
+
+		doSend(textID.value);
+
+	}
+
+	function onMessage(evt) {
+
+		writeToScreen("Message Received: " + evt.data);
+
+	}
+
+	function onError(evt) {
+
+		writeToScreen('ERROR: ' + evt.data);
+
+	}
+
+	function doSend(message) {
+
+		writeToScreen("Message Sent: " + message);
+
+		websocket.send(message);
+
+		websocket.close();
+
+	}
+
+	function writeToScreen(message) {
+
+		var pre = document.createElement("p");
+
+		pre.style.wordWrap = "break-word";
+
+		pre.innerHTML = message;
+
+		output.appendChild(pre);
+
+	}
+
+	window.addEventListener("load", init, false);
+	
+</script>
+
+
+</body>
+</html>
