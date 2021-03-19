@@ -17,7 +17,7 @@ public class QnaDTO {
 	private String name;
 	private String subject;
 	private String regDate;
-	private String gap;
+	private int gap;
 	private String updateDate;
 	private String readCount;
 	private String fileName;
@@ -25,4 +25,6 @@ public class QnaDTO {
 
 	private int nowPage;
 	private int totalPage;
+	
+	private String presult;
 }
