@@ -143,7 +143,7 @@
 	    <div id="pagebar"></div>
 		<!-- 페이지 바 끝 -->
 
-        <button class="btn writeBtn">글쓰기</button>
+        <button class="btn writeBtn" onclick="location.href='/living/group/add.action?postSeq=${dto.seq}&memberSeq=${seq}&nowPage=${nowPage}';">글쓰기</button>
 
         <div style="clear: both;"></div>
 
