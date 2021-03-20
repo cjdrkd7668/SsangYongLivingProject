@@ -24,16 +24,15 @@
         <tbody>
             
             <tr class="memberChatInfo">
-                <td colspan="2"></td>
+                <td colspan="2"><div id="message" style="width:100%;"></div></td>
             </tr>
            
             <!-- 대화 상자 시작 -->
             <tr class="addChat">
                 <td colspan="2">
                     <div>
-                        <input type="text" id="message" name="message" class="form-control detail" placeholder="대화 내용을 입력한 뒤 엔터 키를 누르세요.">
-                        <input value="보내기" type="button" id="sendBtn" class="btn">
-                        <div id="data"></div>
+                        <input type="text" id="messageinput" name="message" class="form-control detail" placeholder="대화 내용을 입력한 뒤 엔터 키를 누르세요." style="width: 80%; float:left;">
+                        <input value="보내기" type="button" id="sendBtn" class="btn" onclick="send();" style="width: 18%; float: right;">
                     </div>
                 </td>
             </tr>
@@ -42,7 +41,13 @@
             <tr class="btnChat softbg">
                <td colspan="2">
                     <button class="btn greybg backChatBtn">
-                        돌아가기
+                        	돌아가기
+                    </button>
+                    <button class="btn greybg backChatBtn" onclick="closeSocket();">
+                        	종료
+                    </button>
+                    <button class="btn greybg backChatBtn" onclick="openSocket();">
+                        	접속
                     </button>
                </td> 
             </tr>
@@ -64,66 +69,40 @@
         $(".detail").focus();
     };
 
-    $(".detail").click(function(){
+	var ws;
+	var messages = document.getElementById("message");
 
-    });
-    
+	function openSocket() {
+		if (ws !== undefined && ws.readyState !== WebSocket.CLOSED) {
+			writeResponse("WebSocket is already opend.");
+			return;
+		}
 
-	$(document).ready(function() {
+		//웹소켓 객체 만드는 코드
+		ws = new WebSocket('ws://localhost:8090/living/chatserver');
 
-		$("#sendBtn").click(function() {
-
-			sendMessage();
-
-			$('#message').val('')
-
-		});
-
-		$("#message").keydown(function(key) {
-
-			if (key.keyCode == 13) {// 엔터
-
-				sendMessage();
-
-				$('#message').val('')
-
-			}
-
-		});
-
-	});
-
-	// 웹소켓을 지정한 url로 연결한다.
-
-	let sock = new SockJS("<c:url value="/echo"/>");
-
-	sock.onmessage = onMessage;
-
-	sock.onclose = onClose;
-
-	// 메시지 전송
-
-	function sendMessage() {
-
-		sock.send($("#message").val());
-
+		ws.onopen = function(event) {
+			 if (event.data === undefined)
+				return;
+			writeResponse("WebSocket is already opend.");
+			writeResponse(event.data);
+		};
+		ws.onmessage = function(event) {
+			writeResponse(event.data);
+		};
+		ws.onclose = function(event) {
+			writeResponse("Connection closed");
+		}
 	}
-
-	// 서버로부터 메시지를 받았을 때
-
-	function onMessage(msg) {
-
-		var data = msg.data;
-
-		$("#data").append(data + "<br/>");
-
+	function send() {
+		var text = document.getElementById("messageinput").value;
+		ws.send(text);
+		text = "";
 	}
-
-	// 서버와 연결을 끊었을 때
-
-	function onClose(evt) {
-
-		$("#data").append("연결 끊김");
-
+	function closeSocket() {
+		ws.close();
+	}
+	function writeResponse(text) {
+		message.innerHTML += "<br/>" + text;
 	}
 </script>

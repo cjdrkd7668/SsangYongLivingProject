@@ -35,11 +35,45 @@
             <td colspan="5">${dto.detail }</td>
         </tr>
         <tr>
-            <td colspan="4"><button class="btn orangebg">댓글 <span class="soft">${dto.commentCount }</span></button></td>
-            <td><button class="btn softbg" id="recBtn">추천 <span class="red">${dto.recCount }</span></button></td>
+            <td>
+            	<button class="btn orangebg">댓글 <span class="soft">${dto.commentCount }</span></button>
+            </td>
+            <td>
+            	<button class="btn softbg" id="recBtn">추천 <span class="red">${dto.recCount }</span></button>
+            </td>
+            <td colspan="3">
+            
+            <!-- 자기 글일 경우만 버튼 보이기 -->
+            <c:if test="${dto.memberSeq == seq && access == 0 }">
+	            <button class="btn softbg" onclick="location.href='/living/group/community/edit.action?postSeq=${dto.postSeq}&seq=${dto.seq }&nowPage=${nowPage }';">
+	            	수정하기
+	            </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            	<button class="btn greybg" data-toggle="modal" data-target="#delModal">
+            		삭제하기
+            	</button>
+            </c:if>
+            
+            </td>
         </tr>
     </table>
     <!-- 게시글 테이블 끝 -->
+    
+    <!-- 삭제 모달 시작 -->
+    <div class="modal fade" id="delModal" role="dialog">
+    	<div class="modal-dialog modal-md">
+    		<div class="modal-content">
+    			<div class="modal-body">
+    				<h1 style="text-align:center;">정말로 삭제하시겠습니까?<i class="far fa-sad-cry orange"></i></h1>
+    			</div>
+    			<div class="delBtns" style="text-align: center; margin-bottom: 30px;">
+					<button type="button" class="btn" data-dismiss="modal">취소하기</button>
+					<button type="button" class="btn orangebg" onclick="location.href='/living/group/community/del.action?seq=${dto.seq}&postSeq=${dto.postSeq }&nowPage=${nowPage }';">삭제하기</button>
+					    			
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!-- 삭제 모달 끝 -->
 
 
     <!-- 댓글 테이블 시작 -->

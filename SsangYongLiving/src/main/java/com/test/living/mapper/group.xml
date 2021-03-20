@@ -98,6 +98,16 @@
     		values (seqCommunity.nextVal, #{postSeq}, #{memberSeq}, #{subject}, #{detail}, default, default, default, default, default)
 	</insert>
 	
+	<!-- 커뮤니티 글을 수정한다. -->
+	<update id="editCommunity" parameterType="groupCommunityDto">
+		update tblCommunity set subject = #{subject}, detail = #{detail}, updateDate = sysdate where seq = #{seq}
+	</update>
+	
+	<!-- 커뮤니티 글을 삭제한다.(delFlag를 1로 update) -->
+	<update id="delCommunity" parameterType="String">
+		update tblCommunity set delFlag = 1 where seq = #{seq}
+	</update>
+	
 	<!-- 커뮤니티 특정 글에 새 댓글을 쓴다. -->
 	<insert id="communityCommentAdd" parameterType="groupCommunityCommentDto">
 		insert into tblCommunityComment (seq, communitySeq, memberSeq, detail, pseq, regDate, updateDate, delFlag)
