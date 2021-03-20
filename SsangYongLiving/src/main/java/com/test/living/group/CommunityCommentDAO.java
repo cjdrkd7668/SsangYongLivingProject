@@ -24,4 +24,35 @@ public class CommunityCommentDAO implements ICommunityCommentDAO {
 		return template.selectList("group.communityCommentList", seq);
 	}
 
+	//커뮤니티 댓글 작성
+	@Override
+	public int add(CommunityCommentDTO dto) {
+		
+		return template.insert("group.communityCommentAdd", dto);
+	}
+	
+
+	//커뮤니티 대댓글(댓글의 댓글들) 작성
+	@Override
+	public int replyAdd(CommunityCommentDTO dto) {
+
+		return template.insert("group.communityReplyAdd", dto);
+	}
+	
+	//커뮤니티 댓글 수정
+	@Override
+	public int edit(CommunityCommentDTO dto) {
+
+		return template.update("group.communityCommentEdit", dto);
+	}
+
+	//커뮤니티 댓글 삭제
+	@Override
+	public int del(CommunityCommentDTO dto) {
+
+		return template.update("group.communityCommentDel", dto);
+	}
+
+
+
 }

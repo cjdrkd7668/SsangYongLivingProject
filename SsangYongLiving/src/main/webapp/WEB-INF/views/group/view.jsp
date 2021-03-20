@@ -118,7 +118,7 @@
             <c:if test="${not empty qdto.memberSeq}">
             <tr>
                 <td>${qdto.seq}</td>
-	            <td>${qdto.subject}</td>
+	            <td style="text-align:left;">${qdto.subject}</td>
 	            <td>${qdto.name }</td>
                 <td>${qdto.updateDate }</td>
                 <td>${qdto.readCount }</td>
@@ -127,9 +127,9 @@
             
             <!-- 업체가 쓴 글이라면 -->
             <c:if test="${not empty qdto.companySeq}">
-            <tr class="softbg">
+            <tr class="replybg">
                 <td>${qdto.seq}</td>
-	            <td>RE : ${qdto.subject}</td>
+	            <td style="text-align:left;">RE : ${qdto.subject}</td>
 	            <td>${qdto.name }</td>
                 <td>${qdto.updateDate }</td>
                 <td>${qdto.readCount }</td>
@@ -138,8 +138,12 @@
             </c:forEach>
         </table>
         <!-- Qna 테이블 끝 -->
+        
+        <!-- 페이지 바 시작 -->
+	    <div id="pagebar"></div>
+		<!-- 페이지 바 끝 -->
 
-        <button class="btn writeBtn">글쓰기</button>
+        <button class="btn writeBtn" onclick="location.href='/living/group/add.action?postSeq=${dto.seq}&memberSeq=${seq}&nowPage=${nowPage}';">글쓰기</button>
 
         <div style="clear: both;"></div>
 
@@ -293,5 +297,41 @@
 		var price = ${dto.price};
 		$("#totalPrice").text($("#count").val() * price);
 	});
+	
+	/* 페이징 처리 시작 */
+	let totalPage = ${totalPage};
+	let nowPage = ${nowPage};
+	
+	for (let i=1; i<=totalPage; i++){
+		let tempPagebar = "";
+		
+		if (i == nowPage) {
+			tempPagebar += "<button type='button' class='btn active'>";
+			tempPagebar += "<div>";
+			tempPagebar += i;
+			tempPagebar += "</div>";
+			tempPagebar += "</button>";
+			console.log(tempPagebar);
+		
+		} else {
+			tempPagebar += "<button type='button' class='btn btn-default'>";
+			tempPagebar += "<div>";
+			tempPagebar += i;
+			tempPagebar += "</div>";
+			tempPagebar += "</button>";
+		}
+		
+		$("#pagebar").append(tempPagebar);
+	}
+	
+	//페이지바 선택 시 
+	$("#pagebar").children(".btn").click(function(){
+		
+		//페이지 번호 : $(this).children('div').text()
+		//해당 페이지로 이동
+		location.href="/living/group/view.action?seq=" + ${dto.seq} + "&nowPage=" + $(this).children('div').text();
+		
+	});
+	/* 페이징 처리 끝 */
 	
 </script>

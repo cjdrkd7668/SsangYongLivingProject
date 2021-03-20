@@ -16,8 +16,8 @@
 
     <!-- 로그인 버튼 시작 -->
     <div id="btn2">
-        <button class="btn orangebg">
-            <i class="fas fa-bell"></i>&nbsp;XXX님
+        <button class="btn orangebg" onclick="location.href='/living/group/notice.action?memberSeq=${seq}';">
+            <i class="fas fa-bell"></i>&nbsp;김봄님
         </button>
     </div>
     <!-- 로그인 버튼 끝 -->

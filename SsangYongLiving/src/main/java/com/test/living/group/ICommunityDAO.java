@@ -8,7 +8,27 @@ public interface ICommunityDAO {
 
 	CommunityDTO view(String seq);
 
-	String memberName(String attribute);
+	String memberName(String memberSeq);
+
+	List<CommunityDTO> mostViewList(String postSeq);
+
+	List<CommunityDTO> recList(String postSeq);
+
+	List<CommunityDTO> mostCmtList(String postSeq);
+
+	int communityTotalPage(String postSeq);
+
+	void updateCommunityReadcount(String seq);
+
+	int add(CommunityDTO dto);
+
+	void updateCommunityReccount(String seq);
+
+	int edit(CommunityDTO dto);
+
+	int del(String seq);
+
+
 
 
 }
