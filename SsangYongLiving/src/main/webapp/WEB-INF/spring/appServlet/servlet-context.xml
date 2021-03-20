@@ -49,14 +49,15 @@
 
 
 
+	<!-- 웹 소켓 핸들러 -->
 	<websocket:handlers>
 		<websocket:mapping path="/echo"
 			handler="myHandler" />
-		<websocket:sockjs />
+			<websocket:handshake-interceptors>
+ 	           <beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+            </websocket:handshake-interceptors>
 	</websocket:handlers>
 
-	<!-- websocket handler -->
-	<beans:bean id="myHandler"
-		class="com.test.living.group.SocketHandler" />
+	<beans:bean id="myHandler" class="com.test.living.group.SocketHandler" />
 
 </beans:beans>

@@ -24,6 +24,11 @@ public interface ICommunityDAO {
 
 	void updateCommunityReccount(String seq);
 
+	int edit(CommunityDTO dto);
+
+	int del(String seq);
+
+
 
 
 }

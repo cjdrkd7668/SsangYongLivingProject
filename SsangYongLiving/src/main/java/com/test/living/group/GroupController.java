@@ -77,7 +77,7 @@ public class GroupController {
 	public String communityList(HttpServletRequest request, HttpServletResponse response, HttpSession session, String postSeq, int nowPage) {
 		
 		//회원 번호 가져오기
-		session.setAttribute("seq", "1");
+		//session.setAttribute("seq", "1");
 		
 		//조회수 증가 플래그
 		session.setAttribute("groupCommunityRead", false);
@@ -209,6 +209,70 @@ public class GroupController {
 				
 			} else {
 				response.sendRedirect("/living/group/community/add.acion?postSeq="+dto.getPostSeq()+"&memberSeq="+dto.getMemberSeq()+"&nowPage="+nowPage);
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	//커뮤니티 글 수정 페이지 호출
+	@RequestMapping(value="/group/community/edit.action", method={RequestMethod.GET})
+	public String member_communityEdit(HttpServletRequest request, HttpServletResponse response, HttpSession session, CommunityDTO dto) {
+		
+		//공동구매 글 정보 가져오기
+		GroupBuyingPostDTO pdto = groupBuyingPostDao.view(dto.getPostSeq());
+		
+		//글 정보 가져오기
+		CommunityDTO cdto = communityDao.view(dto.getSeq());
+		
+		request.setAttribute("postSeq", dto.getPostSeq());
+		request.setAttribute("nowPage", dto.getNowPage());
+		request.setAttribute("pdto", pdto);
+		request.setAttribute("cdto", cdto);
+		
+		return "group.communityEdit";
+	}
+	
+	//커뮤니티 글 수정 처리
+	@RequestMapping(value="/group/community/editok.action", method={RequestMethod.POST})
+	public void member_communityEditOk(HttpServletRequest request, HttpServletResponse response, HttpSession session, CommunityDTO dto) {
+		
+		int nowPage = dto.getNowPage();
+		
+		int result = communityDao.edit(dto);
+		
+		try {
+			
+			if (result == 1) {
+				//성공 시 해당 글로 이동
+				response.sendRedirect("/living/group/community/view.action?seq="+dto.getSeq()+"&memberSeq="+(String)(session.getAttribute("seq")) +"&nowPage="+nowPage);
+				
+			} else {
+				//실패 시 수정 페이지로 이동
+				response.sendRedirect("/living/group/community/edit.acion?postSeq="+dto.getPostSeq()+"&seq="+dto.getSeq()+"&nowPage="+nowPage);
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	//커뮤니티 글 삭제
+	@RequestMapping(value="/group/community/del.action", method={RequestMethod.GET})
+	public void member_communityDel(HttpServletRequest request, HttpServletResponse response, HttpSession session, CommunityDTO dto) {
+		
+		int result = communityDao.del(dto.getSeq());
+		
+		try {
+			
+			if (result == 1) {
+				//성공 시 커뮤니티 목록으로 이동
+				response.sendRedirect("/living/group/community/list.action?postSeq="+dto.getPostSeq()+"&nowPage="+dto.getNowPage());
+				
+			} else {
+				//실패 시 해당 게시글로 이동
+				response.sendRedirect("/living/group/community/view.action?seq="+dto.getSeq()+"&memberSeq="+(String)(session.getAttribute("seq")) +"&nowPage="+dto.getNowPage());
 			}
 			
 		} catch (Exception e) {

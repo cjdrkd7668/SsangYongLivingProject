@@ -87,6 +87,21 @@ public class CommunityDAO implements ICommunityDAO {
 		return template.insert("group.addCommunity", dto);
 	}
 
+	//커뮤니티 글 수정
+	@Override
+	public int edit(CommunityDTO dto) {
+		
+		return template.update("group.editCommunity", dto);
+	}
+
+	//커뮤니티 글 삭제
+	@Override
+	public int del(String seq) {
+		
+		return template.update("group.delCommunity", seq);
+	}
+
+
 
 
 

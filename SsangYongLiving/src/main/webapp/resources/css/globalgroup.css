@@ -495,6 +495,7 @@ textarea {
     border-bottom: 1px solid #DDD;
 }
 
+
 .container .commuViewTable tr:nth-child(5) td:first-child
  {
     height: 50px;
@@ -506,11 +507,26 @@ textarea {
     float: left;
 }
 
+.container .commuViewTable tr:nth-child(5) td:nth-child(3) {
+	width: auto;
+    height: 50px;
+    text-align: right;
+    position: relative;
+    left: 80px;
+}
+
 .container .commuViewTable tr:nth-child(5) td .btn {
     display: inline-block;
     width: 70px;
     height: 35px;
     margin-right: -15px;
+}
+
+.container .commuViewTable tr:nth-child(5)::after {
+	content: "";
+    display: block;
+    clear: right;
+	
 }
 
 .container .listBtn {
