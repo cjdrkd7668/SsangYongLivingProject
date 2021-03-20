@@ -13,5 +13,17 @@
 		select * from tblRecruitment where seq = #{recruitmentSeq}
 	</select>
 	
-
+	<select id="chartget" parameterType="String" resultType="com.test.living.job.RecruitmentChartDTO">
+		select count(*) as totalNum, sum( decode(gender, '여', 1, 0) ) as fNum, sum( decode(gender, '남', 1, 0) ) as mNum from vw_chartInfo where  recruitmentSeq = #{recruitmentSeq} 
+	</select>
+	
+	<select id="agelist" parameterType="String" resultType="com.test.living.job.RecruitmentAgeDTO">
+		select age || '대' as age, count(*) as ageCnt, recruitmentSeq from (select floor((to_char(sysdate, 'YYYY') - vw_chartInfo.rrn) / 10) * 10 as age, recruitmentSeq from vw_chartInfo) o group by age, recruitmentSeq having recruitmentSeq = #{recruitmentSeq}
+	</select>
+	
+	
+	<select id="careerlist" parameterType="String" resultType="com.test.living.job.RecruitmentCareerDTO">
+		select career,count(*) as careerCnt, recruitmentSeq from (select vw_chartInfo.career as career, recruitmentSeq from vw_chartInfo) o group by career, recruitmentSeq having recruitmentSeq = #{recruitmentSeq}
+	</select>
+	
 </mapper>
