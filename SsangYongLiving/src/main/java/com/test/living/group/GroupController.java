@@ -1,5 +1,6 @@
 package com.test.living.group;
 
+import java.io.File;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -11,7 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 /**
  * GroupController. 공동구매 비즈니스 로직을 수행하는 컨트롤러
@@ -72,6 +74,73 @@ public class GroupController {
 		return "group.view";
 	}
 	
+	//Qna 글 작성 페이지 호출
+	@RequestMapping(value="/group/add.action", method={RequestMethod.GET})
+	public String member_add(HttpServletRequest request, HttpServletResponse response, HttpSession session, QnaDTO dto) {
+		
+		request.setAttribute("dto", dto);
+		
+		return "group.add";
+	}
+	
+	//Qna 글 작성 처리
+	@RequestMapping(value="/group/addok.action", method={RequestMethod.POST})
+	public void member_addok(HttpServletRequest request, HttpServletResponse response, HttpSession session, QnaDTO dto) {
+		
+		//첨부 파일 처리
+		MultipartHttpServletRequest multi = (MultipartHttpServletRequest)request;
+		
+		MultipartFile fileName = multi.getFile("fileName");
+		
+		String saveName = "";
+		
+		try {
+			
+			String path = request.getRealPath("files");
+			
+			System.out.println(path);
+			
+			saveName = getFileName(path, fileName.getOriginalFilename());
+			
+			//첨부 파일 최종 경로
+			File file = new File(path + "\\" + saveName);
+			
+			fileName.transferTo(file);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+	}
+
+	//파일명 반환 메소드
+	private String getFileName(String path, String filename) {
+		
+		int number = 1;
+		int index = filename.indexOf(".");
+		
+		//. 앞까지 이름을 저장
+		String tempName = filename.substring(0, index);
+		
+		//. 이후 확장자 저장
+		String tempExt = filename.substring(index);
+		
+		while (true) {
+			
+			File file = new File(path + "\\" +filename);
+			
+			//파일명 중복일 경우
+			if (file.exists()) {
+				//수정 -> xxx(1).xxx
+				filename = tempName + "(" + number + ")" + tempExt;
+				number++;
+			} else {
+				return filename;
+			}
+		}
+	}
+
 	//커뮤니티 글 리스트 페이지
 	@RequestMapping(value="/group/community/list.action", method={RequestMethod.GET})
 	public String communityList(HttpServletRequest request, HttpServletResponse response, HttpSession session, String postSeq, int nowPage) {
