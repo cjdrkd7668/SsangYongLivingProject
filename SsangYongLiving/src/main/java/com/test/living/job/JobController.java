@@ -85,16 +85,23 @@ public class JobController {
 		
 		RecruitmentDTO dto = rdao.recruitmentget(recruitmentSeq);
 		//기본 매장 정보
-		
+
 		RecruitmentChartDTO cdto = rdao.chartget(recruitmentSeq);
-		//하단 차트 정보
-		//log로 select 쿼리 결과값 찍힌 것은 확인함.
+		//하단 성별차트 정보
+		
+		List<RecruitmentAgeDTO> list = rdao.agelist(recruitmentSeq);
+		//하단 연령차트 정보
+		
+		List<RecruitmentCareerDTO> clist = rdao.careerlist(recruitmentSeq);
+		//하단 경력차트 정보
+		
 		System.out.println(cdto.getMNum());
 		
 		request.setAttribute("dto", dto);
-		
 		request.setAttribute("cdto", cdto);
-		//여기 부분 새로운 dto를 넣게 되면, 갑자기 500 에러 뜨며 jstl <c:out >구문이 제대로 닫히지 않았다고 한다...
+		request.setAttribute("list", list);
+		request.setAttribute("clist", clist);
+		
 		
 		return "job.recruitmentView";
 	}

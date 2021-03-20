@@ -134,7 +134,7 @@
 	
 	<div class="chatInfo">
 	<h5>연령</h5>
-	<div id="chart_div" style="width: 200px; height: 200px; display:inline-block;"></div>
+	<div id="columnchart_values" style="width: 200px; height: 200px; display:inline-block;"></div>
 	</div>
 	
 	<div class="chatInfo">
@@ -162,7 +162,7 @@
 <script type="text/javascript">
  
         <!-- 이 부분은 get으로 가져오기 -->
-        <!-- lombok이 인지를 하지 못하고 있음 앞에 문자가 소문자로 오는 것을 -->
+        
 		var man = ${cdto.getMNum()};
 		var woman = ${cdto.getFNum()};
 		var totalNum = ${cdto.getTotalNum()};
@@ -195,49 +195,45 @@
 <!-- 히스토그램, 연령 -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Dinosaur', 'Length'],
-          ['Acrocanthosaurus (top-spined lizard)', 12.2],
-          ['Albertosaurus (Alberta lizard)', 9.1],
-          ['Allosaurus (other lizard)', 12.2],
-          ['Apatosaurus (deceptive lizard)', 22.9],
-          ['Archaeopteryx (ancient wing)', 0.9],
-          ['Argentinosaurus (Argentina lizard)', 36.6],
-          ['Baryonyx (heavy claws)', 9.1],
-          ['Brachiosaurus (arm lizard)', 30.5],
-          ['Ceratosaurus (horned lizard)', 6.1],
-          ['Coelophysis (hollow form)', 2.7],
-          ['Compsognathus (elegant jaw)', 0.9],
-          ['Deinonychus (terrible claw)', 2.7],
-          ['Diplodocus (double beam)', 27.1],
-          ['Dromicelomimus (emu mimic)', 3.4],
-          ['Gallimimus (fowl mimic)', 5.5],
-          ['Mamenchisaurus (Mamenchi lizard)', 21.0],
-          ['Megalosaurus (big lizard)', 7.9],
-          ['Microvenator (small hunter)', 1.2],
-          ['Ornithomimus (bird mimic)', 4.6],
-          ['Oviraptor (egg robber)', 1.5],
-          ['Plateosaurus (flat lizard)', 7.9],
-          ['Sauronithoides (narrow-clawed lizard)', 2.0],
-          ['Seismosaurus (tremor lizard)', 45.7],
-          ['Spinosaurus (spiny lizard)', 12.2],
-          ['Supersaurus (super lizard)', 30.5],
-          ['Tyrannosaurus (tyrant lizard)', 15.2],
-          ['Ultrasaurus (ultra lizard)', 30.5],
-          ['Velociraptor (swift robber)', 1.8]]);
+    
+    
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["연령대", "명(수)", { role: "style" } ],
+        <c:forEach items="${list}" var="adto" varStatus="status">
 
-        var options = {
-        	    title: '',
-        	    legend: { position: 'none' },
-        	    colors: ['green'],
-        	  };
 
-        var chart = new google.visualization.Histogram(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
+		
+        ["${adto.age}", ${adto.ageCnt}, "#b87333"]
+        
+		
+        <c:if test="${status.index < list.size() - 1}">
+        ,
+		</c:if>
+        
+        </c:forEach>
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "지원자 연령별 통계",
+        width: 200,
+        height: 200,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
     </script>
     
     
@@ -250,12 +246,17 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['1년 미만',     11],
-          ['2년 미만',      2],
-          ['3년 미만',  2],
-          ['5년 미만', 2],
-          ['5년 이상',    7]
-        ]);
+          
+          <c:forEach items="${clist}" var="cdto" varStatus="status">
+          
+          ['${cdto.career}',     ${cdto.careerCnt}]
+          
+          <c:if test="${status.index < clist.size() - 1}">
+          ,
+		  </c:if>
+          
+          </c:forEach>
+          ]);
 
         var options = {
           title: '',

@@ -37,7 +37,7 @@
 		<tr>
 			<td><span class="dayColor">${dto.regDate}</td>
 			<td><a href="/living/jobboard/storyview.action?seq=${dto.seq}"><span class="storySubject">${dto.title}</span></a></td>
-			<td><span class="writer">asd***${dto.seq} 글번호</span></td>
+			<td><span class="writer">asd***</span></td>
 			<td>${dto.hits}</td>
 		</tr>
 		</c:forEach>

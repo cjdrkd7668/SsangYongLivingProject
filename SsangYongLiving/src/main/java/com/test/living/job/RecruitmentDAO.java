@@ -29,6 +29,20 @@ public class RecruitmentDAO implements IRecruitmentDAO {
 		
 		return template.selectOne("jobrecruitment.chartget", recruitmentSeq);
 	}
+
+	@Override
+	public List<RecruitmentAgeDTO> agelist(String recruitmentSeq) {
+		
+		return template.selectList("jobrecruitment.agelist", recruitmentSeq);
+	}
+
+	@Override
+	public List<RecruitmentCareerDTO> careerlist(String recruitmentSeq) {
+		
+		return template.selectList("jobrecruitment.careerlist", recruitmentSeq);
+	}
+
+
 	
 	
 	
