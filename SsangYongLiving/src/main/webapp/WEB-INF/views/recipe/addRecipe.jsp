@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div id="recipe-add-container">
 
@@ -14,7 +15,7 @@
 		<button type="button" class="btn btn-primary" id="add-btn">재료 추가 하기</button>
 	</div>
 	
-	<form method="POST" encType="multipart/form-data"> 
+	<form method="POST" action="/living/recipe/addRecipeOk.action" encType="multipart/form-data"> 
 	
 	<div class="add-ingre">
 
@@ -37,41 +38,15 @@
 						<div class="recipe-cart" style="background: #C8EFD4;">
 	
 							<!-- dto + c:forEach -->
-							<div class="recipe-ingre-item recipe-ingre" data-seq="2">
-								<img src="/living/resources/images/ingredient-beef.png">
-								<div>소고기</div>
+							<c:forEach items="${igList}" var="igdto">
+							<div class="recipe-ingre-item recipe-ingre" data-seq="${igdto.ingredientSeq}">
+								<img src="/living/resources/images/${igdto.ingredientImage}">
+								<div>${igdto.ingredientName}</div>
 								<div>
-									(단위: <span>g</span>)
+									(단위: <span>${igdto.ingredientUnit}</span>)
 								</div>
 							</div>
-							<div class="recipe-ingre-item recipe-ingre" data-seq="8">
-								<img src="/living/resources/images/ingredient-tomato.png">
-								<div>토마토</div>
-								<div>
-									(단위: <span>개</span>)
-								</div>
-							</div>
-							<div class="recipe-ingre-item recipe-ingre" data-seq="5">
-								<img src="/living/resources/images/ingredient-egg.png">
-								<div>계란</div>
-								<div>
-									(단위: <span>구</span>)
-								</div>
-							</div>
-							<div class="recipe-ingre-item recipe-ingre" data-seq="6">
-								<img src="/living/resources/images/ingredient-leeks.png">
-								<div>대파</div>
-								<div>
-									(단위: <span>개</span>)
-								</div>
-							</div>
-							<div class="recipe-ingre-item recipe-ingre" data-seq="16">
-								<img src="/living/resources/images/ingredient-bacon.png">
-								<div>베이컨</div>
-								<div>
-									(단위: <span>장</span>)
-								</div>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -144,18 +119,18 @@
 		<div class="add-form-block">
 			<div class="form-group">
 				<label for="recipe-subject">제목</label> 
-				<input type="text" class="form-control" id="recipe-add-subject" name="#" placeholder="제목을 입력하세요.">
+				<input type="text" class="form-control" id="recipe-add-subject" name="recipeSubject" placeholder="제목을 입력하세요." required>
 			</div>
 	
 			<div class="form-group">
 				<label for="recipe-add-thumbnail">파일 업로드</label> 
-				<input type="file" id="recipe-add-thumbnail" name="#">
+				<input type="file" id="recipe-add-thumbnail" name="attach">
 				<p class="help-block">레시피의 썸네일로 사용할 이미지파일을 첨부해주세요.</p>
 			</div>
 			
 			<div class="form-group">
 				<label for="recipe-add-thumbnail">난이도</label> 
-				<select class="form-control" id="recipe-add-level">
+				<select class="form-control" id="recipe-add-level" name="recipeLevel" required>
 					<option>쉬움</option>
 					<option>보통</option>
 					<option>고수</option>
@@ -164,7 +139,7 @@
 			
 			<div class="form-group">
 				<label for="recipe-add-content">레시피 설명</label> 
-				<textarea class="form-control" id="recipe-add-content" placeholder="레시피를 설명해주세요."></textarea>
+				<textarea class="form-control" id="recipe-add-content" placeholder="레시피를 설명해주세요." name="recipeContent" required></textarea>
 			</div>
 		</div>
 		<div class="recipe-thumbnail">
@@ -221,11 +196,11 @@
 		orderHTML += '<div class="added-order">';
 		orderHTML += '<div class="form-group">';
 		orderHTML += '<label for="recipe-order-img-1">조리 사진</label>';
-		orderHTML += '<input type="file" class="form-control" name="recipeOrderImage">';
+		orderHTML += '<input type="file" class="form-control" name="recipeOrderImage" required>';
 		orderHTML += '</div>';
 		orderHTML += '<div class="form-group">';
 		orderHTML += '<label for="recipe-order-subject-1">설명</label> ';
-		orderHTML += '<input type="text" class="form-control" name="recipeOrderSubject" placeholder="조리 순서를 설명해주세요.">';
+		orderHTML += '<input type="text" class="form-control" name="recipeOrderSubject" placeholder="조리 순서를 설명해주세요." required>';
 		orderHTML += '</div>';
 		orderHTML += '<button type="button" class="btn btn-default remove-order">삭제하기</button>';
 		orderHTML += '</div>';
@@ -288,8 +263,11 @@
 			reader.readAsDataURL(f);
 			
 		});
-		
+	
 	}
+	
+	//전송할 때 name 중복되는 것 바꾸기
+	
 </script>
 
 

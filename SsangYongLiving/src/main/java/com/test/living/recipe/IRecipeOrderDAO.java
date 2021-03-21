@@ -6,4 +6,6 @@ public interface IRecipeOrderDAO {
 
 	List<RecipeOrderDTO> getRecipeOrderList(String seq);
 
+	int addRecipeOrder(RecipeOrderDTO rodto);
+
 }

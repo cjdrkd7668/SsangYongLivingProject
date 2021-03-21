@@ -36,5 +36,11 @@ public class RecipeDAO implements IRecipeDAO {
 		
 		return template.update("recipe.delRecipe", seq);
 	}
+
+	@Override
+	public int addRecipe(RecipeDTO dto) {
+		
+		return template.insert("recipe.addRecipe", dto);
+	}
 	
 }
