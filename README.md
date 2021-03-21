@@ -47,15 +47,15 @@ Spring Framework를 사용한 MVC 패턴 웹 사이트 프로젝트
 ##### 공동 구매 상세페이지
 > <p>[공동 구매 찾기]에서 사용자가 공동 구매 글을 눌렀을 때 볼 수 있는 화면입니다.<br> 
 > 네이버 쇼핑 최저가를 조회할 수 있으며 답글형 게시판에 글을 쓸 수 있습니다.</p>
-> <img src="/images/GroupDTL.png" width="80%" height="80%" alt="Main"></img>
+> <img src="/images/GroupDTL.PNG" width="80%" height="80%" alt="Main"></img>
 ##### 공동 구매 네이버 검색 화면
 > <p>특정 공동 구매 글의 네이버에서 비교하기를 눌렀을 때 볼 수 있는 화면입니다.<br>
 > 해당 상품을 검색하지 않고 최저가를 조회하거나 상품명을 눌러 사이트로 이동할 수 있습니다.</p>
-> <img src="/images/GroupSCH.png" width="80%" height="80%" alt="Main"></img>
+> <img src="/images/GroupSCH.PNG" width="80%" height="80%" alt="Main"></img>
 ##### 공동 구매 커뮤니티 게시글
 > <p>특정 공동 구매 커뮤니티 게시글에 접근했을 때 볼 수 있는 화면입니다.<br>
 > 게시글의 내용을 확인할 수 있고, 댓글과 답글을 작성할 수 있습니다.</p>
-> <img src="/images/GroupANS.png" width="80%" height="80%" alt="Main"></img>
+> <img src="/images/GroupANS.PNG" width="80%" height="80%" alt="Main"></img>
 ##### 냉장고 털기 메인 화면
 > <p>[냉장고 털기] 메뉴에 접근했을 때 볼 수 있는 화면입니다.<br>
 > 각각 냉장고 최신화 메뉴와 다른 회원의 레시피를 조회하거나 레시피를 작성할 수 있는 고수들의 레시피 메뉴로 이동할 수 있습니다.</p>
@@ -63,11 +63,11 @@ Spring Framework를 사용한 MVC 패턴 웹 사이트 프로젝트
 ##### 레시피 작성 화면(1)
 > <p>고수들의 레시피 메뉴에서 레시피 작성에 접근했을 때 볼 수 있는 화면입니다.<br>
 > 레시피의 제목, 내용 등 기초정보를 작성할 수 있고, 재료 추가를 눌러 레시피에 필요한 재료를 원하는 만큼 단위에 따른 용량 혹은 갯수로 추가할 수 있습니다.</p>
-> <img src="/images/RecipeWRT1.png" width="80%" height="80%" alt="Main"></img>
+> <img src="/images/RecipeWRT.png" width="80%" height="80%" alt="Main"></img>
 ##### 레시피 작성 화면(2)
 > <p>레시피 작성 화면의 하단 화면입니다.<br>
 > 동적으로 태그를 생성하여 레시피에 포함될 조리 과정을 필요한 만큼 추가할 수 있고, 각각의 조리 과정에 사진을 첨부하고 상세 내용을 등록할 수 있습니다.</p>
-> <img src="/images/RecipeMain.png" width="80%" height="80%" alt="Main"></img>
+> <img src="/images/RecipeWRT2.png" width="80%" height="80%" alt="Main"></img>
 
 <hr>
 
