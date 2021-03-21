@@ -67,13 +67,8 @@
             </td>
         </tr>
         <tr>
-            <!-- <td><div class="glyphicon glyphicon-heart-empty grey"></div></td> -->
-            <td>
-                <div class="glyphicon glyphicon-heart red"></div>
-            </td>
-            <!-- <td><div class="glyphicon glyphicon-shopping-cart red"></div></td> -->
-            <td>
-                <div class="glyphicon glyphicon-shopping-cart grey"></div>
+            <td colspan="2">
+                <button class="form-control greenbg" style="width: 100%;" onclick="location.href='/living/group/search.action?query=${dto.name}&display=5;'">N 네이버에서 비교하기</button>
             </td>
             <td colspan="2">
                 <button class="form-control orangebg">구매하기</button>

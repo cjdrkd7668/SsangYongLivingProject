@@ -12,6 +12,8 @@
 		<typeAlias type="com.test.living.group.CommunityCommentDTO" alias="groupCommunityCommentDto"/>
 		<typeAlias type="com.test.living.group.GroupBuyingPostDTO" alias="groupBuyingPostDto"/>
 		<typeAlias type="com.test.living.group.QnaDTO" alias="groupQnaDto"/>
+		<typeAlias type="com.test.living.group.CouponDTO" alias="groupCouponDto"/>
+		<typeAlias type="com.test.living.group.NoticeDTO" alias="groupNoticeDto"/>
 		<!-- 공동 구매 커뮤니티 DTO 끝 -->
 		
 

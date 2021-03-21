@@ -1,13 +1,28 @@
 package com.test.living.group;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,11 +50,53 @@ public class GroupController {
 	@Autowired
 	private IQnaDAO qnaDao;
 	
+	@Autowired
+	private ICouponDAO couponDao;
+	
+	@Autowired
+	private INoticeDAO noticeDao;
+	
+	@RequestMapping(value="/inc/groupheader.action", method={RequestMethod.GET})
+	public String member_groupHeader(HttpServletRequest request, HttpServletResponse response, HttpSession session, String memberSeq) {
+		
+		//memberSeq 회원 번호
+		//회원 이름 가져오기
+		String memberName = communityDao.memberName(memberSeq);
+		
+		//읽지 않은 알림 개수 가져오기
+		int postCount = noticeDao.notReadCount(memberSeq);
+		int couponCount = couponDao.notReadCount(memberSeq);
+		int count = postCount + couponCount;
+		
+		request.setAttribute("memberName", memberName);
+		request.setAttribute("count", count);
+		
+		return "inc.groupheader";
+	}
+	
 	//알림 페이지
 	@RequestMapping(value="/group/notice.action", method={RequestMethod.GET})
 	public String member_notice(HttpServletRequest request, HttpServletResponse response, HttpSession session, String memberSeq) {
 		
 		//memberSeq 회원 번호
+		//회원 이름 가져오기
+		String memberName = communityDao.memberName(memberSeq);
+		
+		//읽지 않은 알림 개수 가져오기
+		int postCount = noticeDao.notReadCount(memberSeq);
+		int couponCount = couponDao.notReadCount(memberSeq);
+		int count = postCount + couponCount;
+		
+		//공구 알림 정보 가져오기
+		List<NoticeDTO> nlist = noticeDao.list(memberSeq);
+		
+		//쿠폰 알림 정보 가져오기
+		List<CouponDTO> clist = couponDao.list(memberSeq);
+		
+		request.setAttribute("memberName", memberName);
+		request.setAttribute("count", count);
+		request.setAttribute("nlist", nlist);
+		request.setAttribute("clist", clist);
 		
 		return "group.notice";
 	}
@@ -83,6 +140,151 @@ public class GroupController {
 		return "group.add";
 	}
 	
+	//Qna 네이버 쇼핑 페이지 호출
+	@RequestMapping(value="/group/search.action", method={RequestMethod.GET})
+	public String member_search(HttpServletRequest request, HttpServletResponse response, HttpSession session, String query) {
+		
+		Object total = 0;
+		
+		request.setAttribute("query", query);
+		
+		ArrayList<SearchDTO> slist = new ArrayList<SearchDTO>();
+		
+		if (query != null && query != "") {
+			//검색O
+			
+			String clientId = "qTs3BPX3uk9EWgRZcdEV"; //애플리케이션 클라이언트 아이디값"
+	        String clientSecret = "meQwjGIZpP"; //애플리케이션 클라이언트 시크릿값"
+
+
+	        String text = null;
+	        
+	        try {
+	            text = URLEncoder.encode(query, "UTF-8");
+	        } catch (UnsupportedEncodingException e) {
+	            throw new RuntimeException("검색어 인코딩 실패",e);
+	        }
+
+
+	        String apiURL = "https://openapi.naver.com/v1/search/shop.json?query=" + text + "&display=5";    
+
+
+	        Map<String, String> requestHeaders = new HashMap<>();
+	        requestHeaders.put("X-Naver-Client-Id", clientId);
+	        requestHeaders.put("X-Naver-Client-Secret", clientSecret);
+	        String responseBody = get(apiURL,requestHeaders);
+
+	        
+	        //responseBody
+	        // - 검색 결과
+	        // - String -> parse -> Java에서 인식한 형태로 변환
+	        // - JSON Parser -> *.jar
+	        
+	        try {
+	        
+		        JSONParser parser = new JSONParser();
+		        
+		        //해석(구문분석)
+		        JSONObject json = (JSONObject)parser.parse(responseBody);
+
+		        System.out.println(json.get("total"));
+		        System.out.println(json.get("display"));
+		        total = json.get("total");
+		        
+		        //쇼핑 목록들(items)
+		        JSONArray list = (JSONArray)json.get("items");
+
+		        
+		        for (int i=0; i<list.size(); i++) {
+		        	
+		        	SearchDTO dto = new SearchDTO();
+		        	
+		        	JSONObject search = (JSONObject)list.get(i);
+		        	
+		        	String title = (String)search.get("title");
+		        	String image = (String)search.get("image");
+		        	String link = (String)search.get("link");
+		        	String lprice = (String)search.get("lprice");
+		        	String category4 = (String)search.get("category4");
+		        	String mallName = (String)search.get("mallName");
+		        	
+		        	dto.setTitle(title);
+		        	dto.setImage(image);
+		        	dto.setLink(link);
+		        	dto.setLprice(lprice);
+		        	dto.setCategory4(category4);
+		        	dto.setMallName(mallName);
+
+		        	slist.add(dto);
+		        }
+	        
+	        } catch(Exception e) {
+	        	System.out.println(e);
+	        }
+	   	}		
+		
+		request.setAttribute("slist", slist);
+		
+		request.setAttribute("total", total);
+		
+		return "group.search";
+	}
+
+	private String get(String apiUrl, Map<String, String> requestHeaders){
+	    HttpURLConnection con = connect(apiUrl);
+	    try {
+	        con.setRequestMethod("GET");
+	        for(Map.Entry<String, String> header :requestHeaders.entrySet()) {
+	            con.setRequestProperty(header.getKey(), header.getValue());
+	        }
+	
+	
+	        int responseCode = con.getResponseCode();
+	        if (responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
+	            return readBody(con.getInputStream());
+	        } else { // 에러 발생
+	            return readBody(con.getErrorStream());
+	        }
+	    } catch (IOException e) {
+	        throw new RuntimeException("API 요청과 응답 실패", e);
+	    } finally {
+	        con.disconnect();
+	    }
+	}
+	
+	
+	private HttpURLConnection connect(String apiUrl){
+	    try {
+	        URL url = new URL(apiUrl);
+	        return (HttpURLConnection)url.openConnection();
+	    } catch (MalformedURLException e) {
+	        throw new RuntimeException("API URL이 잘못되었습니다. : " + apiUrl, e);
+	    } catch (IOException e) {
+	        throw new RuntimeException("연결이 실패했습니다. : " + apiUrl, e);
+	    }
+	}
+	
+	
+	private String readBody(InputStream body){
+	    InputStreamReader streamReader = new InputStreamReader(body);
+	
+	
+	    try (BufferedReader lineReader = new BufferedReader(streamReader)) {
+	        StringBuilder responseBody = new StringBuilder();
+	
+	
+	        String line;
+	        while ((line = lineReader.readLine()) != null) {
+	            responseBody.append(line);
+	        }
+	
+	
+	        return responseBody.toString();
+	    } catch (IOException e) {
+	        throw new RuntimeException("API 응답을 읽는데 실패했습니다.", e);
+	    }
+	}
+	
 	//Qna 글 작성 처리
 	@RequestMapping(value="/group/addok.action", method={RequestMethod.POST})
 	public void member_addok(HttpServletRequest request, HttpServletResponse response, HttpSession session, QnaDTO dto) {
@@ -91,16 +293,20 @@ public class GroupController {
 		MultipartHttpServletRequest multi = (MultipartHttpServletRequest)request;
 		
 		MultipartFile fileName = multi.getFile("fileName");
+		System.out.println(fileName.getName());
 		
 		String saveName = "";
 		
+		//파일 저장 경로와 중복 파일명 처리
 		try {
 			
-			String path = request.getRealPath("files");
+			String path = request.getRealPath("resources/files");
 			
 			System.out.println(path);
 			
 			saveName = getFileName(path, fileName.getOriginalFilename());
+			
+			dto.setFileName(saveName);
 			
 			//첨부 파일 최종 경로
 			File file = new File(path + "\\" + saveName);
@@ -111,12 +317,32 @@ public class GroupController {
 			System.out.println(e);
 		}
 		
+		dto.setMemberSeq("1");
+		int thread = qnaDao.getThread();
+		dto.setThread(thread);
+		dto.setDepth(0);
+		
+		
+		int result = qnaDao.add(dto);
+		
+		try {
+			
+			if (result == 1) {
+				response.sendRedirect("/living/group/view.action?seq="+dto.getPostSeq()+"&nowPage="+dto.getNowPage());
+			} else {
+				response.sendRedirect("/living/group/view.action?seq="+dto.getPostSeq()+"&nowPage="+dto.getNowPage());
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		
 	}
 
 	//파일명 반환 메소드
 	private String getFileName(String path, String filename) {
 		
+		//인덱스 숫자
 		int number = 1;
 		int index = filename.indexOf(".");
 		

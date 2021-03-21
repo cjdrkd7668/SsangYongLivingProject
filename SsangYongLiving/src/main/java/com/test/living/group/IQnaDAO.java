@@ -9,4 +9,8 @@ public interface IQnaDAO {
 
 	int communityTotalPage(String seq);
 
+	int getThread();
+
+	int add(QnaDTO dto);
+
 }

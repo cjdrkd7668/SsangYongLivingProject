@@ -16,15 +16,17 @@ public class QnaDTO {
 	private String memberSeq;
 	private String name;
 	private String subject;
+	private String detail;
 	private String regDate;
 	private int gap;
 	private String updateDate;
 	private String readCount;
 	private String fileName;
 	private String openFlag;
+	private int thread;
+	private int depth;
 
 	private int nowPage;
 	private int totalPage;
 	
-	private String presult;
 }
