@@ -40,6 +40,22 @@
 		update tblRecipe set recipeDelFlag = 1 where recipeSeq = #{seq}
 	</update>
 	
+	<select id="getIngredientList" resultType="recipeIngredientDto">
+		select * from tblIngredient
+	</select>
+	
+	<insert id="addRecipe" parameterType="recipeRecipeDto">
+		insert into tblRecipe values (SEQRECIPE.nextval, #{recipeSubject}, #{recipeLevel}, #{recipeContent}, #{recipeImage}, default, 0, 0, #{memberSeq})
+	</insert>
+	
+	<insert id="addRecipeStock" parameterType="recipeRecipeStockDto">
+		insert into tblRecipeStock values (seqRecipeStock.nextVal, #{recipeStockNum}, #{ingredientSeq}, seqRecipe.currVal)
+	</insert>
+	
+	<insert id="addRecipeOrder" parameterType="recipeRecipeOrderDto">
+		insert into tblRecipeOrder values (seqRecipeOrder.nextval, #{recipeOrderImage}, #{recipeOrderContent}, 0, seqRecipe.currVal)
+	</insert>
+	
 </mapper>
 
 

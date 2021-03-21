@@ -18,4 +18,10 @@ public class RecipeOrderDAO implements IRecipeOrderDAO {
 		return template.selectList("recipe.getRecipeOrderList", seq);
 	}
 
+	@Override
+	public int addRecipeOrder(RecipeOrderDTO rodto) {
+		
+		return template.insert("recipe.addRecipeOrder", rodto);
+	}
+
 }

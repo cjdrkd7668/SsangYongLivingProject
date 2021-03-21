@@ -13,4 +13,6 @@ public interface IRecipeDAO {
 
 	int delRecipe(String recipeSeq);
 
+	int addRecipe(RecipeDTO dto);
+
 }

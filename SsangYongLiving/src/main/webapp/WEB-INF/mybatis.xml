@@ -24,6 +24,7 @@
 		<typeAlias type="com.test.living.recipe.RecipeStockDTO" alias="recipeRecipeStockDto" />
 		<typeAlias type="com.test.living.recipe.RecipeOrderDTO" alias="recipeRecipeOrderDto" />
 		<typeAlias type="com.test.living.recipe.RecipeCommentDTO" alias="recipeRecipeCommentDto" />
+		<typeAlias type="com.test.living.recipe.IngredientDTO" alias="recipeIngredientDto" />
 
 		
 	</typeAliases>
