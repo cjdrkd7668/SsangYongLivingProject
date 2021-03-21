@@ -186,11 +186,14 @@ public class RecipeController {
 			
 			if (result == 1) {
 				
+				String recipeSeq = rdao.getRecipeCurrSeq();
+				
 				RecipeStockDTO rsdto = new RecipeStockDTO();
 				
 				for (int i=0; i<ingredientSeq.length; i++) {
 					rsdto.setIngredientSeq(ingredientSeq[i]);
 					rsdto.setRecipeStockNum(recipeStockNum[i]);
+					rsdto.setRecipeSeq(recipeSeq);
 					
 					result *= rsdao.addRecipeStock(rsdto);
 				}
@@ -202,11 +205,11 @@ public class RecipeController {
 					
 					rodto.setRecipeOrderImage(getFileName(request, attach));
 					rodto.setRecipeOrderContent(recipeOrderSubject[i]);
+					rodto.setRecipeSeq(recipeSeq);
 					
 					result *= rodao.addRecipeOrder(rodto);
 					
 				}
-				
 				
 				if (result == 1) {
 					response.sendRedirect("/living/recipe/board.action");				
@@ -224,13 +227,13 @@ public class RecipeController {
 	private String getFileName(HttpServletRequest request, MultipartFile attach) throws IOException {
 		String filename = "";
 		String path = request.getRealPath("/resources/images");
-		filename = getFileName(path, attach.getOriginalFilename());
+		filename = getRealFileName(path, attach.getOriginalFilename());
 		File file = new File(path + "\\" + filename);
 		attach.transferTo(file);
 		return filename;
 	}
 	
-	private String getFileName(String path, String filename) {
+	private String getRealFileName(String path, String filename) {
 		
 		int n = 1;
 		int index = filename.indexOf(".");
@@ -256,9 +259,92 @@ public class RecipeController {
 	}
 	
 	@RequestMapping(value="/recipe/editRecipe.action", method=RequestMethod.GET)
-	public String edit(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public String edit(HttpServletRequest request, HttpServletResponse response, HttpSession session, String recipeSeq, String page) {
+		
+		RecipeDTO rdto = rdao.getRecipeDto(recipeSeq);
+		List<RecipeStockDTO> rsList = rsdao.getRecipeStockList(recipeSeq);
+		List<RecipeOrderDTO> roList = rodao.getRecipeOrderList(recipeSeq);
+		List<IngredientDTO> igList = igdao.getIngredientList();
+		
+		request.setAttribute("igList", igList);
+		request.setAttribute("rdto", rdto);
+		request.setAttribute("rsList", rsList);
+		request.setAttribute("roList", roList);
+		request.setAttribute("recipeSeq", recipeSeq);
+		request.setAttribute("page", page);
 		
 		return "recipe.editRecipe";
+	}
+	
+	@RequestMapping(value="/recipe/editRecipeOk.action", method=RequestMethod.POST)
+	public void editOk(HttpServletRequest request, HttpServletResponse response, HttpSession session, RecipeDTO dto, String[] ingredientSeq, String[] recipeStockNum, String[] recipeOrderSubject, String recipeSeq, String page) {
+
+		dto.setMemberSeq((String)session.getAttribute("seq"));
+		dto.setRecipeSeq(recipeSeq);
+		
+		//첨부 파일 처리하기
+		MultipartHttpServletRequest multi = (MultipartHttpServletRequest) request;
+		
+		try {
+			
+			MultipartFile attach = multi.getFile("attach");
+			String filename = getFileName(request, attach);
+			
+			dto.setRecipeImage(filename);
+			
+			int result = rdao.editRecipe(dto);
+			rsdao.delRecipeStock(recipeSeq);
+			rodao.delRecipeOrder(recipeSeq);
+			
+			System.out.println(dto.getRecipeContent());
+			System.out.println(dto.getRecipeImage());
+			System.out.println(dto.getRecipeLevel());
+			System.out.println(dto.getRecipeSeq());
+			System.out.println(dto.getRecipeSubject());
+			System.out.println(ingredientSeq[0]);
+			System.out.println(recipeStockNum[0]);
+			System.out.println(recipeSeq);
+			System.out.println(recipeOrderSubject[0]);
+			
+			System.out.println(result);
+			
+			if (result == 1) {
+				
+				RecipeStockDTO rsdto = new RecipeStockDTO();
+				
+				for (int i=0; i<ingredientSeq.length; i++) {
+					rsdto.setIngredientSeq(ingredientSeq[i]);
+					rsdto.setRecipeStockNum(recipeStockNum[i]);
+					rsdto.setRecipeSeq(recipeSeq);
+					
+					result *= rsdao.addRecipeStock(rsdto);
+				}
+				
+				RecipeOrderDTO rodto = new RecipeOrderDTO();
+				
+				for (int i=0; i<recipeOrderSubject.length; i++) {
+					attach = multi.getFiles("recipeOrderImage").get(i);
+					
+					rodto.setRecipeOrderImage(getFileName(request, attach));
+					rodto.setRecipeOrderContent(recipeOrderSubject[i]);
+					rodto.setRecipeSeq(recipeSeq);
+					
+					result *= rodao.addRecipeOrder(rodto);
+					
+				}
+				
+				if (result == 1) {
+					response.sendRedirect("/living/recipe/board.action");				
+					
+				} 
+				System.out.println("#################################################################");
+			}		
+			response.sendRedirect("/living/recipe/editRecipe.action?seq=" + recipeSeq + "&page=" + page);				
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
 	}
 	
 	

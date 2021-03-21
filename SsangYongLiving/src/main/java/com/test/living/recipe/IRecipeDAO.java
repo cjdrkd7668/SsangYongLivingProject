@@ -15,4 +15,8 @@ public interface IRecipeDAO {
 
 	int addRecipe(RecipeDTO dto);
 
+	int editRecipe(RecipeDTO dto);
+
+	String getRecipeCurrSeq();
+
 }

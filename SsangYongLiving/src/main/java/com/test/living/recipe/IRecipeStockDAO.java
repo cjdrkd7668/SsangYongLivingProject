@@ -8,4 +8,6 @@ public interface IRecipeStockDAO {
 
 	int addRecipeStock(RecipeStockDTO rsdto);
 
+	int delRecipeStock(String recipeSeq);
+
 }
