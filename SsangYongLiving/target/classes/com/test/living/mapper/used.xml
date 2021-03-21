@@ -7,7 +7,27 @@
 	<insert id="productUpload" parameterType="dto">
 		insert into tblUsed_product (seq, subject, price, name, content, productStatus, trade, regDate, status, viewCount, delFlag, memberSeq, categorySeq) values(seqUsed_product.nextVal, #{subject}, #{price}, #{name}, #{content}, #{productStatus}, #{trade}, sysdate, '판매 중', 0, 0,  #{seq}, #{categorySeq})
 	</insert>
-
+	
+	<select id="list" parameterType="hashmap" resultType="dto">
+		<!-- select * from tblUsed_product order by seq desc -->
+		select * from (select rownum as rnum, up.* from tblUsed_product up) where rnum between #{begin} and #{end}
+	</select>
+	
+	<select id="poplist"  resultType="dto">
+		select rownum, a.* from (select * from tblUsed_product order by viewcount desc) a <![CDATA[where rownum < 9]]>
+	</select>
+	
+	<select id="getProductTotalCount" resultType="int">
+		select count(*) from tblUsed_product
+	</select>
+	
+<!-- 	<select id="view" parameterType="String" resultType="dto">
+		select * from tblUsed_product where seq = #{seq}
+	</select> -->
+	
+	<select id="get" parameterType="String" resultType="dto">
+		select * from tblUsed_product where seq = #{seq}
+	</select>
 
 </mapper>
 

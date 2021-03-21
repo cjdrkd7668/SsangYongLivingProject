@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <div class="content" id="content">
 
-	<!-- 로그인 session test -->
+<%-- 	<!-- 로그인 session test -->
 	<div>${empty seq ? "익명" : seq}</div>	
 	<div><a href="/living/used/auth.action">로그인하기</a></div>
-	<!-- Test End -->
+	<!-- Test End --> --%>
 	
 	<img src="/living/resources/images/used/mainimg.jpg" alt="mainimg">
 
@@ -26,63 +26,17 @@
 
 	<div class="popular-product">
 		<div class="box">
+		
+			<c:forEach items="${poplist}" var="dto">
 			<div class="popList">
 				<img src="/living/resources/images/used/used01.jpg"
 					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
+				<h5 class="etc" style="width: 180px">${dto.subject}</h5>
+				<span>${dto.price}원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>${dto.trade}</span>
 			</div>
-
-			<div class="popList">
-			<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="popList">
-			<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="popList">
-					<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div style="clear: both"></div>
-
-			<div class="popList">
-		<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="popList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="popList">
-			<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="popList">
-			<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
+			</c:forEach>
+			
+			
 		</div>
 		<!-- box 끝 -->
 

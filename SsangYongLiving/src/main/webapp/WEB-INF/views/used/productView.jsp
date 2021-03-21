@@ -16,7 +16,7 @@
             <div class="col-1" style="display: inline; margin-left: 15px;"> 
                 <div  class="state"><span style="position: relative; top: 25%;">판매 중</span></div>&nbsp;&nbsp;
                 <h4 style="display: inline;">제품 이름을 적는 공간입니다.</h4>
-                <h2>10,000원</h2>
+                <h2>${dto.price}원</h2>
                 <hr>
                 <div style="font-size: 1.4em; margin-bottom: 15px;" >거래방법 :     택배</div>
                 <div style="font-size: 1.4em;">제품상태 : 중고</div>

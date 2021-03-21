@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="content" id="content">
 
 	<div class="searchboxList">
@@ -14,143 +14,28 @@
 	<div class="product-list">
 		<div class="box">
 		
-			<div class="procList" onclick="location.href='/living/used/productView.action';" style="cursor:pointer">
+			<c:forEach items="${list}" var="dto">
+			<div class="procList" onclick="location.href='/living/used/productView.action?seq=${dto.seq}';" style="cursor:pointer">
 				<img src="/living/resources/images/used/used01.jpg"
 					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
+				<h5 class="etc" style="width: 180px">${dto.subject}</h5>
+				<span>${dto.price}원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>${dto.trade}</span>
 			</div>
+			</c:forEach>
+			
 		
-			
-			
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div style="clear: both"></div>
-
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div style="clear: both"></div>
-
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div style="clear: both"></div>
-
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
-
-			<div class="procList">
-				<img src="/living/resources/images/used/used01.jpg"
-					style="width: 180px; border-radius: 5px;">
-				<h5>컨버스 척테일러</h5>
-				<span>40,000원</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>택배/직거래</span>
-			</div>
 		</div>
 		<!-- box 끝 -->
 	</div>
 
 	<!-- 페이징  -->
 	<div class="paging" style="text-align: center;">
-		<ul class="pagination">
-
-			<li class="disabled"><a href="#"><span>«</span></a></li>
-
-			<li class="active"><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#"><span>»</span></a></li>
-		</ul>
-
+		<!-- pagination -->
+		<nav>
+			<ul class="pagination">
+				${pageBar}
+			</ul>
+		</nav>
 	</div>
 
 

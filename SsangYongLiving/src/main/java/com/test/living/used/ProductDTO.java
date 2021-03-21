@@ -19,6 +19,8 @@ public class ProductDTO {
 	private String memberSeq;
 	private String categorySeq;
 	
+	
+	
 
 
 }
