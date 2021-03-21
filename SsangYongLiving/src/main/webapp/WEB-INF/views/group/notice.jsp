@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- container 시작 -->
 <div class="container">
 
@@ -12,7 +12,7 @@
                     <img src="/living/resources/images/group/notice.png">
                 </th>
                 <th class="col-md-3">&nbsp;&nbsp;알림</th>
-                <th class="col-md-7">홍길동님<br>아직 읽지 않은 알림이 <b class="orange">n</b>&nbsp;개 있습니다.
+                <th class="col-md-7">${memberName }님<br>아직 읽지 않은 알림이 <b class="orange">${count }</b>&nbsp;개 있습니다.
                 </th>
             </tr>
         </table>
@@ -40,18 +40,34 @@
             <th class="col-md-4">내용</th>
             <th class="col-md-3">알림일</th>
         </tr>
-        <tr>
-            <td>5</td>
-            <td>하우스 딸기 500g 특가</td>
-            <td>[알림]공동 구매 글이 게시되었습니다.</td>
-            <td>2021/03/10</td>
+        <c:forEach items="${nlist }" var="ndto">
+        <tr onclick="location.href='/living/group/noticeok.action?seq=${ndto.seq}';">
+            <c:if test="${ndto.readFlag == 0 }">
+            <td class="orange">${ndto.seq }</td>
+            <td class="orange">${ndto.psubject }</td>
+            <td class="orange">${ndto.detail }</td>
+            <td class="orange">${ndto.noticeDate}</td>
+            </c:if>
+            <c:if test="${ndto.readFlag == 1 }">
+            <td>${ndto.seq }</td>
+            <td>${ndto.psubject }</td>
+            <td>${ndto.detail }</td>
+            <td>${ndto.noticeDate}</td>
+            </c:if>
+            <c:if test="${ndto.readFlag == 2 }">
+            <td class="grey">${ndto.seq }</td>
+            <td class="grey">${ndto.psubject }</td>
+            <td class="grey">${ndto.detail }</td>
+            <td class="grey">${ndto.noticeDate}</td>
+            </c:if>
         </tr>
+        </c:forEach>
+        
+        <c:if test="${nlist.size() == 0 }">
         <tr>
-            <td>2</td>
-            <td>닥터지 수분크림 2+1</td>
-            <td>[알림]공동 구매 글이 게시되었습니다.</td>
-            <td>2021/03/09</td>
+        	<td colspan="4">새 공구 알림이 없습니다.</td>
         </tr>
+        </c:if>
 
     </table>
     <!-- 공구 새 글 끝 -->
@@ -67,23 +83,41 @@
             <th class="col-md-3">발급일</th>
             <th class="col-md-3">만료일</th>
         </tr>
-        <tr>
-            <td>3</td>
-            <td>식료품마켓</td>
-            <td>5000원</td>
-            <td>2021/03/10</td>
-            <td>2021/03/17</td>
+        <c:forEach items="${clist }" var="cdto">
+        <tr onclick="location.href='/living/group/couponok.action?seq=${cdto.seq}';">
+        	<c:if test="${cdto.readFlag == 0 }">
+            <td class="orange">${cdto.seq }</td>
+            <td class="orange">${cdto.cname }</td>
+            <td class="orange">${cdto.discount }원</td>
+            <td class="orange">${cdto.issueDate }</td>
+            <td class="orange">${cdto.endDate }</td>
+            </c:if>
+            <c:if test="${cdto.readFlag == 1 }">
+            <td>${cdto.seq }</td>
+            <td>${cdto.cname }</td>
+            <td>${cdto.discount }원</td>
+            <td>${cdto.issueDate }</td>
+            <td>${cdto.endDate }</td>
+            </c:if>
+            <c:if test="${cdto.readFlag == 2 }">
+            <td class="grey">${cdto.seq }</td>
+            <td class="grey">${cdto.cname }</td>
+            <td class="grey">${cdto.discount }원</td>
+            <td class="grey">${cdto.issueDate }</td>
+            <td class="grey">${cdto.endDate }</td>
+            </c:if>
         </tr>
+        </c:forEach>
+        
+        <c:if test="${clist.size() == 0 }">
         <tr>
-            <td>2</td>
-            <td>화장품나라</td>
-            <td>3000원</td>
-            <td>2021/03/09</td>
-            <td>2021/03/16</td>
+        	<td colspan="5">새 쿠폰 알림이 없습니다.</td>
         </tr>
+        </c:if>
     </table>
     <!-- 내 쿠폰 끝 -->
 
 
 </div>
 <!-- container 끝 -->
+

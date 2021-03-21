@@ -32,4 +32,18 @@ public class QnaDAO implements IQnaDAO {
 		return template.selectOne("group.qnaTotalPage", seq);
 	}
 
+	//Qna thread값 반환
+	@Override
+	public int getThread() {
+		
+		return template.selectOne("group.qnaThread");
+	}
+
+	//Qna 글쓰기
+	@Override
+	public int add(QnaDTO dto) {
+		
+		return template.insert("group.qnaAdd", dto);
+	}
+
 }
