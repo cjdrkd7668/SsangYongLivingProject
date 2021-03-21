@@ -347,3 +347,9 @@ a:active {
     grid-template-areas:
         "sd  main"
 }
+
+.etc {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    }

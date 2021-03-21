@@ -91,7 +91,8 @@
             <tr>
                 <th style="width: 50px; text-align: center;">사진</th>
                  <td>
-                    <input type="file" class="form-control" name="uploadFile" required>
+               		  <!-- **************수정  -->
+                    <input type="file" class="form-control" id="files[0]" name="files[0]"required>
                    <!--  <input type="file" class="form-control" name="url2" required> -->
                 </td> 
             </tr>
