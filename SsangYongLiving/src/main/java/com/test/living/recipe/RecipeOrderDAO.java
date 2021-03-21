@@ -24,4 +24,10 @@ public class RecipeOrderDAO implements IRecipeOrderDAO {
 		return template.insert("recipe.addRecipeOrder", rodto);
 	}
 
+	@Override
+	public int delRecipeOrder(String recipeSeq) {
+		
+		return template.delete("recipe.delRecipeOrder", recipeSeq);
+	}
+
 }

@@ -8,4 +8,6 @@ public interface IRecipeOrderDAO {
 
 	int addRecipeOrder(RecipeOrderDTO rodto);
 
+	int delRecipeOrder(String recipeSeq);
+
 }
