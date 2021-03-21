@@ -19,4 +19,17 @@ public class RecipeStockDAO implements IRecipeStockDAO {
 		return template.selectList("recipe.getRecipeStockList", seq);
 	}
 
+	@Override
+	public int addRecipeStock(RecipeStockDTO rsdto) {
+		
+		return template.insert("recipe.addRecipeStock", rsdto);
+	}
+
+	@Override
+	public int delRecipeStock(String recipeSeq) {
+		
+		return template.delete("recipe.delRecipeStock", recipeSeq);
+	}
+
+
 }

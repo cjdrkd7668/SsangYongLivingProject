@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일대일 문의</title>
+
+    <link rel="stylesheet" href="/living/resources/css/bootstrap.css">
+    <script src="/living/resources/js/jquery-1.12.4.js"></script>
+    <script src="/living/resources/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+
+    <style>
+
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, p, div, span, a, table, th, td, input, button, textarea, h1, h2, h3 {
+	font-family: 'GmarketSansMedium';
+    letter-spacing: -1px;
+    line-height: 1.8em; 
+    color: #444;
+}
+
+body {
+	margin: 0 auto;
+	height: 100%;
+	width: 1200px;
+}
+
+textarea {
+    resize: none;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.orange {
+	color: #FF6300;
+}
+
+.orangebg {
+    background-color: #FF6300;
+    color: #EEE;
+}
+
+.soft {
+    color: #F0E5DE;
+}
+
+.softbg {
+    background-color: #F0E5DE;
+}
+
+.grey {
+    color: #a3a1a1;
+}
+
+.greybg {
+    background-color: #a3a1a1;
+    color: #F0E5DE;
+}
+
+.red {
+    color: #EF1804;
+}
+
+.divider {
+    background-color: #FF6300;
+    width: 100%;
+    height: 5px;
+    position: relative;
+    top: -30px;
+}
+
+.btn {
+    width: 120px;
+    height: 40px;
+    outline: none;
+}
+
+.headerBtn {
+    width: 82%;
+    height: 50px;
+    margin: 0px auto;
+    position: relative;
+    top: 0px;
+}
+
+.headerBtn #btn1 {
+    float: left;
+}
+
+.headerBtn #btn2 {
+    float: right;
+}
+
+.headerBtn #btn1 .btn,
+.container .mypageBtn .btn {
+    font-size: 1em;
+    margin-right: 5px;
+}
+
+.headerBtn #btn2 .btn {
+    width: 100px;
+    font-size: 1em;
+}
+
+.headerBtn #btn2 .btn:hover {
+    opacity: .8;
+    color: #EEE;
+}
+
+.headerBtn div::after {
+    content: "";
+    display: block;
+    clear: left;
+}
+
+.container {
+    position: relative;
+    top: 10px;
+    width: 85%;
+    height: auto;
+    padding-bottom: 50px;
+}
+
+.container .mypageBtn .btn:first-child {
+    background-color: #FF6300;
+    color: #EEE;
+}
+
+.container .mypageBtn .btn:first-child:hover {
+    opacity: .8;
+}
+
+.container .mypageBtn .btn:nth-child(2) {
+    background-color: #a3a1a1;
+    color: #F0E5DE;
+}
+
+.container .mypageBtn .btn:nth-child(2):hover {
+    background-color: #FF6300;
+    color: #EEE;
+}
+
+.container .mypageBtn .search {
+    width: 220px;
+    float: right;
+}
+
+.container .mypageBtn .search input[type="text"] {
+    width: 170px;
+    float: left;
+}
+
+.container .mypageBtn .search i {
+    background-color: #FF6300;
+    color: #EEE;
+    border-radius: 50%;
+    padding: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.container .alarmwell th:nth-child(2) {
+    font-size: 2.5em;
+}
+
+.container .alarmwell th:nth-child(3){
+    font-size: 1.4em;
+}
+
+.container .alarmwell img {
+    width: 100px;
+    margin-left: 20px;
+}
+
+.container .page-header {
+    font-size: 1.5em;
+}
+
+.container .page-header img {
+    width: 40px;
+}
+
+.container .page-header small {
+    margin-left: 10px;
+    font-variant: small-caps;
+    color: #a7a7a2;
+}
+
+.container .table th,
+.container .table td {
+    text-align: center;
+    font-size: 1.1em;
+}
+
+/* 공구 이모저모 페이지 */
+.container .backPostBtn {
+    float: right;
+    width: 140px;
+    opacity: .7;
+}
+
+.container .backPostBtn:hover {
+    background-color: #F0E5DE;
+    color: #FF6300;
+    opacity: 1;
+}
+
+.container .tables {
+    height: 210px;
+}
+
+.container .readTable, 
+.container .recTable, 
+.container .comTable {
+    width: 280px;
+    float: left;
+    margin-left: 35px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.container .readTable img, 
+.container .recTable img, 
+.container .comTable img {
+    width: 30px;
+}
+
+.container .readTable th,
+.container .recTable th, 
+.container .comTable th {
+    height: 40px;
+}
+
+.container .readTable td,
+.container .recTable td, 
+.container .comTable td {
+    text-align: left;
+    text-indent: 2em;
+    cursor: pointer;
+}
+
+.container .tables::after {
+    content: "";
+    display: block;
+    clear: left;
+}
+
+.container .commuTable {
+    margin-top: 15px;
+}
+
+.container .commuTable tr:hover {
+    cursor: pointer;
+}
+
+.container .commuTable tr:first-child:hover {
+    cursor: inherit;
+    background-color: #F0E5DE;
+}
+
+.container .commuTable tr:last-child {
+    border-bottom: 1px solid #DDD;
+}
+
+.container .writeBtn {
+    float: right;
+}
+
+.container .writeBtn:hover {
+    background-color: #F0E5DE;
+    color: #FF6300;
+}
+
+/* 공동 구매 글 상세 페이지 */
+.container .panel {
+    border: 0px;
+    text-align: center;
+}
+
+.container .panel i {
+    font-size: 0.8em;
+    color: #a3a1a1;
+}
+
+.container .viewTable {
+    width: 600px;
+    height: 380px;
+    margin: 0px auto;
+}
+
+.container .viewTable img {
+    width: 280px;
+}
+
+.container .viewTable tr:first-child td:first-child {
+    border: 0;
+    width: 300px;
+}
+
+.container .viewTable tr:first-child td:last-child {
+    border: 0;
+}
+
+.container .viewTable tr:first-child td:last-child h3 {
+    width: 280px;
+    margin: 0px;
+    
+}
+
+.container .viewTable tr:nth-child(2) td:last-child {
+    border: 0;
+    font-size: 1.1em;
+    text-align: left;
+    padding: 15px;
+}
+
+.container .viewTable tr:nth-child(3) td:first-child {
+    border: 0;
+}
+
+.container .viewTable tr:nth-child(3) td:first-child div {
+    width: 100px;
+    height: 40px;
+}
+
+.container .viewTable tr:nth-child(3) td:first-child input[type="number"] {
+    width: 70px;
+    height: 33px;
+    margin: -3px auto;
+    text-align: center;
+    float: left;
+}
+
+.container .viewTable tr:nth-child(3) td:last-child {
+    border: 0;
+    float: right;
+    width: 130px;
+}
+
+.container .viewTable tr:nth-child(4) {
+    height: 60px;
+}
+
+.container .viewTable tr:nth-child(4) td:first-child {
+    border: 0;
+    font-size: 1.5em;
+    width: 100%;
+    text-align: right;
+    padding-top: 20px;
+}
+
+.container .viewTable tr:nth-child(4) td:nth-child(2) {
+    border: 0;
+    font-size: 1.5em;
+    text-align: right;
+}
+
+.container .viewTable tr:nth-child(4) td:nth-child(2) span {
+    font-size: 1.5em;
+}
+
+.container .viewTable tr:nth-child(5) td:nth-child(1),
+.container .viewTable tr:nth-child(5) td:nth-child(2) {
+    border: 0;
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+.container .viewTable tr:nth-child(5) td:last-child {
+    border: 0;
+}
+
+.container .viewTable tr:nth-child(5) td:last-child button {
+    width: 150px;
+    height: 35px;
+    float: right;
+    padding-top: 7px;
+}
+
+.container .viewTable tr:nth-child(5) td:last-child button:hover {
+    opacity: .8;
+}
+
+.container .companyTable {
+    margin-top: 15px;
+}
+
+.container .companyTable img {
+    width: 180px;
+    height: 180px;
+}
+
+.container .companyTable tr:nth-child(3) td {
+    text-align: left;
+    text-indent: 2em;
+}
+
+.container .companyTable tr:nth-child(3) td small {
+    color: #FF6300;
+}
+
+.container .chatBtn {
+    width: 120px;
+}
+
+.container .chatBtn .glyphicon {
+    font-size: 1.3em;
+    position: relative;
+    top: 3px;
+}
+
+/* 커뮤니티 글 작성 페이지 */
+.container .addTable th,
+.container .addTable td {
+    border-bottom: 1px solid #DDD;
+}
+
+.container .addTable tr:nth-child(2) td textarea {
+    height: 250px;
+    outline: none;
+}
+
+.container .addBtn {
+    float: right;
+    margin-right: 5px;
+}
+
+/* 커뮤니티 글 상세 페이지 */
+.container .commuViewTable {
+    width: 80%;
+    margin: 0px auto;
+}
+
+.container .commuViewTable td {
+    border: 0;
+    text-align: left;
+    height: 40px;
+    padding-left: 20px;
+}
+
+.container .commuViewTable tr:first-child td {
+    font-size: 1.1em;
+    color: #a3a1a1;
+    opacity: .8;
+    height: 20px;
+}
+
+.container .commuViewTable tr:nth-child(2) td {
+    font-size: 1.8em;
+}
+
+.container .commuViewTable tr:nth-child(3) td {
+    font-size: 1em;
+    height: 30px;
+    color: #666;
+    opacity: .8;
+    border-bottom: 1px solid #DDD;
+}
+
+.container .commuViewTable tr:nth-child(4) td {
+    font-size: 1.3em;
+    padding-top: 20px;
+    height: 150px;
+    border-bottom: 1px solid #DDD;
+}
+
+.container .commuViewTable tr:nth-child(5) td:first-child
+ {
+    height: 50px;
+    float: left;
+}
+
+.container .commuViewTable tr:nth-child(5) td:nth-child(2) {
+    height: 50px;
+    float: left;
+}
+
+.container .commuViewTable tr:nth-child(5) td .btn {
+    display: inline-block;
+    width: 70px;
+    height: 35px;
+    margin-right: -15px;
+}
+
+.container .listBtn {
+    position: relative;
+    top: 10px;
+    left: -100px;
+    float: right;
+}
+
+.container .commuAddCmt {
+    width: 80%;
+    margin: 10px auto;
+}
+
+.container .commuAddCmt tr:last-child td:first-child {
+    width: 100%;
+    height: 60px;
+}
+
+.container .commuAddCmt div {
+    padding-left: 20px;
+}
+
+.container .commuAddCmt textarea {
+    font-size: 1em;
+}
+
+.container .commuAddCmt button {
+    width: 60px;
+    margin-bottom: -15px;
+}
+
+.container .commuCmtTable {
+    width: 80%;
+    margin: 0px auto;
+}
+
+.container .commuCmtTable img {
+    width: 20px;
+}
+
+.container .commuCmtTable tr:nth-child(odd) td:first-child,
+.container .commuCmtTable tr:nth-child(odd) td:nth-child(2),
+.container .commuCmtTable tr:nth-child(odd) td:nth-child(3) {
+    padding-top: 15px;
+    height: 30px;
+    padding-left: 20px;
+    font-size: 0.95em;
+    text-align: left;
+}
+
+.container .commuCmtTable tr:nth-child(even) td:first-child {
+    height: 40px;
+}
+
+/* 댓 내용 textarea */
+.container .commuCmtTable tr:nth-child(even) td:first-child textarea {
+    height: 40px;
+}
+
+.container .commuCmtTable .addDetail {
+    width: 600px;
+}
+
+/* 답글쓰기 버튼 */
+.container .commuCmtTable tr:nth-child(even) td:nth-child(2) {
+    font-size: 0.95em;
+    display: block;
+    padding-top: 10px;
+}
+
+.container .commuCmtTable .addReply {
+    width: 100px;
+}
+.container .commuCmtTable .addReply button {
+    width: 70px;
+    float: right;
+    font-size: .9em;
+}
+
+.container .commuCmtTable .cmtBtns button {
+    font-size: 0.8em;
+    float: left;
+    width: 70px;
+    margin-left: 5px;
+    margin-top: -5px;
+    border: 2px solid #DDD;
+}
+
+/* 업체와 일대일 문의 */
+.container .chatContainer {
+    width: 50%;
+    margin: 0px auto;
+    border: 2px solid #FF6300;
+    box-shadow: 2px 5px 8px #666;
+}
+
+.container .chatContainer th {
+    text-align: center;
+    font-size: 1.3em;
+    background-color: #FF6300;
+    color: #EEE;
+    border-bottom: 3px solid #FF6300;
+    padding-left: 3.5em;
+}
+
+.container .chatContainer small {
+    color: #E53A40;
+}
+
+.container .chatContainer th img {
+    width: 30px;
+}
+
+.container .chatContainer th span {
+    font-size: 0.9em;
+    color: #534847;
+}
+
+.container .chatContainer .companyChatInfo,
+.container .chatContainer .memberChatInfo {
+    background-color: #E0E3DA;
+    font-size: 1em;
+}
+
+.container .chatContainer .companyChatInfo td {
+    padding-left: 1.2em;
+    text-align: left;
+}
+
+.container .chatContainer .companyChatInfo img {
+    width: 20px;
+}
+
+.container .chatContainer .memberChatInfo td {
+    padding-right: 1.2em;
+    text-align: right;
+}
+
+.container .chatContainer .companyChatDetailInfo,
+.container .chatContainer .memberChatDetailInfo {
+    font-size: 1.1em;
+}
+
+.container .chatContainer .companyChatDetailInfo .companyDetail {
+    background-color: #E0E3DA;
+    border-bottom: 1px solid #FF6300;
+    text-indent: 1em;
+}
+
+.container .chatContainer .memberChatDetailInfo .memberDetail {
+    background-color: #E0E3DA;
+    border-bottom: 1px solid #FF6300;
+    text-align: right;
+    padding-right: 1em;
+}
+
+.container .chatContainer .addChat input[type="text"] {
+    border: none;
+    border-bottom: 1px solid #FF6300;
+    height: 40px;
+    width: 80%;
+    float: left;
+}
+
+.container .chatContainer .addChat #sendBtn {
+	width: 19%;
+	height: 38px;
+	border: none;
+	float: right;
+	margin-left: 1px;
+	
+}
+
+.container .chatContainer .btnChat {
+    background-image: url("images/banner.png");
+    background-size: cover;
+    background-position: center center;
+}
+
+
+.container .chatContainer .backChatBtn {
+    float: right;
+}
+
+.container .chatContainer #user {
+    height: 40px;
+}
+
+.container .chatContainer #btnConnect,
+.container .chatContainer #btnDisconnect {
+    height: 40px;
+}
+
+
+    </style>
+</head>
+<body>
+
+<!-- container 시작 -->
+<div class="container">
+
+    <table class="chatContainer">
+        
+        <thead>
+            <tr>
+                <th colspan="2">
+                    <img src="/living/resources/images/group/chat.png">&nbsp;식료품마켓 1:1 문의&nbsp;&nbsp;
+                    <img src="/living/resources/images/group/24.png" style="width: 80px; float: right;">&nbsp;<br>
+                    <span>&nbsp;~무엇이든 물어보세요~</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="memberChatInfo">
+                <td colspan="2">
+                	<div id="output"></div>
+               	</td>
+            </tr>
+
+            <!-- 대화 상자 시작 -->
+            <tr class="addChat">
+                <td colspan="2">
+                    <div>
+                        <input type="text" id="textID" name="message" class="form-control detail" placeholder="대화 내용을 입력한 뒤 엔터 키를 누르세요.">
+                        <input onclick="send_message()" value="보내기" type="button" id="sendBtn" class="btn">
+                    </div>
+                </td>
+            </tr>
+            <!-- 대화 상자 끝 -->
+
+            <tr class="btnChat softbg">
+               <td colspan="2">
+                    <button class="btn greybg backChatBtn">
+                        돌아가기
+                    </button>
+                    
+               </td> 
+            </tr>
+        </tbody>
+
+    </table>
+
+
+    
+ 
+    
+
+</div>
+<!-- container 끝 -->
+
+<script>
+
+    window.onload = function() {
+        $(".detail").focus();
+    };
+
+    $(".detail").click(function(){
+
+    });
+
+    
+    
+
+	var wsUri = "ws://localhost:8090/living/group/community/echo.action";
+
+	function init() {
+
+		output = document.getElementById("output");
+
+	}
+
+	function send_message() {
+
+		websocket = new WebSocket(wsUri);
+
+		websocket.onopen = function(evt) {
+
+			onOpen(evt)
+
+		};
+
+		websocket.onmessage = function(evt) {
+
+			onMessage(evt)
+
+		};
+
+		websocket.onerror = function(evt) {
+
+			onError(evt)
+
+		};
+
+	}
+
+	function onOpen(evt) {
+
+		writeToScreen("Connected to Endpoint!");
+
+		doSend(textID.value);
+
+	}
+
+	function onMessage(evt) {
+
+		writeToScreen("Message Received: " + evt.data);
+
+	}
+
+	function onError(evt) {
+
+		writeToScreen('ERROR: ' + evt.data);
+
+	}
+
+	function doSend(message) {
+
+		writeToScreen("Message Sent: " + message);
+
+		websocket.send(message);
+
+		websocket.close();
+
+	}
+
+	function writeToScreen(message) {
+
+		var pre = document.createElement("p");
+
+		pre.style.wordWrap = "break-word";
+
+		pre.innerHTML = message;
+
+		output.appendChild(pre);
+
+	}
+
+	window.addEventListener("load", init, false);
+	
+</script>
+
+
+</body>
+</html>

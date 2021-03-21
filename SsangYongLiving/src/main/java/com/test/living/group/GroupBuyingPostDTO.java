@@ -17,6 +17,7 @@ public class GroupBuyingPostDTO {
 	private String companyCount;
 	private String companyLastTime;
 	private String subject;
+	private String name;
 	private String detail;
 	private String url;
 	private String price;
@@ -29,5 +30,7 @@ public class GroupBuyingPostDTO {
 	private String timeRemaining;
 	private String state;
 	private String delFlag;
+	
+	private int nowPage;
 
 }

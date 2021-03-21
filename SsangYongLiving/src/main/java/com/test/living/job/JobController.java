@@ -84,8 +84,24 @@ public class JobController {
 	public String recruitmentView(HttpServletRequest request, HttpServletResponse response, HttpSession session, String recruitmentSeq, String address) {
 		
 		RecruitmentDTO dto = rdao.recruitmentget(recruitmentSeq);
+		//기본 매장 정보
+
+		RecruitmentChartDTO cdto = rdao.chartget(recruitmentSeq);
+		//하단 성별차트 정보
+		
+		List<RecruitmentAgeDTO> list = rdao.agelist(recruitmentSeq);
+		//하단 연령차트 정보
+		
+		List<RecruitmentCareerDTO> clist = rdao.careerlist(recruitmentSeq);
+		//하단 경력차트 정보
+		
+		System.out.println(cdto.getMNum());
 		
 		request.setAttribute("dto", dto);
+		request.setAttribute("cdto", cdto);
+		request.setAttribute("list", list);
+		request.setAttribute("clist", clist);
+		
 		
 		return "job.recruitmentView";
 	}

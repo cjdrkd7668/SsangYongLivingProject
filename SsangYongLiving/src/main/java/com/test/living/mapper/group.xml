@@ -4,11 +4,51 @@
 
 <mapper namespace="group">
 
-	<!-- 페이징 처리 전!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+	<!-- 조회 수를 증가시킨다. -->
+	<update id="updateCommunityReadcount" parameterType="String">
+		update tblCommunity set readCount=readCount+1 where seq = #{seq}
+	</update>
+	
+	<!-- 추천 수를 증가시킨다. -->
+	<update id="updateCommunityReccount" parameterType="String">
+		update tblCommunity set recCount=recCount+1 where seq = #{seq}
+	</update>
+
+	<!-- 특정 커뮤니티 글의 최대 페이지 수를 select -->
+	<select id="communityTotalPage" parameterType="String" resultType="Integer">
+		select ceil(count(*) / 10) as totalPage from tblCommunity where postSeq = #{postSeq} and delFlag = 0
+	</select>
+	
 	<!-- 커뮤니티 글 목록을 가져온다. -->
 	<select id="communityList" parameterType="groupCommunityDto" resultType="groupCommunityDto">
-		select * from (select rownum as rnum, c.* from (select * from vwCommunity where postSeq = #{postSeq} order by regDate desc) c)
-where rnum between #{nowPage} and #{nowPage} + 10
+		select * 
+		from (select rownum as rnum, (select count(*) from tblCommunityComment where communitySeq = c.seq and delFlag = 0) as commentCount, c.* 
+		    from (select * from vwCommunity where postSeq = #{postSeq} order by regDate desc) c)
+		where rnum between (#{nowPage}-1)*10+1 and #{nowPage}*10
+	</select>
+	
+	<!-- 많이 본 글 목록을 가져온다. -->
+	<select id="mostViewList" parameterType="String" resultType="groupCommunityDto">
+		select rownum, c.* 
+		from (select seq, postSeq, subject, (select count(*) from tblCommunityComment where communitySeq = tblCommunity.seq) as commentCount, (sysdate -regDate) * 24 as gap 
+		    from tblCommunity order by readCount desc) c
+		    where postSeq = #{postSeq} and rownum between 1 and 5
+	</select>
+	
+	<!-- 추천 글 목록을 가져온다. -->
+	<select id="recList" parameterType="String" resultType="groupCommunityDto">
+		select rownum, c.* 
+		from (select seq, postSeq, subject, (select count(*) from tblCommunityComment where communitySeq = tblCommunity.seq) as commentCount, (sysdate -regDate) * 24 as gap 
+		    from tblCommunity order by recCount desc) c
+		    where postSeq = #{postSeq} and rownum between 1 and 5
+	</select>
+	
+	<!-- 댓글 많은 글 목록을 가져온다. -->
+	<select id="mostCmtList" parameterType="String" resultType="groupCommunityDto">
+		select rownum, c.* 
+		from (select seq, postSeq, subject, (select count(*) from tblCommunityComment where communitySeq = tblCommunity.seq) as commentCount, (sysdate -regDate) * 24 as gap 
+		    from tblCommunity order by commentCount desc) c
+		    where postSeq = #{postSeq} and rownum between 1 and 5
 	</select>
 	
 	<!-- 커뮤니티 특정 글의 정보를 가져온다. -->
@@ -27,9 +67,9 @@ where rnum between #{nowPage} and #{nowPage} + 10
 		    to_char(updateDate, 'mm/dd hh24:mi') as updateDate,
 		    recCount,
 		    readCount,
-		    (select count(*) from tblCommunityComment where communitySeq = #{seq}) as commentCount,
+		    (select count(*) from tblCommunityComment where communitySeq = #{seq} and delFlag = 0) as commentCount,
 		    delFlag
-		from tblCommunity where seq = #{seq}
+		from tblCommunity where seq = #{seq} and delFlag = 0
 	</select>
 	
 	<!-- 커뮤니티 특정 글의 댓글 목록을 가져온다. -->
@@ -52,9 +92,47 @@ where rnum between #{nowPage} and #{nowPage} + 10
 		                connect by prior seq = pseq
 	</select>
 	
+	<!-- 커뮤니티에 새 글을 쓴다. -->
+	<insert id="addCommunity" parameterType="groupCommunityDto" >
+		insert into tblCommunity (seq, postSeq, memberSeq, subject, detail, regDate, updateDate, recCount, readCount, delFlag)
+    		values (seqCommunity.nextVal, #{postSeq}, #{memberSeq}, #{subject}, #{detail}, default, default, default, default, default)
+	</insert>
+	
+	<!-- 커뮤니티 글을 수정한다. -->
+	<update id="editCommunity" parameterType="groupCommunityDto">
+		update tblCommunity set subject = #{subject}, detail = #{detail}, updateDate = sysdate where seq = #{seq}
+	</update>
+	
+	<!-- 커뮤니티 글을 삭제한다.(delFlag를 1로 update) -->
+	<update id="delCommunity" parameterType="String">
+		update tblCommunity set delFlag = 1 where seq = #{seq}
+	</update>
+	
+	<!-- 커뮤니티 특정 글에 새 댓글을 쓴다. -->
+	<insert id="communityCommentAdd" parameterType="groupCommunityCommentDto">
+		insert into tblCommunityComment (seq, communitySeq, memberSeq, detail, pseq, regDate, updateDate, delFlag)
+			values (seqCommunityComment.nextVal, #{communitySeq}, #{memberSeq}, #{detail}, null, default, default, default)
+	</insert>
+	
+	<!-- 커뮤니티 특정 댓글에 대댓글을 쓴다. -->
+	<insert id="communityReplyAdd" parameterType="groupCommunityCommentDto">
+		insert into tblCommunityComment (seq, communitySeq, memberSeq, detail, pseq, regDate, updateDate, delFlag)
+			values (seqCommunityComment.nextVal, #{communitySeq}, #{memberSeq}, #{detail}, #{pseq}, default, default, default)
+	</insert>
+	
+	<!-- 커뮤니티 특정 댓글을 수정한다. -->
+	<update id="communityCommentEdit" parameterType="groupCommunityCommentDto">
+		update tblCommunityComment set detail = #{detail}, updateDate = sysdate where seq = #{seq}
+	</update>
+	
+	<!-- 커뮤니티 특정 댓글을 삭제한다. -->
+	<update id="communityCommentDel" parameterType="groupCommunityCommentDto">
+		update tblCommunityComment set delFlag = 1 where seq = #{seq}
+	</update>
+	
 	<!-- 회원 이름을 가져온다. -->
 	<select id="memberName" parameterType="String" resultType="String">
-		select name as memberName from tblMember where seq = #{seq}
+		select name as memberName from tblMember where seq = #{memberSeq}
 	</select>
 	
 	<!-- 특정 공동구매 글의 정보를 가져온다. -->
@@ -67,6 +145,7 @@ where rnum between #{nowPage} and #{nowPage} + 10
 		    (select address from tblGroupBuyingCompany where seq = tblGroupBuyingPost.companySeq) as companyAddress,
 		    to_char((select lastTime from tblGroupBuyingCompany where seq = tblGroupBuyingPost.companySeq), 'mm/dd hh24:mi') as companyLastTime,
 		    subject,
+		    name,
 		    detail,
 		    url,
 		    price,
@@ -81,6 +160,10 @@ where rnum between #{nowPage} and #{nowPage} + 10
 		    delFlag
 		from tblGroupBuyingPost where seq = #{seq} and delFlag = 0
 	</select>
+	
+	
+	
+	
 	
 	<!-- Qna 글 목록을 가져온다. -->
 	<select id="qnaList" parameterType="groupQnaDto" resultType="groupQnaDto">
@@ -101,7 +184,69 @@ where rnum between #{nowPage} and #{nowPage} + 10
 		    a.fileName as fileName,
 		    a.openFlag as openFlag
 		from (select rownum as rnum, q.* from (select * from tblQna where delFlag = 0 and postSeq = #{postSeq} order by thread desc) q) a
-		    where rnum between (#{nowPage}-1)*6+1 and #{nowPage}*6
+		    where rnum between (#{nowPage}-1)*10+1 and #{nowPage}*10
+	</select>
+
+	
+	<!-- 특정 Qna 글의 최대 페이지 수를 select -->
+	<select id="qnaTotalPage" parameterType="String" resultType="Integer">
+		select ceil(count(*) / 10) as totalPage from tblQna where postSeq = #{postSeq} and delFlag = 0
+	</select>
+	
+	<!-- Qna thread 반환한다. -->
+	<select id="qnaThread" resultType="Integer">
+		select nvl(max(thread), 0) + 1000 as thread from tblQna
+	</select>
+	
+	<!-- Qna에 새 글을 쓴다. -->
+	<insert id="qnaAdd" parameterType="groupQnaDto">
+		insert into tblQna (seq, postSeq, memberSeq, subject, detail, thread, depth, regDate, updateDate, readCount, fileName, openFlag, delFlag)
+    		values (seqQna.nextVal, #{postSeq}, #{memberSeq}, #{subject}, #{detail}, #{thread}, #{depth}, default, default, default, #{fileName}, #{openFlag}, default)
+	</insert>
+	
+	
+	<!-- 읽지 않은 쿠폰 개수를 select -->
+	<select id="notReadCountCoupon" parameterType="String" resultType="Integer">
+		select count(*) as cnt from tblCoupon where memberSeq = #{memberSeq} and readFlag in (0, 1)
+	</select>
+	
+	<!-- 읽지 않은 공구 새글 개수를 select -->
+	<select id="notReadCountPost" parameterType="String" resultType="Integer">
+		select count(*) as cnt from tblNotice where memberSeq = #{memberSeq} and readFlag in (0, 1)
+	</select>
+	
+	<!-- 읽지 않은 공구 목록를 가져온다. -->
+	<select id="noticePost" parameterType="String" resultType="groupNoticeDto">
+		select
+		    seq,
+		    memberSeq,
+		    postSeq,
+		    (select subject from tblGroupBuyingPost where seq = tblNotice.postSeq) as psubject, 
+		    detail,
+		    to_char(noticeDate, 'yy/mm/dd dy') as noticeDate,
+		    (sysdate - noticeDate) * 24 as gap,
+		    readFlag
+		from tblNotice
+		    where memberSeq = #{memberSeq}
+		        order by noticeDate desc
+	</select>
+	
+	<!-- 읽지 않은 쿠폰 목록를 가져온다. -->
+	<select id="noticeCoupon" parameterType="String" resultType="groupCouponDto">
+		select 
+		    seq, 
+		    companySeq,
+		    (select name from tblGroupBuyingCompany where seq = tblCoupon.companySeq) as cname,
+		    memberSeq,
+		    discount,
+		    to_char(issueDate, 'yy/mm/dd dy') as issueDate,
+		    (sysdate - issueDate) * 24 as gap,
+		    to_char(issueDate + period, 'yy/mm/dd dy') as endDate,
+		    to_char(useDate, 'yy/mm/dd dy') as useDate,
+		    readFlag
+		from tblCoupon
+		    where memberSeq = 1
+		        order by issueDate desc
 	</select>
 	
 </mapper>

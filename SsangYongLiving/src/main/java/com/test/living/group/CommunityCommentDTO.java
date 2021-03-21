@@ -18,8 +18,9 @@ public class CommunityCommentDTO {
 	private String detail;
 	private String level;
 	private String regDate;
-	private String gap;
+	private int gap;
 	private String updateDate;
 	private String delFlag;
 
+	private int nowPage;
 }

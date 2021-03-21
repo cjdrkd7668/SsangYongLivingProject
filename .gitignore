@@ -21,12 +21,14 @@ SsangYongLiving/target/m2e-wtp/web-resources/META-INF/maven/com.test/board/pom.p
 SpringBoard/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 SpringBoard/target/m2e-wtp/web-resources/META-INF/maven/com.test/board/pom.properties
 
-Servers/Tomcat v8.5 Server at localhost-config/catalina.policy
-Servers/Tomcat v8.5 Server at localhost-config/catalina.properties
-Servers/Tomcat v8.5 Server at localhost-config/context.xml
-Servers/Tomcat v8.5 Server at localhost-config/server.xml
-Servers/Tomcat v8.5 Server at localhost-config/tomcat-users.xml
-Servers/Tomcat v8.5 Server at localhost-config/web.xml
+
 SsangYongLiving/.classpath
 SsangYongLiving/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 SsangYongLiving/target/m2e-wtp/web-resources/META-INF/maven/com.test/board/pom.properties
+SsangYongLiving/target/m2e-wtp/web-resources/META-INF/maven/com.test/board/pom.properties
+SpringBoard/target/m2e-wtp/web-resources/META-INF/maven/com.test/board/pom.properties
+SsangYongLiving/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+SsangYongLiving/target/m2e-wtp/web-resources/META-INF/maven/com.test/board/pom.properties
+SpringBoard/target/m2e-wtp/web-resources/META-INF/maven/com.test/board/pom.properties
+SsangYongLiving/target/m2e-wtp/web-resources/META-INF/maven/com.test/board/pom.properties
+
